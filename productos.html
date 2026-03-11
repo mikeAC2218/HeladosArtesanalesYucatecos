@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos | Helados Casfrela</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playball&display=swap"
+        rel="stylesheet">
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/productos.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav id="main-nav">
+        <div class="container nav-content">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/logoHelados.jpeg" alt="Helados Casfrela Logo"
+                        style="height: 50px; margin-right: 10px; vertical-align: middle; border-radius: 5px;">
+                    <span class="logo-text">CASFRELA</span>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="productos.html" class="active">Productos</a></li>
+                <li><a href="galeria.html">Galería</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+            <div class="mobile-menu-btn">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-header-spacer"></div>
+
+    <!-- Recommendation Section -->
+    <section id="recomendacion" class="seasonal-section container">
+        <div class="section-header">
+            <h3 class="script-font gold-text">Recomendación</h3>
+            <h2 id="seasonal-subtitle">PRIMAVERA</h2>
+        </div>
+
+        <div class="carousel-container seasonal-carousel">
+            <div class="carousel-track">
+                <!-- Slide Primavera -->
+                <div class="carousel-slide active" data-season="PRIMAVERA">
+                    <div class="seasonal-grid">
+                        <div class="grid-left">
+                            <div class="image-box"><img src="assets/spring.png" alt="Primavera 1"></div>
+                            <div class="image-box"><img src="assets/strawberry-milkshake.png" alt="Primavera 2"></div>
+                            <div class="image-box"><img src="assets/slide01-08.png" alt="Primavera 3"></div>
+                            <div class="image-box"><img src="assets/spring.png" alt="Primavera 4"></div>
+                        </div>
+                        <div class="grid-right">
+                            <div class="seasonal-info">
+                                <p class="info-text">Explosión de frescura con nuestras frutas de estación. Sabores vibrantes que despiertan tus sentidos con la selección más dulce de Casfrela.</p>
+                                <ul class="seasonal-list">
+                                    <li>Paletas de Fresa natural</li>
+                                    <li>Sorbete de Piña fresca</li>
+                                    <li>Helado de Frutos Rojos</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ... other slides ... -->
+                <div class="carousel-slide" data-season="VERANO">
+                    <div class="seasonal-grid">
+                        <div class="grid-left">
+                            <div class="image-box"><img src="assets/summer.png" alt="Verano 1"></div>
+                            <div class="image-box"><img src="assets/pineapple-icecream.png" alt="Verano 2"></div>
+                            <div class="image-box"><img src="assets/summer.png" alt="Verano 3"></div>
+                            <div class="image-box"><img src="assets/slide01-06.png" alt="Verano 4"></div>
+                        </div>
+                        <div class="grid-right">
+                            <div class="seasonal-info">
+                                <p class="info-text">El antídoto perfecto para el calor Yucateco. Refrescancia pura en cada bocado, ideal para disfrutar bajo el sol del Mayab.</p>
+                                <ul class="seasonal-list">
+                                    <li>Helado de Coconut & Lime</li>
+                                    <li>Malteadas de Vainilla helada</li>
+                                    <li>Yogurt helado de Mango</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-slide" data-season="OTOÑO">
+                    <div class="seasonal-grid">
+                        <div class="grid-left">
+                            <div class="image-box"><img src="assets/autumn.png" alt="Otoño 1"></div>
+                            <div class="image-box"><img src="assets/autumn.png" alt="Otoño 2"></div>
+                            <div class="image-box"><img src="assets/autumn.png" alt="Otoño 3"></div>
+                            <div class="image-box"><img src="assets/autumn.png" alt="Otoño 4"></div>
+                        </div>
+                        <div class="grid-right">
+                            <div class="seasonal-info">
+                                <p class="info-text">Texturas cremosas y sabores tradicionales que reconfortan el alma. La herencia de Yucatán en nuestros postres lácteos.</p>
+                                <ul class="seasonal-list">
+                                    <li>Helado de Queso de Bola</li>
+                                    <li>Cremita Casera Yucateca</li>
+                                    <li>Quesos artesanales curados</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-nav">
+                <button class="prev-btn">←</button>
+                <div class="carousel-dots"></div>
+                <button class="next-btn">→</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Highlights -->
+    <section id="productos" class="highlights container">
+        <div class="section-title-center">
+            <h2>Nuestros Productos</h2>
+            <div class="gold-line"></div>
+        </div>
+        <div class="highlights-grid">
+            <div class="product-card">
+                <div class="card-img"><img src="assets/spring.png" alt="Helado Artesanal"></div>
+                <h4>Helado de Fresa</h4>
+                <p>Hecho con fresas naturales y crema de rancho.</p>
+            </div>
+            <div class="product-card">
+                <div class="card-img"><img src="assets/summer.png" alt="Yogurt"></div>
+                <h4>Yogurt de Mango</h4>
+                <p>Cremoso y lleno de vitaminas tropicales.</p>
+            </div>
+            <div class="product-card">
+                <div class="card-img"><img src="assets/autumn.png" alt="Queso"></div>
+                <h4>Queso de Bola</h4>
+                <p>El sabor tradicional de nuestra tierra.</p>
+            </div>
+            <div class="product-card">
+                <div class="card-img"><img src="assets/pineapple-icecream.png" alt="Piña"></div>
+                <h4>Piña Colada</h4>
+                <p>Una mezcla refrescante para el calor.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <img src="assets/logoHelados.jpeg" alt="Logo Casfrela"
+                    style="height: 60px; margin-bottom: 15px; border-radius: 8px;">
+                <h2 class="logo-text">CASFRELA <span class="accent">ARTESANALES</span></h2>
+                <p>Tradición y sabor natural auténticamente yucateco.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Navegación</h4>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h4>Síguenos</h4>
+                <div class="social-icons">
+                    <a href="#">FB</a><a href="#">IG</a><a href="#">TW</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Helados Casfrela. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>

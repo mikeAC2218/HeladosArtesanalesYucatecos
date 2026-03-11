@@ -1,0 +1,56 @@
+@import url('common.css');
+
+.contact-section { padding: 80px 0; }
+
+.contact-container {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 60px;
+    background: var(--white);
+    box-shadow: var(--shadow-card);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.contact-form-box { padding: 60px; }
+.contact-info { padding: 60px; background: var(--logo-brown); color: var(--white); }
+
+#contact-form { display: flex; flex-direction: column; gap: 20px; }
+
+#contact-form input, #contact-form textarea {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-family: inherit;
+    background: #fbfbfb;
+}
+
+.btn-submit {
+    background: var(--logo-orange);
+    color: var(--white);
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-submit:hover {
+    background: var(--logo-brown);
+}
+
+.map-placeholder {
+    height: 200px;
+    background: #333;
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+/* Responsive Contacto */
+@media (max-width: 850px) {
+    .contact-container { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,71 @@
+@import url('common.css');
+
+section { padding: 80px 0; }
+.section-header { text-align: center; margin-bottom: 50px; }
+
+/* Seasonal Carousel */
+.seasonal-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.grid-left {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.image-box {
+    border-radius: 15px;
+    overflow: hidden;
+    height: 200px;
+}
+
+.image-box img { width: 100%; height: 100%; object-fit: cover; }
+
+.seasonal-info { padding: 0 15px; }
+.season-title { font-size: 2.2rem; margin-bottom: 15px; color: var(--logo-brown); }
+
+.seasonal-list li {
+    margin-bottom: 10px;
+    padding-left: 25px;
+    position: relative;
+    font-weight: 600;
+}
+
+.seasonal-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--logo-orange);
+}
+
+/* Highlights */
+.highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 30px;
+}
+
+.product-card {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition);
+}
+
+.card-img { height: 180px; margin-bottom: 20px; }
+.card-img img { max-height: 100%; }
+
+/* Responsive Productos */
+@media (max-width: 992px) {
+    .seasonal-grid { grid-template-columns: 1fr; text-align: center; }
+}
+
+@media (max-width: 500px) {
+    .grid-left { grid-template-columns: 1fr; }
+}
