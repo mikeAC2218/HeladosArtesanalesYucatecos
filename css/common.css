@@ -184,6 +184,39 @@ footer {
     color: var(--text-light);
 }
 
+/* Styling for Footer Social Icons */
+.social-icons-premium {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: var(--white);
+    color: var(--logo-brown);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: var(--transition);
+}
+.social-icon svg {
+    width: 22px;
+    height: 22px;
+    transition: transform 0.3s ease;
+}
+.social-icon:hover {
+    background: var(--logo-orange);
+    color: var(--white);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(220, 107, 47, 0.3);
+}
+.social-icon:hover svg {
+    transform: scale(1.1);
+}
+
 /* Animations */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }

@@ -46,76 +46,93 @@ document.addEventListener('DOMContentLoaded', () => {
             const speed = el.getAttribute('data-speed') || 0.3;
             el.style.transform = `translateY(-${scrolled * speed}px)`;
         });
+
+        // 9. Paletas Dynamic Background Parallax (Subida y Caida)
+        const parallaxBanner = document.querySelector('.parallax-banner');
+        if (parallaxBanner) {
+            const rect = parallaxBanner.getBoundingClientRect();
+            // Check if element is in viewport
+            if (rect.top <= window.innerHeight && rect.bottom >= 0) {
+                // Calculate distance scrolled past the element's original top
+                const elementTop = parallaxBanner.offsetTop;
+                const distance = scrolled - elementTop;
+                
+                // Adjusting background-position-y creates the sliding up/down effect physically
+                parallaxBanner.style.backgroundPositionY = `${distance * 0.5}px`;
+            }
+        }
     });
 
     // 3. Carousel Center Mode Logic
     const track = document.querySelector('.carousel-track');
-    const slides = Array.from(document.querySelectorAll('.carousel-slide'));
-    const nextBtn = document.querySelector('.next-btn');
-    const prevBtn = document.querySelector('.prev-btn');
-    const dotsContainer = document.querySelector('.carousel-dots');
-    const seasonalSubtitle = document.getElementById('seasonal-subtitle');
+    if (track) {
+        const slides = Array.from(document.querySelectorAll('.carousel-slide'));
+        const nextBtn = document.querySelector('.next-btn');
+        const prevBtn = document.querySelector('.prev-btn');
+        const dotsContainer = document.querySelector('.carousel-dots');
+        const seasonalSubtitle = document.getElementById('seasonal-subtitle');
 
-    let currentIndex = 0;
+        let currentIndex = 0;
 
-    // Create dots
-    slides.forEach((_, i) => {
-        const dot = document.createElement('div');
-        dot.classList.add('dot');
-        if (i === 0) dot.classList.add('active');
-        dot.addEventListener('click', () => goToSlide(i));
-        dotsContainer.appendChild(dot);
-    });
-
-    const dots = Array.from(document.querySelectorAll('.dot'));
-
-    function updateCarousel() {
-        // Simple translation based on percentage
-        track.style.transform = `translateX(-${currentIndex * 100}%)`;
-
-        slides.forEach((slide, i) => {
-            slide.classList.toggle('active', i === currentIndex);
+        // Create dots
+        slides.forEach((_, i) => {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (i === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => goToSlide(i));
+            dotsContainer.appendChild(dot);
         });
 
-        dots.forEach((dot, i) => {
-            dot.classList.toggle('active', i === currentIndex);
-        });
+        const dots = Array.from(document.querySelectorAll('.dot'));
 
-        // Update seasonal subtitle
-        const activeSlide = slides[currentIndex];
-        const season = activeSlide.getAttribute('data-season');
-        if (seasonalSubtitle) {
-            seasonalSubtitle.innerText = season;
-            seasonalSubtitle.style.animation = 'none';
-            seasonalSubtitle.offsetHeight; // trigger reflow
-            seasonalSubtitle.style.animation = 'fadeIn 0.5s ease-out';
+        function updateCarousel() {
+            // Simple translation based on percentage
+            track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === currentIndex);
+            });
+
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentIndex);
+            });
+
+            // Update seasonal subtitle
+            const activeSlide = slides[currentIndex];
+            const season = activeSlide.getAttribute('data-season');
+            if (seasonalSubtitle) {
+                seasonalSubtitle.innerText = season;
+                seasonalSubtitle.style.animation = 'none';
+                seasonalSubtitle.offsetHeight; // trigger reflow
+                seasonalSubtitle.style.animation = 'fadeIn 0.5s ease-out';
+            }
         }
-    }
 
-    function goToSlide(index) {
-        currentIndex = index;
+        function goToSlide(index) {
+            currentIndex = index;
+            updateCarousel();
+        }
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % slides.length;
+            updateCarousel();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            updateCarousel();
+        });
+
+        // Auto change carousel
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % slides.length;
+            updateCarousel();
+        }, 4000);
+
+        // Initial positioning
+        window.addEventListener('resize', updateCarousel);
         updateCarousel();
     }
-
-    nextBtn.addEventListener('click', () => {
-        currentIndex = (currentIndex + 1) % slides.length;
-        updateCarousel();
-    });
-
-    prevBtn.addEventListener('click', () => {
-        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-        updateCarousel();
-    });
-
-    // Auto change carousel
-    setInterval(() => {
-        currentIndex = (currentIndex + 1) % slides.length;
-        updateCarousel();
-    }, 4000);
-
-    // Initial positioning
-    window.addEventListener('resize', updateCarousel);
-    updateCarousel();
 
     // 4. Active Link Logic (Multi-page & Scroll)
     const navLinks = document.querySelectorAll('.nav-links a');
@@ -195,4 +212,112 @@ document.addEventListener('DOMContentLoaded', () => {
         .reveal-up.revealed { opacity: 1; transform: translateY(0); }
     `;
     document.head.appendChild(style);
+
+    // 7. Product Modal Logic
+    const productCards = document.querySelectorAll('.product-card');
+    const modalOverlay = document.getElementById('product-modal');
+    
+    if (productCards.length > 0 && modalOverlay) {
+        const modalClose = document.querySelector('.modal-close');
+        const modalImg = document.getElementById('modal-img');
+        const modalTitle = document.getElementById('modal-title');
+        const modalDesc = document.getElementById('modal-desc');
+        const modalWhatsapp = document.getElementById('modal-whatsapp');
+
+        const waNumber = '529990000000'; // Placeholder - el usuario debe cambiar esto
+
+        productCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const title = card.getAttribute('data-title');
+                const img = card.getAttribute('data-img');
+                const desc = card.getAttribute('data-desc');
+                const waProduct = card.getAttribute('data-whatsapp');
+
+                modalImg.src = img;
+                modalTitle.textContent = title;
+                modalDesc.textContent = desc;
+
+                const waMessage = encodeURIComponent(`Hola, me gustaría pedir el producto: ${waProduct}`);
+                modalWhatsapp.href = `https://wa.me/${waNumber}?text=${waMessage}`;
+
+                modalOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            });
+        });
+
+        const closeModal = () => {
+            modalOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        };
+
+        modalClose.addEventListener('click', closeModal);
+
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) {
+                closeModal();
+            }
+        });
+        
+        // Escape key to close
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+                closeModal();
+            }
+        });
+    }
+
+    // 8. View All Products Logic (Dynamic for multiple sections)
+    const viewAllLinks = document.querySelectorAll('.view-all-link');
+    
+    viewAllLinks.forEach(viewAllLink => {
+        // Find the parent section containing this specific link
+        const sectionContainer = viewAllLink.closest('.highlights');
+        if (!sectionContainer) return;
+
+        const hideAllLink = sectionContainer.querySelector('.hide-all-link');
+        const extraCards = sectionContainer.querySelectorAll('.extra-card');
+        
+        if (viewAllLink && hideAllLink && extraCards.length > 0) {
+            viewAllLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                viewAllLink.style.display = 'none';
+
+                extraCards.forEach((card, index) => {
+                    setTimeout(() => {
+                        card.style.display = 'flex';
+                        void card.offsetWidth;
+                        card.classList.add('show');
+                    }, index * 40); 
+                });
+
+                // Show 'hide link' once all animations have fired
+                setTimeout(() => {
+                    hideAllLink.style.display = 'inline-flex';
+                }, extraCards.length * 40 + 100);
+            });
+
+            hideAllLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                hideAllLink.style.display = 'none';
+                viewAllLink.style.display = 'inline-flex';
+
+                // Hide cards smoothly
+                extraCards.forEach((card) => {
+                    card.classList.remove('show');
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 500); // Wait for CSS opacity/transform transition to complete
+                });
+
+                // Scroll back to the top of this specific section grid smoothly
+                const headerOffset = 100;
+                const elementPosition = sectionContainer.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                window.scrollTo({
+                     top: offsetPosition,
+                     behavior: "smooth"
+                });
+            });
+        }
+    });
 });
