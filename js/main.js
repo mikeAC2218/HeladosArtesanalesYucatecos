@@ -99,9 +99,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Update seasonal subtitle
             const activeSlide = slides[currentIndex];
-            const season = activeSlide.getAttribute('data-season');
+            const season = activeSlide.getAttribute('data-season'); // spring, summer, autumn
             if (seasonalSubtitle) {
-                seasonalSubtitle.innerText = season;
+                const translationKey = `seasonal.${season.toLowerCase()}`;
+                const translatedSeason = (window.siteTranslator && window.siteTranslator.getValue) 
+                    ? window.siteTranslator.getValue(translationKey) 
+                    : season;
+                
+                seasonalSubtitle.innerText = translatedSeason;
                 seasonalSubtitle.style.animation = 'none';
                 seasonalSubtitle.offsetHeight; // trigger reflow
                 seasonalSubtitle.style.animation = 'fadeIn 0.5s ease-out';
@@ -223,22 +228,40 @@ document.addEventListener('DOMContentLoaded', () => {
         const modalTitle = document.getElementById('modal-title');
         const modalDesc = document.getElementById('modal-desc');
         const modalWhatsapp = document.getElementById('modal-whatsapp');
+        const qtyInput = document.getElementById('product-quantity');
 
-        const waNumber = '529990000000'; // Placeholder - el usuario debe cambiar esto
+        const waNumber = '5219993960148';
+        let currentWaProduct = '';
+        let currentImgUrl = '';
+
+        const updateWaLink = () => {
+            const qty = qtyInput ? qtyInput.value : 1;
+            const waMessage = encodeURIComponent(`Hola, me gustaría pedir:\nProducto: ${currentWaProduct}\nCantidad: ${qty} unidades\nImagen del producto: ${currentImgUrl}`);
+            modalWhatsapp.href = `https://wa.me/${waNumber}?text=${waMessage}`;
+        };
+
+        if (qtyInput) {
+            qtyInput.addEventListener('input', updateWaLink);
+            qtyInput.addEventListener('change', updateWaLink);
+        }
 
         productCards.forEach(card => {
             card.addEventListener('click', () => {
                 const title = card.getAttribute('data-title');
                 const img = card.getAttribute('data-img');
                 const desc = card.getAttribute('data-desc');
-                const waProduct = card.getAttribute('data-whatsapp');
+                currentWaProduct = card.getAttribute('data-whatsapp') || title;
 
                 modalImg.src = img;
                 modalTitle.textContent = title;
                 modalDesc.textContent = desc;
 
-                const waMessage = encodeURIComponent(`Hola, me gustaría pedir el producto: ${waProduct}`);
-                modalWhatsapp.href = `https://wa.me/${waNumber}?text=${waMessage}`;
+                if (qtyInput) qtyInput.value = 1;
+
+                // Generamos la URL absoluta para que la imagen se vea en WhatsApp si la web está en línea
+                currentImgUrl = new URL(img, window.location.href).href;
+                
+                updateWaLink();
 
                 modalOverlay.classList.add('active');
                 document.body.style.overflow = 'hidden'; // Prevent background scrolling
