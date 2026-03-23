@@ -12,6 +12,7 @@
         rel="stylesheet">
     <!-- Styles -->
     <link rel="stylesheet" href="css/i18n.css">
+    <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/nosotros.css">
 </head>
 
@@ -26,18 +27,26 @@
                     <span class="logo-text">CASFRELA</span>
                 </a>
             </div>
-            <ul class="nav-links">
-                <li><a href="index.html" data-i18n="nav.home">Inicio</a></li>
-                <li><a href="nosotros.html" class="active" data-i18n="nav.about">Nosotros</a></li>
-                <li><a href="productos.html" data-i18n="nav.products">Productos</a></li>
-                <li><a href="galeria.html" data-i18n="nav.gallery">Galería</a></li>
-                <li><a href="contacto.html" data-i18n="nav.contact">Contacto</a></li>
-            </ul>
-            <div class="lang-selector-modern">
-                <button class="lang-btn" data-lang="es">ES</button>
-                <div class="lang-divider"></div>
-                <button class="lang-btn" data-lang="en">EN</button>
-            </div>
+                <div class="nav-actions" style="display: flex; align-items: center; gap: 20px;">
+                    <ul class="nav-links">
+                        <li><a href="index.html" data-i18n="nav.home">Inicio</a></li>
+                        <li><a href="nosotros.html" class="active" data-i18n="nav.about">Nosotros</a></li>
+                        <li><a href="productos.html" data-i18n="nav.products">Productos</a></li>
+                        <li><a href="galeria.html" data-i18n="nav.gallery">Galería</a></li>
+                        <li><a href="contacto.html" data-i18n="nav.contact">Contacto</a></li>
+                    </ul>
+                    <div class="cart-nav-container">
+                        <button id="cart-btn" class="cart-btn-nav">
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                            <span id="cart-count" class="cart-badge">0</span>
+                        </button>
+                    </div>
+                    <div class="lang-selector-modern">
+                        <button class="lang-btn" data-lang="es">ES</button>
+                        <div class="lang-divider"></div>
+                        <button class="lang-btn" data-lang="en">EN</button>
+                    </div>
+                </div>
             <div class="mobile-menu-btn">
                 <span></span><span></span><span></span>
             </div>
@@ -84,8 +93,8 @@
     <!-- Footer -->
     <footer style="background-color: var(--cream, #fdfbf7); padding-top: 80px; border-top: 1px solid rgba(0,0,0,0.05);">
         <div class="container footer-content" style="gap: 60px;">
-            <div class="footer-brand" style="display: flex; flex-direction: column; gap: 10px;">
-                <img src="assets/logoHelados.jpeg" alt="Logo Casfrela" style="height: 70px; width: 70px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); align-self: flex-start; margin-bottom: 5px; object-fit: contain;">
+            <div class="footer-brand" style="display: flex; flex-direction: column; gap: 10px; align-items: center; text-align: center;">
+                <img src="assets/logoHelados.jpeg" alt="Logo Casfrela" style="height: 70px; width: 70px; align-self: center; margin-bottom: 5px; object-fit: contain; mix-blend-mode: multiply;">
                 <h2 class="logo-text" style="font-size: 1.8rem; margin: 0;">CASFRELA <span class="accent">ARTESANALES</span></h2>
                 <p style="color: var(--text-dark); line-height: 1.6;" data-i18n="footer.brand_desc">Tradición y sabor natural auténticamente yucateco. Llevando la frescura del campo a tu paladar.</p>
             </div>
@@ -114,10 +123,68 @@
                 </div>
             </div>
         </div>
-        <div class="footer-bottom" style="text-align: center; padding: 25px 0; border-top: 1px solid rgba(0, 0, 0, 0.08); font-size: 0.9rem; color: var(--text-light); margin-top: 20px;">
-            <p data-i18n="footer.copyright">&copy; 2026 Helados Casfrela. Todos los derechos reservados.</p>
-        </div>
     </footer>
+
+    <!-- Shopping Cart Modal -->
+    <div id="cart-modal" class="modal-overlay">
+        <div class="modal-content cart-modal-content" style="max-width: 550px; border-radius: 24px;">
+            <span class="modal-close cart-close" style="top: 20px; right: 20px;">&times;</span>
+            <div class="modal-header-premium" style="padding: 25px 30px 5px;">
+                <h2 class="script-font" style="font-size: 2.22rem; color: var(--logo-brown); margin: 0;"
+                    data-i18n="cart.title">Tu Carrito</h2>
+                <div class="gold-line"
+                    style="margin: 8px 0 15px 0; width: 50px; height: 3px; background: var(--logo-orange);"></div>
+            </div>
+            <div class="modal-body cart-body" style="padding: 0 30px 30px;">
+                <div id="cart-items-container" class="cart-items-list" style="margin-bottom: 5px;">
+                    <!-- Items will be injected here -->
+                    <p class="empty-cart-msg"
+                        style="text-align: center; font-size: 1.1rem; color: var(--text-light); padding: 30px 0;"
+                        data-i18n="cart.empty">Tu carrito está vacío</p>
+                </div>
+                <div id="cart-summary" class="cart-summary"
+                    style="display: none; border-top: 2px dashed #eee; padding-top: 10px;">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                        <h3 style="margin: 0; color: var(--text-dark); font-size: 1.2rem;" data-i18n="cart.total">Total:</h3>
+                        <span id="cart-total-price"
+                            style="font-size: 1.6rem; font-weight: 700; color: var(--logo-orange);">$0.00</span>
+                    </div>
+
+                    <!-- Shipping Option -->
+                    <div id="shipping-section"
+                        style="margin-bottom: 12px; padding: 12px; background: rgba(0,0,0,0.03); border-radius: 12px;">
+                        <label
+                            style="display: flex; align-items: center; gap: 10px; cursor: pointer; user-select: none;">
+                            <input type="checkbox" id="shipping-checkbox"
+                                style="width: 18px; height: 18px; accent-color: var(--logo-orange);">
+                            <span style="font-weight: 600; font-size: 0.95rem; color: var(--text-dark);"
+                                data-i18n="cart.requires_shipping">¿Requiere envío?</span>
+                        </label>
+                        <p style="font-size: 0.78rem; color: var(--text-light); margin: 5px 0 0 28px; line-height: 1.2;"
+                            data-i18n="cart.shipping_legend">Nota: El costo del envío varía según la ubicación.</p>
+                    </div>
+
+                    <div class="cart-actions" style="display: flex; gap: 12px;">
+                        <button id="empty-cart-btn" class="btn-outline"
+                            style="padding: 12px 20px; border: 2px solid #ddd; background: none; color: #777; border-radius: 30px; font-weight: 600; cursor: pointer; transition: var(--transition); flex: 1; font-size: 0.9rem;"
+                            data-i18n="cart.clear">Vaciar Carrito</button>
+                        <a id="cart-whatsapp-btn" href="#" target="_blank" class="whatsapp-btn"
+                            style="flex: 2; padding: 12px 20px; font-size: 1rem;">
+                            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round" class="wa-icon"
+                                style="margin-right: 8px;">
+                                <path
+                                    d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                                </path>
+                            </svg>
+                            <span data-i18n="cart.order_whatsapp">Pedir por WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="js/i18n.js"></script>
     <script src="js/main.js"></script>

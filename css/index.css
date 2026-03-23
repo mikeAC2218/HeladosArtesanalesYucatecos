@@ -358,14 +358,13 @@ section {
 }
 
 .contact-container {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    gap: 60px;
+    display: block;
+    max-width: 800px;
+    margin: 0 auto;
     background: var(--white);
     box-shadow: var(--shadow-card);
     border-radius: var(--border-radius);
     overflow: hidden;
-    /* Removed extra max-width to use the full .container size */
 }
 
 .contact-form-box {

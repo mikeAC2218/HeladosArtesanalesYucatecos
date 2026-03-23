@@ -16,6 +16,7 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="css/i18n.css">
+    <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/index.css">
 </head>
 
@@ -30,22 +31,33 @@
                     <span class="logo-text">CASFRELA</span>
                 </a>
             </div>
-            <ul class="nav-links">
-                <li><a href="index.html" class="active" data-i18n="nav.home">Inicio</a></li>
-                <li><a href="nosotros.html" data-i18n="nav.about">Nosotros</a></li>
-                <li><a href="productos.html" data-i18n="nav.products">Productos</a></li>
-                <li><a href="galeria.html" data-i18n="nav.gallery">Galería</a></li>
-                <li><a href="contacto.html" data-i18n="nav.contact">Contacto</a></li>
-            </ul>
-            <div class="lang-selector-modern">
-                <button class="lang-btn" data-lang="es">ES</button>
-                <div class="lang-divider"></div>
-                <button class="lang-btn" data-lang="en">EN</button>
+            <div class="nav-actions" style="display: flex; align-items: center; gap: 20px;">
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active" data-i18n="nav.home">Inicio</a></li>
+                    <li><a href="nosotros.html" data-i18n="nav.about">Nosotros</a></li>
+                    <li><a href="productos.html" data-i18n="nav.products">Productos</a></li>
+                    <li><a href="galeria.html" data-i18n="nav.gallery">Galería</a></li>
+                    <li><a href="contacto.html" data-i18n="nav.contact">Contacto</a></li>
+                </ul>
+                <div class="cart-nav-container">
+                    <button id="cart-btn" class="cart-btn-nav">
+                        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2"
+                            fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                        <span id="cart-count" class="cart-badge">0</span>
+                    </button>
+                </div>
+                <div class="lang-selector-modern">
+                    <button class="lang-btn" data-lang="es">ES</button>
+                    <div class="lang-divider"></div>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                </div>
             </div>
             <div class="mobile-menu-btn">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span></span><span></span><span></span>
             </div>
         </div>
     </nav>
@@ -81,7 +93,8 @@
                             <div class="frame-inner">
                                 <span class="subtitle" data-i18n="about.subtitle">Nuestra historia</span>
                                 <h2 class="title" style="color: #333;" data-i18n="about.title">CASFRELA ARTESANAL</h2>
-                                <p class="description" style="color: #444; font-size: 1.1rem; line-height: 1.8;" data-i18n="about.desc">
+                                <p class="description" style="color: #444; font-size: 1.1rem; line-height: 1.8;"
+                                    data-i18n="about.desc">
                                     Le brindamos una amplia oferta de productos, servicios y soluciones innovadoras a
                                     unos precios increíbles. Nuestra primera preocupación es ofrecer un nivel de alta
                                     calidad en los productos que salen de nuestra fábrica. Sobra decir que estamos a su
@@ -122,7 +135,8 @@
                             </div>
                             <div class="grid-right">
                                 <div class="seasonal-info">
-                                    <p class="info-text" data-i18n="seasonal.spring_desc">Explosión de frescura con nuestras frutas de estación. Sabores
+                                    <p class="info-text" data-i18n="seasonal.spring_desc">Explosión de frescura con
+                                        nuestras frutas de estación. Sabores
                                         vibrantes que despiertan tus sentidos con la selección más dulce de Casfrela.
                                     </p>
                                     <ul class="seasonal-list">
@@ -146,7 +160,8 @@
                             </div>
                             <div class="grid-right">
                                 <div class="seasonal-info">
-                                    <p class="info-text" data-i18n="seasonal.summer_desc">El antídoto perfecto para el calor Yucateco. Refrescancia pura
+                                    <p class="info-text" data-i18n="seasonal.summer_desc">El antídoto perfecto para el
+                                        calor Yucateco. Refrescancia pura
                                         en cada bocado, ideal para disfrutar bajo el sol del Mayab.</p>
                                     <ul class="seasonal-list">
                                         <li data-i18n="seasonal.summer_list1">Helado de Coconut & Lime</li>
@@ -169,7 +184,8 @@
                             </div>
                             <div class="grid-right">
                                 <div class="seasonal-info">
-                                    <p class="info-text" data-i18n="seasonal.autumn_desc">Texturas cremosas y sabores tradicionales que reconfortan el
+                                    <p class="info-text" data-i18n="seasonal.autumn_desc">Texturas cremosas y sabores
+                                        tradicionales que reconfortan el
                                         alma. La herencia de Yucatán en nuestros postres lácteos.</p>
                                     <ul class="seasonal-list">
                                         <li data-i18n="seasonal.autumn_list1">Helado de Queso de Bola</li>
@@ -197,17 +213,20 @@
                     <div class="why-item reveal-up">
                         <div class="icon">🌿</div>
                         <h5 data-i18n="why.natural_title">Ingredientes Naturales</h5>
-                        <p data-i18n="why.natural_desc">Solo frutas reales y lácteos seleccionados directamente de origen.</p>
+                        <p data-i18n="why.natural_desc">Solo frutas reales y lácteos seleccionados directamente de
+                            origen.</p>
                     </div>
                     <div class="why-item reveal-up">
                         <div class="icon">📜</div>
                         <h5 data-i18n="why.traditional_title">Recetas Tradicionales</h5>
-                        <p data-i18n="why.traditional_desc">Mantenemos el sabor que ha pasado de generación en generación.</p>
+                        <p data-i18n="why.traditional_desc">Mantenemos el sabor que ha pasado de generación en
+                            generación.</p>
                     </div>
                     <div class="why-item reveal-up">
                         <div class="icon">🥛</div>
                         <h5 data-i18n="why.daily_title">Producción Diaria</h5>
-                        <p data-i18n="why.daily_desc">Garantizamos la frescura máxima en cada uno de nuestros productos.</p>
+                        <p data-i18n="why.daily_desc">Garantizamos la frescura máxima en cada uno de nuestros productos.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -235,63 +254,62 @@
                     <h2 data-i18n="contact.title">Contáctanos</h2>
                     <form id="contact-form">
                         <input type="text" placeholder="Nombre completo" data-i18n="contact.name_placeholder" required>
-                        <input type="email" placeholder="Correo electrónico" data-i18n="contact.email_placeholder" required>
-                        <textarea placeholder="Tu mensaje..." data-i18n="contact.message_placeholder" rows="5" required></textarea>
+                        <input type="email" placeholder="Correo electrónico" data-i18n="contact.email_placeholder"
+                            required>
+                        <textarea placeholder="Tu mensaje..." data-i18n="contact.message_placeholder" rows="5"
+                            required></textarea>
                         <button type="submit" class="btn-submit" data-i18n="contact.submit">Enviar Mensaje</button>
                     </form>
                 </div>
-                <div class="contact-info">
-                    <div class="info-block">
-                        <h4 data-i18n="contact.location">Ubicación</h4>
-                        <p>Mérida, Yucatán, México</p>
-                    </div>
-                    <div class="info-block">
-                        <h4 data-i18n="contact.phone">Teléfono</h4>
-                        <p>+52 1 999 396 0148</p>
-                    </div>
-                    <div class="map-placeholder">
-                        <div class="map-overlay" data-i18n="contact.map">Mapa de ubicación</div>
-                    </div>
-                </div>
             </div>
         </section>
+    </div> <!-- Close scroll-transition -->
 
-        <!-- Footer -->
-        <footer
-            style="background-color: var(--cream, #fdfbf7); padding-top: 80px; border-top: 1px solid rgba(0,0,0,0.05);">
+    <!-- Footer -->
+    <footer
+        style="background-color: var(--cream, #fdfbf7); padding-top: 80px; border-top: 1px solid rgba(0,0,0,0.05);">
             <div class="container footer-content" style="gap: 60px;">
-            <div class="footer-brand" style="display: flex; flex-direction: column; gap: 10px;">
-                <img src="assets/logoHelados.jpeg" alt="Logo Casfrela"
-                    style="height: 70px; width: 70px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); align-self: flex-start; margin-bottom: 5px; object-fit: contain;">
-                <h2 class="logo-text" style="font-size: 1.8rem; margin: 0;">CASFRELA <span
-                        class="accent">ARTESANALES</span></h2>
-                <p style="color: var(--text-dark); line-height: 1.6;" data-i18n="footer.brand_desc">Tradición y sabor natural auténticamente
-                    yucateco. Llevando la frescura del campo a tu paladar.</p>
-            </div>
-            <div class="footer-links">
-                <h4 style="color: var(--logo-brown); font-size: 1.2rem; font-weight: 700; margin-bottom: 20px;" data-i18n="footer.nav_title">
-                    Navegación</h4>
-                <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 12px;">
-                    <li><a href="index.html"
-                            style="color: var(--text-dark); transition: color 0.3s; display: inline-block;" data-i18n="nav.home">Inicio</a>
-                    </li>
-                    <li><a href="nosotros.html"
-                            style="color: var(--text-dark); transition: color 0.3s; display: inline-block;" data-i18n="nav.about">Nosotros</a>
-                    </li>
-                    <li><a href="productos.html"
-                            style="color: var(--text-dark); transition: color 0.3s; display: inline-block;" data-i18n="nav.products">Productos</a>
-                    </li>
-                    <li><a href="contacto.html"
-                            style="color: var(--text-dark); transition: color 0.3s; display: inline-block;" data-i18n="nav.contact">Contacto</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="footer-social">
-                <h4 style="color: var(--logo-brown); font-size: 1.2rem; font-weight: 700; margin-bottom: 20px;" data-i18n="footer.social_title">
-                    Conecta con nosotros</h4>
-                <p style="color: var(--text-dark); margin-bottom: 20px; font-size: 0.95rem;" data-i18n="footer.social_desc">Síguenos y contáctanos
-                    para hacer tu pedido o cotizar eventos.</p>
-                <div class="social-icons-premium">
+                <div class="footer-brand"
+                    style="display: flex; flex-direction: column; gap: 10px; align-items: center; text-align: center;">
+                    <img src="assets/logoHelados.jpeg" alt="Logo Casfrela"
+                        style="height: 70px; width: 70px; align-self: center; margin-bottom: 5px; object-fit: contain; mix-blend-mode: multiply;">
+                    <h2 class="logo-text" style="font-size: 1.8rem; margin: 0;">CASFRELA <span
+                            class="accent">ARTESANALES</span></h2>
+                    <p style="color: var(--text-dark); line-height: 1.6;" data-i18n="footer.brand_desc">Tradición y
+                        sabor natural auténticamente
+                        yucateco. Llevando la frescura del campo a tu paladar.</p>
+                </div>
+                <div class="footer-links">
+                    <h4 style="color: var(--logo-brown); font-size: 1.2rem; font-weight: 700; margin-bottom: 20px;"
+                        data-i18n="footer.nav_title">
+                        Navegación</h4>
+                    <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 12px;">
+                        <li><a href="index.html"
+                                style="color: var(--text-dark); transition: color 0.3s; display: inline-block;"
+                                data-i18n="nav.home">Inicio</a>
+                        </li>
+                        <li><a href="nosotros.html"
+                                style="color: var(--text-dark); transition: color 0.3s; display: inline-block;"
+                                data-i18n="nav.about">Nosotros</a>
+                        </li>
+                        <li><a href="productos.html"
+                                style="color: var(--text-dark); transition: color 0.3s; display: inline-block;"
+                                data-i18n="nav.products">Productos</a>
+                        </li>
+                        <li><a href="contacto.html"
+                                style="color: var(--text-dark); transition: color 0.3s; display: inline-block;"
+                                data-i18n="nav.contact">Contacto</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4 style="color: var(--logo-brown); font-size: 1.2rem; font-weight: 700; margin-bottom: 20px;"
+                        data-i18n="footer.social_title">
+                        Conecta con nosotros</h4>
+                    <p style="color: var(--text-dark); margin-bottom: 20px; font-size: 0.95rem;"
+                        data-i18n="footer.social_desc">Síguenos y contáctanos
+                        para hacer tu pedido o cotizar eventos.</p>
+                    <div class="social-icons-premium">
                         <a href="https://facebook.com" target="_blank" class="social-icon" aria-label="Facebook">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                 stroke-linecap="round" stroke-linejoin="round">
@@ -322,6 +340,54 @@
                 <p data-i18n="footer.copyright">&copy; 2026 Helados Casfrela. Todos los derechos reservados.</p>
             </div>
         </footer>
+
+    <!-- Shopping Cart Modal -->
+    <div id="cart-modal" class="modal-overlay">
+        <div class="modal-content cart-modal-content" style="max-width: 550px; border-radius: 24px;">
+            <span class="modal-close cart-close" style="top: 20px; right: 20px;">&times;</span>
+            <div class="modal-header-premium" style="padding: 25px 30px 5px;">
+                <h2 class="script-font" style="font-size: 2.22rem; color: var(--logo-brown); margin: 0;"
+                    data-i18n="cart.title">Tu Carrito</h2>
+                <div class="gold-line"
+                    style="margin: 8px 0 15px 0; width: 50px; height: 3px; background: var(--logo-orange);"></div>
+            </div>
+            <div class="modal-body cart-body">
+                <div id="cart-items-container" class="cart-items-list">
+                    <!-- Items will be injected here -->
+                    <p class="empty-cart-msg" data-i18n="cart.empty">Tu carrito está vacío</p>
+                </div>
+                <!-- Total price is kept here -->
+                <div id="cart-summary" class="cart-summary">
+                    <div class="cart-total-row">
+                        <h3 data-i18n="cart.total">Total:</h3>
+                        <span id="cart-total-price" class="cart-total-amount">$0.00</span>
+                    </div>
+
+                    <!-- Shipping Option -->
+                    <div id="shipping-section" class="shipping-section">
+                        <label class="shipping-label">
+                            <input type="checkbox" id="shipping-checkbox">
+                            <span data-i18n="cart.requires_shipping">¿Requiere envío?</span>
+                        </label>
+                        <p class="shipping-legend" data-i18n="cart.shipping_legend">Nota: El costo del envío varía según la ubicación.</p>
+                    </div>
+
+                    <div class="cart-actions">
+                        <button id="empty-cart-btn" class="btn-outline" data-i18n="cart.clear">Vaciar Carrito</button>
+                        <a id="cart-whatsapp-btn" href="#" target="_blank" class="whatsapp-btn">
+                            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round" class="wa-icon"
+                                style="margin-right: 8px;">
+                                <path
+                                    d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                                </path>
+                            </svg>
+                            <span data-i18n="cart.order_whatsapp">Pedir por WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Scripts -->
