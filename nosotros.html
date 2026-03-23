@@ -14,6 +14,11 @@
     <link rel="stylesheet" href="css/i18n.css">
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/nosotros.css">
+    <!-- Leaflet for Map Picking -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" 
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" 
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 </head>
 
 <body>
@@ -135,12 +140,10 @@
                 <div class="gold-line"
                     style="margin: 8px 0 15px 0; width: 50px; height: 3px; background: var(--logo-orange);"></div>
             </div>
-            <div class="modal-body cart-body" style="padding: 0 30px 30px;">
-                <div id="cart-items-container" class="cart-items-list" style="margin-bottom: 5px;">
+            <div class="cart-modal-body">
+                <div id="cart-items-container" class="cart-items-list">
                     <!-- Items will be injected here -->
-                    <p class="empty-cart-msg"
-                        style="text-align: center; font-size: 1.1rem; color: var(--text-light); padding: 30px 0;"
-                        data-i18n="cart.empty">Tu carrito está vacío</p>
+                    <p class="empty-cart-msg" data-i18n="cart.empty">Tu carrito está vacío</p>
                 </div>
                 <div id="cart-summary" class="cart-summary"
                     style="display: none; border-top: 2px dashed #eee; padding-top: 10px;">
@@ -152,17 +155,41 @@
                     </div>
 
                     <!-- Shipping Option -->
-                    <div id="shipping-section"
-                        style="margin-bottom: 12px; padding: 12px; background: rgba(0,0,0,0.03); border-radius: 12px;">
-                        <label
-                            style="display: flex; align-items: center; gap: 10px; cursor: pointer; user-select: none;">
-                            <input type="checkbox" id="shipping-checkbox"
-                                style="width: 18px; height: 18px; accent-color: var(--logo-orange);">
-                            <span style="font-weight: 600; font-size: 0.95rem; color: var(--text-dark);"
-                                data-i18n="cart.requires_shipping">¿Requiere envío?</span>
-                        </label>
-                        <p style="font-size: 0.78rem; color: var(--text-light); margin: 5px 0 0 28px; line-height: 1.2;"
-                            data-i18n="cart.shipping_legend">Nota: El costo del envío varía según la ubicación.</p>
+                    <div id="shipping-section" class="shipping-section">
+                        <div class="shipping-header">
+                            <span class="shipping-title" data-i18n="cart.shipping_title">Envío</span>
+                            <p class="shipping-legend" data-i18n="cart.shipping_legend">Nota: El costo del envío varía según la ubicación.</p>
+                        </div>
+                        <div class="address-container">
+                            <textarea id="address-input" placeholder="Escribe tu dirección..." 
+                                data-i18n="cart.address_placeholder" rows="2"></textarea>
+                            
+                            <div class="location-buttons" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                <button id="get-location-btn" class="btn-location">
+                                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                        <circle cx="12" cy="10" r="3"></circle>
+                                    </svg>
+                                    <span data-i18n="cart.use_location" style="font-size: 0.8rem;">Ubicación Actual</span>
+                                </button>
+                                <button id="pick-map-btn" class="btn-location">
+                                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon>
+                                        <line x1="8" y1="2" x2="8" y2="18"></line>
+                                        <line x1="16" y1="6" x2="16" y2="22"></line>
+                                    </svg>
+                                    <span data-i18n="cart.pick_on_map" style="font-size: 0.8rem;">Elegir en Mapa</span>
+                                </button>
+                            </div>
+
+                            <div id="cart-map-preview" style="height: 120px; width: 100%; margin-top: 15px; border-radius: 12px; border: 1px solid #ddd; display: none; overflow: hidden;"></div>
+
+                            <div class="references-section" style="margin-top: 10px;">
+                                <label style="font-size: 0.85rem; font-weight: 600; color: var(--logo-brown); margin-bottom: 5px; display: block;" data-i18n="cart.references_label">Referencias (Opcional)</label>
+                                <textarea id="references-input" placeholder="Fachada roja, entre calles..." 
+                                    data-i18n="cart.references_placeholder" rows="2" style="width: 100%; padding: 10px; border-radius: 12px; border: 1px solid #ddd; font-family: inherit; font-size: 0.85rem; resize: none;"></textarea>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="cart-actions" style="display: flex; gap: 12px;">
@@ -182,6 +209,20 @@
                         </a>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="map-modal" class="modal-overlay" style="z-index: 2000;">
+        <div class="modal-content" style="max-width: 90%; width: 500px; padding: 20px;">
+            <div class="modal-header-premium">
+                <h3 class="script-font" data-i18n="cart.pick_on_map">Seleccionar Ubicación</h3>
+            </div>
+            <div id="map-container" style="height: 300px; width: 100%; margin: 15px 0; border-radius: 12px; border: 1px solid #ddd;"></div>
+            <p style="font-size: 0.8rem; color: var(--text-light); text-align: center; margin-bottom: 15px;">Arrastra el marcador hasta tu ubicación exacta.</p>
+            <div style="display: flex; gap: 10px;">
+                <button id="cancel-map-btn" class="btn-outline" style="flex: 1; padding: 10px;" data-i18n="common.cancel">Cancelar</button>
+                <button id="confirm-map-btn" class="whatsapp-btn" style="flex: 1; padding: 10px; height: auto;" data-i18n="common.confirm">Confirmar</button>
             </div>
         </div>
     </div>

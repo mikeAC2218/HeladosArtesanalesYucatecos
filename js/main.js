@@ -160,19 +160,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     const itemEl = document.createElement('div');
                     itemEl.className = 'cart-item';
                     itemEl.innerHTML = `
-                        <div class="cart-item-info" style="display: flex; align-items: center; gap: 12px; flex: 1;">
-                            <img src="${item.img}" class="cart-item-img">
-                            <div>
-                                <h4>${item.title}</h4>
-                                <p>$${item.price.toFixed(2)} x ${item.quantity}</p>
-                            </div>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 10px; justify-content: flex-end;">
-                            <p class="cart-item-price">$${subtotal.toFixed(2)}</p>
-                            <button class="remove-item-btn" data-index="${index}" title="${window.siteTranslator ? window.siteTranslator.getValue('cart.remove') : 'Eliminar'}">
-                                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
-                            </button>
-                        </div>
+                        <img src="${item.img}" class="cart-item-img">
+                        <div class="cart-item-name">${item.title}</div>
+                        <div class="cart-item-qty">x${item.quantity}</div>
+                        <div class="cart-item-price">$${subtotal.toFixed(2)}</div>
+                        <button class="remove-item-btn" data-index="${index}" title="${window.siteTranslator ? window.siteTranslator.getValue('cart.remove') : 'Eliminar'}">
+                            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                        </button>
                     `;
                     cartItemsContainer.appendChild(itemEl);
                 });
@@ -191,16 +185,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
                 
                 // Update WhatsApp Link for Entire Cart
-                let waMessage = encodeURIComponent("Hola, me gustaría hacer el siguiente pedido:\n\n");
+                const waNumber = "5219993960148";
+                let waMessage = encodeURIComponent("Hola! Me gustaría hacer un pedido:\n\n");
                 cart.forEach(item => {
                     waMessage += encodeURIComponent(`- ${item.title} x ${item.quantity} ($${(item.price * item.quantity).toFixed(2)})\n`);
                 });
                 waMessage += encodeURIComponent(`\n*Total: $${total.toFixed(2)}*`);
 
-                const shippingCheckbox = document.getElementById('shipping-checkbox');
-                if (shippingCheckbox && shippingCheckbox.checked) {
-                    const shippingMsg = window.siteTranslator ? window.siteTranslator.getValue('cart.shipping_request_wa') : 'Requiero envío y quiero saber el precio del envío.';
-                    waMessage += encodeURIComponent(`\n\n${shippingMsg}`);
+                const addressInput = document.getElementById('address-input');
+                const referencesInput = document.getElementById('references-input');
+
+                if (addressInput && addressInput.value.trim() !== "") {
+                    const shippingMsg = window.siteTranslator ? window.siteTranslator.getValue('cart.shipping_request_wa') : 'Requiero envío para esta dirección:';
+                    waMessage += encodeURIComponent(`\n\n${shippingMsg}\n${addressInput.value.trim()}`);
+                    
+                    if (referencesInput && referencesInput.value.trim() !== "") {
+                        const refMsg = window.siteTranslator ? window.siteTranslator.getValue('cart.references_wa') || 'Referencias:' : 'Referencias:';
+                        waMessage += encodeURIComponent(`\n${refMsg} ${referencesInput.value.trim()}`);
+                    }
                 }
                 
                 cartWaBtn.href = `https://wa.me/${waNumber}?text=${waMessage}`;
@@ -211,16 +213,150 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const saveCart = () => localStorage.setItem('casfrela_cart', JSON.stringify(cart));
 
+    // Map Picker Logic
+    let pickerMap, pickerMarker;
+    let previewMap, previewMarker;
+
+    const updateMapPreview = (lat, lng) => {
+        const previewContainer = document.getElementById('cart-map-preview');
+        if (previewContainer) {
+            previewContainer.style.display = 'block';
+            setTimeout(() => {
+                if (!previewMap) {
+                    previewMap = L.map('cart-map-preview', {
+                        zoomControl: false,
+                        dragging: false,
+                        touchZoom: false,
+                        scrollWheelZoom: false,
+                        doubleClickZoom: false,
+                        boxZoom: false
+                    }).setView([lat, lng], 17);
+                    L.tileLayer('https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}', {
+                        maxZoom: 20,
+                        attribution: '© Google Maps'
+                    }).addTo(previewMap);
+                    previewMarker = L.marker([lat, lng]).addTo(previewMap);
+                } else {
+                    previewMap.setView([lat, lng], 17);
+                    previewMarker.setLatLng([lat, lng]);
+                    previewMap.invalidateSize();
+                }
+            }, 100);
+        }
+    };
+
+    const openMapPicker = () => {
+        const mapModal = document.getElementById('map-modal');
+        mapModal.classList.add('active');
+        document.body.classList.add('modal-open');
+
+        setTimeout(() => {
+            if (!pickerMap) {
+                const meridaPos = [20.9673, -89.6241];
+                pickerMap = L.map('map-container').setView(meridaPos, 13);
+                L.tileLayer('https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}', {
+                    maxZoom: 20,
+                    attribution: '© Google Maps'
+                }).addTo(pickerMap);
+                pickerMarker = L.marker(meridaPos, {draggable: true}).addTo(pickerMap);
+            } else {
+                pickerMap.invalidateSize();
+            }
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition((pos) => {
+                    const p = [pos.coords.latitude, pos.coords.longitude];
+                    pickerMap.setView(p, 18);
+                    pickerMarker.setLatLng(p);
+                }, null, { enableHighAccuracy: true });
+            }
+        }, 300);
+    };
+
     if (cartBtn) cartBtn.addEventListener('click', () => {
         cartModal.classList.add('active');
         document.body.classList.add('modal-open');
         updateCartUI();
         
-        // Add listener for shipping checkbox once it's visible/rendered
-        const shippingCheckbox = document.getElementById('shipping-checkbox');
-        if (shippingCheckbox && !shippingCheckbox.dataset.listenerAdded) {
-            shippingCheckbox.addEventListener('change', updateCartUI);
-            shippingCheckbox.dataset.listenerAdded = "true";
+        // Add listeners for shipping address input and location button
+        const addressInput = document.getElementById('address-input');
+        const referencesInput = document.getElementById('references-input');
+
+        if (addressInput && !addressInput.dataset.listenerAdded) {
+            addressInput.addEventListener('input', updateCartUI);
+            addressInput.dataset.listenerAdded = "true";
+        }
+
+        if (referencesInput && !referencesInput.dataset.listenerAdded) {
+            referencesInput.addEventListener('input', updateCartUI);
+            referencesInput.dataset.listenerAdded = "true";
+        }
+
+        const getLocationBtn = document.getElementById('get-location-btn');
+        if (getLocationBtn && !getLocationBtn.dataset.listenerAdded) {
+            getLocationBtn.addEventListener('click', () => {
+                const originalText = getLocationBtn.innerHTML;
+                getLocationBtn.innerHTML = '<span>GPS...</span>';
+                getLocationBtn.disabled = true;
+
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition((position) => {
+                        const lat = position.coords.latitude;
+                        const lng = position.coords.longitude;
+                        const mapsUrl = `https://www.google.com/maps?q=${lat},${lng}`;
+                        
+                        if (addressInput) {
+                            addressInput.value = mapsUrl;
+                            updateMapPreview(lat, lng);
+                            updateCartUI();
+                        }
+                        
+                        getLocationBtn.innerHTML = originalText;
+                        getLocationBtn.disabled = false;
+                    }, (error) => {
+                        console.error('Error getting location:', error);
+                        alert('No se pudo obtener la ubicación exacta. Por favor, intenta de nuevo o elige en el mapa.');
+                        getLocationBtn.innerHTML = originalText;
+                        getLocationBtn.disabled = false;
+                    }, { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 });
+                } else {
+                    alert('Tu navegador no soporta geolocalización.');
+                    getLocationBtn.innerHTML = originalText;
+                    getLocationBtn.disabled = false;
+                }
+            });
+            getLocationBtn.dataset.listenerAdded = "true";
+        }
+
+        const pickMapBtn = document.getElementById('pick-map-btn');
+        if (pickMapBtn && !pickMapBtn.dataset.listenerAdded) {
+            pickMapBtn.addEventListener('click', openMapPicker);
+            pickMapBtn.dataset.listenerAdded = "true";
+        }
+
+        // Map Modal Listeners
+        const mapModal = document.getElementById('map-modal');
+        const confirmMapBtn = document.getElementById('confirm-map-btn');
+        const cancelMapBtn = document.getElementById('cancel-map-btn');
+
+        if (confirmMapBtn && !confirmMapBtn.dataset.listenerAdded) {
+            confirmMapBtn.addEventListener('click', () => {
+                if (pickerMarker && addressInput) {
+                    const pos = pickerMarker.getLatLng();
+                    addressInput.value = `https://www.google.com/maps?q=${pos.lat},${pos.lng}`;
+                    updateMapPreview(pos.lat, pos.lng);
+                    updateCartUI();
+                }
+                mapModal.classList.remove('active');
+            });
+            confirmMapBtn.dataset.listenerAdded = "true";
+        }
+
+        if (cancelMapBtn && !cancelMapBtn.dataset.listenerAdded) {
+            cancelMapBtn.addEventListener('click', () => {
+                mapModal.classList.remove('active');
+            });
+            cancelMapBtn.dataset.listenerAdded = "true";
         }
     });
 
