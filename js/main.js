@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <img src="${item.img}" class="cart-item-img">
                         <div class="cart-item-name">${item.title}</div>
                         <div class="cart-item-qty">x${item.quantity}</div>
-                        <div class="cart-item-price">$${subtotal.toFixed(2)}</div>
+                        <div class="cart-item-price">$${item.price.toFixed(2)}</div>
                         <button class="remove-item-btn" data-index="${index}" title="${window.siteTranslator ? window.siteTranslator.getValue('cart.remove') : 'Eliminar'}">
                             <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
                         </button>
@@ -224,9 +224,9 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 if (!previewMap) {
                     previewMap = L.map('cart-map-preview', {
-                        zoomControl: false,
-                        dragging: false,
-                        touchZoom: false,
+                        zoomControl: true,
+                        dragging: true,
+                        touchZoom: true,
                         scrollWheelZoom: false,
                         doubleClickZoom: false,
                         boxZoom: false
@@ -235,7 +235,17 @@ document.addEventListener('DOMContentLoaded', () => {
                         maxZoom: 20,
                         attribution: '© Google Maps'
                     }).addTo(previewMap);
-                    previewMarker = L.marker([lat, lng]).addTo(previewMap);
+                    previewMarker = L.marker([lat, lng], { draggable: true }).addTo(previewMap);
+
+                    // Al arrastrar el marcador en la vista previa, actualizar la dirección
+                    previewMarker.on('dragend', () => {
+                        const pos = previewMarker.getLatLng();
+                        const addressInput = document.getElementById('address-input');
+                        if (addressInput) {
+                            addressInput.value = `https://www.google.com/maps?q=${pos.lat},${pos.lng}`;
+                            updateCartUI();
+                        }
+                    });
                 } else {
                     previewMap.setView([lat, lng], 17);
                     previewMarker.setLatLng([lat, lng]);
@@ -244,6 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 100);
         }
     };
+
 
     const openMapPicker = () => {
         const mapModal = document.getElementById('map-modal');
@@ -299,6 +310,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 getLocationBtn.innerHTML = '<span>GPS...</span>';
                 getLocationBtn.disabled = true;
 
+                // Mostrar leyenda de advertencia de precisión
+                const locationButtonsContainer = getLocationBtn.closest('.location-buttons');
+                let accuracyNote = document.getElementById('location-accuracy-note');
+                if (!accuracyNote && locationButtonsContainer) {
+                    const fallbackEs = 'La ubicación obtenida por GPS podría no ser exacta. Te recomendamos verificarla en el mapa.';
+                    const translated = (window.siteTranslator && window.siteTranslator.translations)
+                        ? (window.siteTranslator.translations['cart.location_accuracy_note'] || fallbackEs)
+                        : fallbackEs;
+                    accuracyNote = document.createElement('p');
+                    accuracyNote.id = 'location-accuracy-note';
+                    accuracyNote.className = 'location-accuracy-note';
+                    accuracyNote.innerHTML = `⚠️ <span data-i18n="cart.location_accuracy_note">${translated}</span>`;
+                    locationButtonsContainer.after(accuracyNote);
+                }
+
                 if (navigator.geolocation) {
                     navigator.geolocation.getCurrentPosition((position) => {
                         const lat = position.coords.latitude;
@@ -318,11 +344,16 @@ document.addEventListener('DOMContentLoaded', () => {
                         alert('No se pudo obtener la ubicación exacta. Por favor, intenta de nuevo o elige en el mapa.');
                         getLocationBtn.innerHTML = originalText;
                         getLocationBtn.disabled = false;
+                        // Remover leyenda si falla
+                        const note = document.getElementById('location-accuracy-note');
+                        if (note) note.remove();
                     }, { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 });
                 } else {
                     alert('Tu navegador no soporta geolocalización.');
                     getLocationBtn.innerHTML = originalText;
                     getLocationBtn.disabled = false;
+                    const note = document.getElementById('location-accuracy-note');
+                    if (note) note.remove();
                 }
             });
             getLocationBtn.dataset.listenerAdded = "true";
@@ -398,18 +429,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const modalTitle = document.getElementById('modal-title');
         const modalDesc = document.getElementById('modal-desc');
         const modalPrice = document.getElementById('modal-price');
-        const modalWhatsapp = document.getElementById('modal-whatsapp');
         const qtyInput = document.getElementById('product-quantity');
         const addToCartBtn = document.getElementById('add-to-cart-btn');
 
         let currentProduct = null;
 
-        const updateWaLink = () => {
-            if (!currentProduct) return;
-            const qty = qtyInput ? qtyInput.value : 1;
-            const waMessage = encodeURIComponent(`Hola, me gustaría pedir:\nProducto: ${currentProduct.title}\nCantidad: ${qty} unidades\nPrecio: $${(currentProduct.price * qty).toFixed(2)}\nLink: ${new URL(currentProduct.img, window.location.href).href}`);
-            modalWhatsapp.href = `https://wa.me/${waNumber}?text=${waMessage}`;
-        };
+
 
         productCards.forEach(card => {
             // Render price on card if not present
@@ -439,15 +464,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 updateModalUI();
                 modalOverlay.classList.add('active');
                 document.body.classList.add('modal-open');
-                updateWaLink();
             });
         });
 
         const updateModalUI = () => {
             if (!currentProduct) return;
-            const qty = qtyInput ? parseInt(qtyInput.value) : 1;
-            modalPrice.textContent = `$${(currentProduct.price * qty).toFixed(2)}`;
-            updateWaLink();
+            // The price should remain fixed (unit price) regardless of quantity
+            modalPrice.textContent = `$${currentProduct.price.toFixed(2)}`;
         };
 
         if (qtyInput) qtyInput.addEventListener('input', updateModalUI);

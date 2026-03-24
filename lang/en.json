@@ -236,6 +236,8 @@
   "cart.references_wa": "References:",
   "cart.empty_title": "Your cart is empty!",
   "cart.confirm_clear_title": "Empty Cart?",
+  "cart.location_accuracy_note": "The GPS location obtained may not be exact. We recommend verifying it on the map.",
+  "cart.drag_marker": "Drag the marker to your exact location.",
   "common.cancel": "Cancel",
   "common.confirm": "Confirm",
   "products.icecream_section": "Our Ice Creams",

@@ -236,6 +236,8 @@
   "cart.references_wa": "Referencias:",
   "cart.empty_title": "¡Tu carrito está vacío!",
   "cart.confirm_clear_title": "¿Vaciar Carrito?",
+  "cart.location_accuracy_note": "La ubicación obtenida por GPS podría no ser exacta. Te recomendamos verificarla en el mapa.",
+  "cart.drag_marker": "Arrastra el marcador hasta tu ubicación exacta.",
   "common.cancel": "Cancelar",
   "common.confirm": "Confirmar",
   "products.icecream_section": "Nuestros Helados",

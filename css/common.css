@@ -542,25 +542,59 @@ body.modal-open { overflow: hidden; }
     gap: 8px;
     padding: 10px;
     border-radius: 12px;
-    border: 1px dashed var(--logo-orange);
-    background: white;
-    color: var(--logo-brown);
+    border: none;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: all 0.3s ease;
     font-size: 0.85rem;
     height: 45px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.12);
 }
 
-.btn-location:hover {
+/* Botón "Ubicación Actual" — marrón primario */
+#get-location-btn {
+    background: var(--logo-brown);
+    color: var(--white);
+}
+
+#get-location-btn:hover:not(:disabled) {
+    background: #7a4228;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(92, 48, 28, 0.35);
+}
+
+/* Botón "Elegir en Mapa" — naranja acento */
+#pick-map-btn {
     background: var(--logo-orange);
-    color: white;
-    border-style: solid;
+    color: var(--white);
+}
+
+#pick-map-btn:hover:not(:disabled) {
+    background: #d97c25;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(242, 150, 63, 0.4);
 }
 
 .btn-location:disabled {
     opacity: 0.6;
     cursor: not-allowed;
+    transform: none;
+}
+
+/* Leyenda de advertencia GPS */
+.location-accuracy-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 7px;
+    margin-top: 8px;
+    padding: 8px 12px;
+    background: rgba(242, 150, 63, 0.1);
+    border-left: 3px solid var(--logo-orange);
+    border-radius: 0 10px 10px 0;
+    font-size: 0.78rem;
+    color: var(--text-light);
+    line-height: 1.4;
+    animation: fadeIn 0.4s ease-out;
 }
 
 /* Map specific */
