@@ -15,47 +15,52 @@
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/productos.css">
     <!-- Leaflet for Map Picking -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" 
-        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" 
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 </head>
 
 <body>
     <!-- Navbar -->
     <nav id="main-nav">
-            <div class="container nav-content">
-                <div class="logo">
-                    <a href="index.html">
-                        <img src="assets/logoHelados.jpeg" alt="Helados Casfrela Logo"
-                            style="height: 50px; margin-right: 10px; vertical-align: middle; border-radius: 5px;">
-                        <span class="logo-text">CASFRELA</span>
-                    </a>
+        <div class="container nav-content">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/logoHelados.jpeg" alt="Helados Casfrela Logo"
+                        style="height: 50px; margin-right: 10px; vertical-align: middle; border-radius: 5px;">
+                    <span class="logo-text">CASFRELA</span>
+                </a>
+            </div>
+            <div class="nav-actions" style="display: flex; align-items: center; gap: 20px;">
+                <ul class="nav-links">
+                    <li><a href="index.html" data-i18n="nav.home">Inicio</a></li>
+                    <li><a href="nosotros.html" data-i18n="nav.about">Nosotros</a></li>
+                    <li><a href="productos.html" class="active" data-i18n="nav.products">Productos</a></li>
+                    <li><a href="galeria.html" data-i18n="nav.gallery">Galería</a></li>
+                    <li><a href="contacto.html" data-i18n="nav.contact">Contacto</a></li>
+                </ul>
+                <div class="cart-nav-container">
+                    <button id="cart-btn" class="cart-btn-nav">
+                        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2"
+                            fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                        <span id="cart-count" class="cart-badge">0</span>
+                    </button>
                 </div>
-                <div class="nav-actions" style="display: flex; align-items: center; gap: 20px;">
-                    <ul class="nav-links">
-                        <li><a href="index.html" data-i18n="nav.home">Inicio</a></li>
-                        <li><a href="nosotros.html" data-i18n="nav.about">Nosotros</a></li>
-                        <li><a href="productos.html" class="active" data-i18n="nav.products">Productos</a></li>
-                        <li><a href="galeria.html" data-i18n="nav.gallery">Galería</a></li>
-                        <li><a href="contacto.html" data-i18n="nav.contact">Contacto</a></li>
-                    </ul>
-                    <div class="cart-nav-container">
-                        <button id="cart-btn" class="cart-btn-nav">
-                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
-                            <span id="cart-count" class="cart-badge">0</span>
-                        </button>
-                    </div>
-                    <div class="lang-selector-modern">
-                        <button class="lang-btn" data-lang="es">ES</button>
-                        <div class="lang-divider"></div>
-                        <button class="lang-btn" data-lang="en">EN</button>
-                    </div>
-                </div>
-                <div class="mobile-menu-btn">
-                    <span></span><span></span><span></span>
+                <div class="lang-selector-modern">
+                    <button class="lang-btn" data-lang="es">ES</button>
+                    <div class="lang-divider"></div>
+                    <button class="lang-btn" data-lang="en">EN</button>
                 </div>
             </div>
+            <div class="mobile-menu-btn">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
     </nav>
 
     <!-- Hero Full Screen section -->
@@ -68,8 +73,10 @@
 
     <!-- Intro Text Section -->
     <section class="intro-products reveal-up" style="text-align: center; padding: 60px 20px 20px;">
-        <div class="section-title-center" style="margin-bottom: 20px; display: flex; flex-direction: column; align-items: center;">
-            <h2 class="script-font" style="font-size: 3.5rem; color: var(--logo-brown); margin-bottom: 15px;" data-i18n="products.intro_title">Disfruta de nuestros helados</h2>
+        <div class="section-title-center"
+            style="margin-bottom: 20px; display: flex; flex-direction: column; align-items: center;">
+            <h2 class="script-font" style="font-size: 3.5rem; color: var(--logo-brown); margin-bottom: 15px;"
+                data-i18n="products.intro_title">Disfruta de nuestros helados</h2>
             <div class="gold-line" style="width: 80px; height: 3px; background: var(--logo-orange);"></div>
         </div>
         <div class="container">
@@ -78,7 +85,7 @@
                 <div class="intro-side-image left-img reveal-left">
                     <img src="assets/cascara1.png" alt="Helado de coco en su cáscara">
                 </div>
-                
+
                 <!-- Texto Central -->
                 <div class="intro-text-center">
                     <p data-i18n="products.intro_desc">
@@ -97,145 +104,236 @@
     <!-- Product Highlights -->
     <section id="productos" class="highlights reveal-up" style="padding-top: 20px;">
         <div class="container">
-            <h3 style="text-align: center; margin-bottom: 40px; color: var(--logo-brown); font-size: 2rem;" data-i18n="products.icecream_section">Nuestros Helados</h3>
+            <h3 style="text-align: center; margin-bottom: 40px; color: var(--logo-brown); font-size: 2rem;"
+                data-i18n="products.icecream_section">Nuestros Helados</h3>
             <div class="highlights-grid">
                 <!-- ... existing cards ... -->
-            <div class="product-card" data-id="ice_fresa" data-price="45" data-title="Helado de Fresa" data-img="assets/spring.png" data-short="Hecho con fresas naturales y crema de rancho." data-desc="Delicioso helado artesanal preparado con fresas frescas de la más alta calidad y auténtica crema de rancho. Un sabor clásico, cremoso y lleno de tradición que no te puedes perder." data-i18n-attr="data-title:products.ice_fresa.title,data-short:products.ice_fresa.short,data-desc:products.ice_fresa.desc">
-                <div class="card-img"><img src="assets/spring.png" alt="Helado Artesanal"></div>
-                <h4 data-i18n="products.ice_fresa.title">Helado de Fresa</h4>
-                <p data-i18n="products.ice_fresa.short">Hecho con fresas naturales y crema de rancho.</p>
-            </div>
-            <div class="product-card" data-id="ice_mango_yogurt" data-price="45" data-title="Yogurt de Mango" data-img="assets/summer.png" data-short="Cremoso y lleno de vitaminas tropicales." data-desc="Nuestro yogurt helado de mango combina la suavidad del yogurt natural con la frescura y dulzura de los mejores mangos tropicales. Una opción saludable, refrescante e irresistible." data-i18n-attr="data-title:products.ice_mango_yogurt.title,data-short:products.ice_mango_yogurt.short,data-desc:products.ice_mango_yogurt.desc">
-                <div class="card-img"><img src="assets/summer.png" alt="Yogurt"></div>
-                <h4 data-i18n="products.ice_mango_yogurt.title">Yogurt de Mango</h4>
-                <p data-i18n="products.ice_mango_yogurt.short">Cremoso y lleno de vitaminas tropicales.</p>
-            </div>
-            <div class="product-card" data-id="ice_queso_bola" data-price="45" data-title="Queso de Bola" data-img="assets/autumn.png" data-short="El sabor tradicional de nuestra tierra." data-desc="El icónico sabor de Yucatán convertido en helado. Una mezcla perfecta dulce-salado, elaborado con auténtico Queso de Bola (Edam). Un clásico yucateco que deleitará tu paladar." data-i18n-attr="data-title:products.ice_queso_bola.title,data-short:products.ice_queso_bola.short,data-desc:products.ice_queso_bola.desc">
-                <div class="card-img"><img src="assets/autumn.png" alt="Queso"></div>
-                <h4 data-i18n="products.ice_queso_bola.title">Queso de Bola</h4>
-                <p data-i18n="products.ice_queso_bola.short">El sabor tradicional de nuestra tierra.</p>
-            </div>
-            <div class="product-card" data-id="ice_pina_colada" data-price="45" data-title="Piña Colada" data-img="assets/pineapple-icecream.png" data-short="Una mezcla refrescante para el calor." data-desc="Disfruta de la frescura caribeña con nuestro helado de Piña Colada. Una exquisita combinación de piña natural y suave crema de coco que te transportará directamente a la playa." data-i18n-attr="data-title:products.ice_pina_colada.title,data-short:products.ice_pina_colada.short,data-desc:products.ice_pina_colada.desc">
-                <div class="card-img"><img src="assets/pineapple-icecream.png" alt="Piña"></div>
-                <h4 data-i18n="products.ice_pina_colada.title">Piña Colada</h4>
-                <p data-i18n="products.ice_pina_colada.short">Una mezcla refrescante para el calor.</p>
-            </div>
-            <div class="product-card" data-id="ice_mamey" data-price="45" data-title="Helado de Mamey" data-img="assets/slide01-08.png" data-short="Tradición en cada bocado, pura crema de mamey." data-desc="Un clásico yucateco preparado con el más dulce y cremoso mamey de la región. Su textura suave y color vibrante te recordarán los auténticos sabores de casa." data-i18n-attr="data-title:products.ice_mamey.title,data-short:products.ice_mamey.short,data-desc:products.ice_mamey.desc">
-                <div class="card-img"><img src="assets/slide01-08.png" alt="Mamey"></div>
-                <h4 data-i18n="products.ice_mamey.title">Helado de Mamey</h4>
-                <p data-i18n="products.ice_mamey.short">Tradición en cada bocado de mamey.</p>
-            </div>
-            <div class="product-card" data-id="ice_chocolate" data-price="45" data-title="Chocolate Yucateco" data-img="assets/strawberry-milkshake.png" data-short="El cacao artesanal en su máxima expresión." data-desc="Intenso, artesanal y elaborado con el mejor cacao de tierras mayas. Un capricho perfecto y equilibrado para los verdaderos amantes del buen chocolate." data-i18n-attr="data-title:products.ice_chocolate.title,data-short:products.ice_chocolate.short,data-desc:products.ice_chocolate.desc">
-                <div class="card-img"><img src="assets/strawberry-milkshake.png" alt="Chocolate"></div>
-                <h4 data-i18n="products.ice_chocolate.title">Chocolate Yucateco</h4>
-                <p data-i18n="products.ice_chocolate.short">El cacao artesanal en su máxima expresión.</p>
-            </div>
-            <div class="product-card" data-id="ice_vainilla" data-price="45" data-title="Vainilla" data-img="assets/summer.png" data-short="Clásico, suave y aromático." data-desc="El tradicional sabor a vainilla, elaborado con vainas seleccionadas. Un postre sutilmente dulce y perfectamente equilibrado." data-i18n-attr="data-title:products.ice_vainilla.title,data-short:products.ice_vainilla.short,data-desc:products.ice_vainilla.desc">
-                <div class="card-img"><img src="assets/summer.png" alt="Vainilla"></div>
-                <h4 data-i18n="products.ice_vainilla.title">Vainilla</h4>
-                <p data-i18n="products.ice_vainilla.short">Clásico, suave y aromático.</p>
-            </div>
-            <div class="product-card" data-id="ice_nuez" data-price="45" data-title="Nuez" data-img="assets/autumn.png" data-short="Crema de rancho y nueces finas." data-desc="Deliciosa base de crema batida mezclada con nueces finamente picadas para un toque crocante en cada cucharada." data-i18n-attr="data-title:products.ice_nuez.title,data-short:products.ice_nuez.short,data-desc:products.ice_nuez.desc">
-                <div class="card-img"><img src="assets/autumn.png" alt="Nuez"></div>
-                <h4 data-i18n="products.ice_nuez.title">Nuez</h4>
-                <p data-i18n="products.ice_nuez.short">Crema de rancho y nueces finas.</p>
-            </div>
-            <div class="product-card" data-id="ice_coco" data-price="45" data-title="Coco" data-img="assets/pineapple-icecream.png" data-short="Fresco y tropical con ralladura." data-desc="Todo el sabor del trópico contenido en esta exquisita mezcla de crema artesanal y ralladura fresca de coco natural." data-i18n-attr="data-title:products.ice_coco.title,data-short:products.ice_coco.short,data-desc:products.ice_coco.desc">
-                <div class="card-img"><img src="assets/pineapple-icecream.png" alt="Coco"></div>
-                <h4 data-i18n="products.ice_coco.title">Coco</h4>
-                <p data-i18n="products.ice_coco.short">Fresco y tropical con ralladura.</p>
-            </div>
-            <div class="product-card" data-id="ice_pistache" data-price="45" data-title="Pistache" data-img="assets/spring.png" data-short="Cremoso con trozos de pistache." data-desc="Inconfundible sabor a pistache de la mejor calidad. Su textura cremosa se complementa a la perfección con pequeños y deliciosos trozos." data-i18n-attr="data-title:products.ice_pistache.title,data-short:products.ice_pistache.short,data-desc:products.ice_pistache.desc">
-                <div class="card-img"><img src="assets/spring.png" alt="Pistache"></div>
-                <h4 data-i18n="products.ice_pistache.title">Pistache</h4>
-                <p data-i18n="products.ice_pistache.short">Cremoso con trozos de pistache.</p>
-            </div>
-            <div class="product-card" data-id="ice_guanabana" data-price="45" data-title="Guanábana" data-img="assets/summer.png" data-short="Sabor caribeño, dulce y acidito." data-desc="Un helado único donde resalta el delicado balance tropical de la guanábana fresca, rindiendo homenaje a nuestros frutos regionales." data-i18n-attr="data-title:products.ice_guanabana.title,data-short:products.ice_guanabana.short,data-desc:products.ice_guanabana.desc">
-                <div class="card-img"><img src="assets/summer.png" alt="Guanábana"></div>
-                <h4 data-i18n="products.ice_guanabana.title">Guanábana</h4>
-                <p data-i18n="products.ice_guanabana.short">Sabor caribeño, dulce y acidito.</p>
-            </div>
-            <div class="product-card" data-id="ice_limon" data-price="45" data-title="Limón" data-img="assets/slide01-08.png" data-short="Refrescante, el favorito cítrico." data-desc="Preparado a base de agua o leche, nuestro helado de limón ofrece el nivel exacto de frescura para combatir los días cálidos." data-i18n-attr="data-title:products.ice_limon.title,data-short:products.ice_limon.short,data-desc:products.ice_limon.desc">
-                <div class="card-img"><img src="assets/slide01-08.png" alt="Limón"></div>
-                <h4 data-i18n="products.ice_limon.title">Limón</h4>
-                <p data-i18n="products.ice_limon.short">Refrescante, el favorito cítrico.</p>
-            </div>
+                <div class="product-card" data-id="ice_fresa" data-price="45" data-title="Helado de Fresa"
+                    data-img="assets/spring.png" data-short="Hecho con fresas naturales y crema de rancho."
+                    data-desc="Delicioso helado artesanal preparado con fresas frescas de la más alta calidad y auténtica crema de rancho. Un sabor clásico, cremoso y lleno de tradición que no te puedes perder."
+                    data-i18n-attr="data-title:products.ice_fresa.title,data-short:products.ice_fresa.short,data-desc:products.ice_fresa.desc">
+                    <div class="card-img"><img src="assets/spring.png" alt="Helado Artesanal"></div>
+                    <h4 data-i18n="products.ice_fresa.title">Helado de Fresa</h4>
+                    <p data-i18n="products.ice_fresa.short">Hecho con fresas naturales y crema de rancho.</p>
+                </div>
+                <div class="product-card" data-id="ice_mango_yogurt" data-price="45" data-title="Yogurt de Mango"
+                    data-img="assets/summer.png" data-short="Cremoso y lleno de vitaminas tropicales."
+                    data-desc="Nuestro yogurt helado de mango combina la suavidad del yogurt natural con la frescura y dulzura de los mejores mangos tropicales. Una opción saludable, refrescante e irresistible."
+                    data-i18n-attr="data-title:products.ice_mango_yogurt.title,data-short:products.ice_mango_yogurt.short,data-desc:products.ice_mango_yogurt.desc">
+                    <div class="card-img"><img src="assets/summer.png" alt="Yogurt"></div>
+                    <h4 data-i18n="products.ice_mango_yogurt.title">Yogurt de Mango</h4>
+                    <p data-i18n="products.ice_mango_yogurt.short">Cremoso y lleno de vitaminas tropicales.</p>
+                </div>
+                <div class="product-card" data-id="ice_queso_bola" data-price="45" data-title="Queso de Bola"
+                    data-img="assets/autumn.png" data-short="El sabor tradicional de nuestra tierra."
+                    data-desc="El icónico sabor de Yucatán convertido en helado. Una mezcla perfecta dulce-salado, elaborado con auténtico Queso de Bola (Edam). Un clásico yucateco que deleitará tu paladar."
+                    data-i18n-attr="data-title:products.ice_queso_bola.title,data-short:products.ice_queso_bola.short,data-desc:products.ice_queso_bola.desc">
+                    <div class="card-img"><img src="assets/autumn.png" alt="Queso"></div>
+                    <h4 data-i18n="products.ice_queso_bola.title">Queso de Bola</h4>
+                    <p data-i18n="products.ice_queso_bola.short">El sabor tradicional de nuestra tierra.</p>
+                </div>
+                <div class="product-card" data-id="ice_pina_colada" data-price="45" data-title="Piña Colada"
+                    data-img="assets/pineapple-icecream.png" data-short="Una mezcla refrescante para el calor."
+                    data-desc="Disfruta de la frescura caribeña con nuestro helado de Piña Colada. Una exquisita combinación de piña natural y suave crema de coco que te transportará directamente a la playa."
+                    data-i18n-attr="data-title:products.ice_pina_colada.title,data-short:products.ice_pina_colada.short,data-desc:products.ice_pina_colada.desc">
+                    <div class="card-img"><img src="assets/pineapple-icecream.png" alt="Piña"></div>
+                    <h4 data-i18n="products.ice_pina_colada.title">Piña Colada</h4>
+                    <p data-i18n="products.ice_pina_colada.short">Una mezcla refrescante para el calor.</p>
+                </div>
+                <div class="product-card" data-id="ice_mamey" data-price="45" data-title="Helado de Mamey"
+                    data-img="assets/slide01-08.png" data-short="Tradición en cada bocado, pura crema de mamey."
+                    data-desc="Un clásico yucateco preparado con el más dulce y cremoso mamey de la región. Su textura suave y color vibrante te recordarán los auténticos sabores de casa."
+                    data-i18n-attr="data-title:products.ice_mamey.title,data-short:products.ice_mamey.short,data-desc:products.ice_mamey.desc">
+                    <div class="card-img"><img src="assets/slide01-08.png" alt="Mamey"></div>
+                    <h4 data-i18n="products.ice_mamey.title">Helado de Mamey</h4>
+                    <p data-i18n="products.ice_mamey.short">Tradición en cada bocado de mamey.</p>
+                </div>
+                <div class="product-card" data-id="ice_chocolate" data-price="45" data-title="Chocolate Yucateco"
+                    data-img="assets/strawberry-milkshake.png" data-short="El cacao artesanal en su máxima expresión."
+                    data-desc="Intenso, artesanal y elaborado con el mejor cacao de tierras mayas. Un capricho perfecto y equilibrado para los verdaderos amantes del buen chocolate."
+                    data-i18n-attr="data-title:products.ice_chocolate.title,data-short:products.ice_chocolate.short,data-desc:products.ice_chocolate.desc">
+                    <div class="card-img"><img src="assets/strawberry-milkshake.png" alt="Chocolate"></div>
+                    <h4 data-i18n="products.ice_chocolate.title">Chocolate Yucateco</h4>
+                    <p data-i18n="products.ice_chocolate.short">El cacao artesanal en su máxima expresión.</p>
+                </div>
+                <div class="product-card" data-id="ice_vainilla" data-price="45" data-title="Vainilla"
+                    data-img="assets/summer.png" data-short="Clásico, suave y aromático."
+                    data-desc="El tradicional sabor a vainilla, elaborado con vainas seleccionadas. Un postre sutilmente dulce y perfectamente equilibrado."
+                    data-i18n-attr="data-title:products.ice_vainilla.title,data-short:products.ice_vainilla.short,data-desc:products.ice_vainilla.desc">
+                    <div class="card-img"><img src="assets/summer.png" alt="Vainilla"></div>
+                    <h4 data-i18n="products.ice_vainilla.title">Vainilla</h4>
+                    <p data-i18n="products.ice_vainilla.short">Clásico, suave y aromático.</p>
+                </div>
+                <div class="product-card" data-id="ice_nuez" data-price="45" data-title="Nuez"
+                    data-img="assets/autumn.png" data-short="Crema de rancho y nueces finas."
+                    data-desc="Deliciosa base de crema batida mezclada con nueces finamente picadas para un toque crocante en cada cucharada."
+                    data-i18n-attr="data-title:products.ice_nuez.title,data-short:products.ice_nuez.short,data-desc:products.ice_nuez.desc">
+                    <div class="card-img"><img src="assets/autumn.png" alt="Nuez"></div>
+                    <h4 data-i18n="products.ice_nuez.title">Nuez</h4>
+                    <p data-i18n="products.ice_nuez.short">Crema de rancho y nueces finas.</p>
+                </div>
+                <div class="product-card" data-id="ice_coco" data-price="45" data-title="Coco"
+                    data-img="assets/pineapple-icecream.png" data-short="Fresco y tropical con ralladura."
+                    data-desc="Todo el sabor del trópico contenido en esta exquisita mezcla de crema artesanal y ralladura fresca de coco natural."
+                    data-i18n-attr="data-title:products.ice_coco.title,data-short:products.ice_coco.short,data-desc:products.ice_coco.desc">
+                    <div class="card-img"><img src="assets/pineapple-icecream.png" alt="Coco"></div>
+                    <h4 data-i18n="products.ice_coco.title">Coco</h4>
+                    <p data-i18n="products.ice_coco.short">Fresco y tropical con ralladura.</p>
+                </div>
+                <div class="product-card" data-id="ice_pistache" data-price="45" data-title="Pistache"
+                    data-img="assets/spring.png" data-short="Cremoso con trozos de pistache."
+                    data-desc="Inconfundible sabor a pistache de la mejor calidad. Su textura cremosa se complementa a la perfección con pequeños y deliciosos trozos."
+                    data-i18n-attr="data-title:products.ice_pistache.title,data-short:products.ice_pistache.short,data-desc:products.ice_pistache.desc">
+                    <div class="card-img"><img src="assets/spring.png" alt="Pistache"></div>
+                    <h4 data-i18n="products.ice_pistache.title">Pistache</h4>
+                    <p data-i18n="products.ice_pistache.short">Cremoso con trozos de pistache.</p>
+                </div>
+                <div class="product-card" data-id="ice_guanabana" data-price="45" data-title="Guanábana"
+                    data-img="assets/summer.png" data-short="Sabor caribeño, dulce y acidito."
+                    data-desc="Un helado único donde resalta el delicado balance tropical de la guanábana fresca, rindiendo homenaje a nuestros frutos regionales."
+                    data-i18n-attr="data-title:products.ice_guanabana.title,data-short:products.ice_guanabana.short,data-desc:products.ice_guanabana.desc">
+                    <div class="card-img"><img src="assets/summer.png" alt="Guanábana"></div>
+                    <h4 data-i18n="products.ice_guanabana.title">Guanábana</h4>
+                    <p data-i18n="products.ice_guanabana.short">Sabor caribeño, dulce y acidito.</p>
+                </div>
+                <div class="product-card" data-id="ice_limon" data-price="45" data-title="Limón"
+                    data-img="assets/slide01-08.png" data-short="Refrescante, el favorito cítrico."
+                    data-desc="Preparado a base de agua o leche, nuestro helado de limón ofrece el nivel exacto de frescura para combatir los días cálidos."
+                    data-i18n-attr="data-title:products.ice_limon.title,data-short:products.ice_limon.short,data-desc:products.ice_limon.desc">
+                    <div class="card-img"><img src="assets/slide01-08.png" alt="Limón"></div>
+                    <h4 data-i18n="products.ice_limon.title">Limón</h4>
+                    <p data-i18n="products.ice_limon.short">Refrescante, el favorito cítrico.</p>
+                </div>
 
-            <!-- Extra 14 Cards for "Ver todos" -->
-            <div class="product-card extra-card" data-id="ice_dulce_leche" data-price="45" data-title="Helado de Dulce de Leche" data-img="assets/strawberry-milkshake.png" data-short="Pura dulzura y tradición." data-desc="Ideal para los más golosos. De textura espesa y dulce, con auténtico dulce de leche casero que se derrite en el paladar." data-i18n-attr="data-title:products.ice_dulce_leche.title,data-short:products.ice_dulce_leche.short,data-desc:products.ice_dulce_leche.desc">
-                <div class="card-img"><img src="assets/strawberry-milkshake.png" alt="Dulce de Leche"></div>
-                <h4 data-i18n="products.ice_dulce_leche.title">Dulce de Leche</h4>
-                <p data-i18n="products.ice_dulce_leche.short">Pura dulzura y tradición.</p>
+                <!-- Extra 14 Cards for "Ver todos" -->
+                <div class="product-card extra-card" data-id="ice_dulce_leche" data-price="45"
+                    data-title="Helado de Dulce de Leche" data-img="assets/strawberry-milkshake.png"
+                    data-short="Pura dulzura y tradición."
+                    data-desc="Ideal para los más golosos. De textura espesa y dulce, con auténtico dulce de leche casero que se derrite en el paladar."
+                    data-i18n-attr="data-title:products.ice_dulce_leche.title,data-short:products.ice_dulce_leche.short,data-desc:products.ice_dulce_leche.desc">
+                    <div class="card-img"><img src="assets/strawberry-milkshake.png" alt="Dulce de Leche"></div>
+                    <h4 data-i18n="products.ice_dulce_leche.title">Dulce de Leche</h4>
+                    <p data-i18n="products.ice_dulce_leche.short">Pura dulzura y tradición.</p>
+                </div>
+                <div class="product-card extra-card" data-id="ice_maracuya" data-price="45"
+                    data-title="Helado de Maracuyá" data-img="assets/autumn.png"
+                    data-short="Intenso sabor a la fruta de la pasión."
+                    data-desc="Dulce, cremoso y con ese distintivo punto ácido del maracuyá. Una verdadera fiesta para tus papilas gustativas."
+                    data-i18n-attr="data-title:products.ice_maracuya.title,data-short:products.ice_maracuya.short,data-desc:products.ice_maracuya.desc">
+                    <div class="card-img"><img src="assets/autumn.png" alt="Maracuyá"></div>
+                    <h4 data-i18n="products.ice_maracuya.title">Maracuyá</h4>
+                    <p data-i18n="products.ice_maracuya.short">Intenso sabor a la fruta de la pasión.</p>
+                </div>
+                <div class="product-card extra-card" data-id="ice_cafe" data-price="45" data-title="Helado de Café"
+                    data-img="assets/pineapple-icecream.png" data-short="El postre ideal después de comer."
+                    data-desc="Elaborado con granos seleccionados tostados artesanalmente. Revitalizante y con profundo aroma a café."
+                    data-i18n-attr="data-title:products.ice_cafe.title,data-short:products.ice_cafe.short,data-desc:products.ice_cafe.desc">
+                    <div class="card-img"><img src="assets/pineapple-icecream.png" alt="Café"></div>
+                    <h4 data-i18n="products.ice_cafe.title">Café</h4>
+                    <p data-i18n="products.ice_cafe.short">El postre ideal después de comer.</p>
+                </div>
+                <div class="product-card extra-card" data-id="ice_zarzamora" data-price="45"
+                    data-title="Helado de Zarzamora" data-img="assets/spring.png" data-short="Elegante y silvestre."
+                    data-desc="Toda la esencia de las moras silvestres en una consistencia suave y de brillante color morado. Completamente natural."
+                    data-i18n-attr="data-title:products.ice_zarzamora.title,data-short:products.ice_zarzamora.short,data-desc:products.ice_zarzamora.desc">
+                    <div class="card-img"><img src="assets/spring.png" alt="Zarzamora"></div>
+                    <h4 data-i18n="products.ice_zarzamora.title">Zarzamora</h4>
+                    <p data-i18n="products.ice_zarzamora.short">Elegante y silvestre.</p>
+                </div>
+                <div class="product-card extra-card" data-id="ice_queso_zarzamora" data-price="45"
+                    data-title="Helado de Queso y Zarzamora" data-img="assets/summer.png"
+                    data-short="El dúo perfecto en helado."
+                    data-desc="Base ligera de crema de queso mezclada sutilmente con una exquisita y dulce mermelada natural de zarzamoras."
+                    data-i18n-attr="data-title:products.ice_queso_zarzamora.title,data-short:products.ice_queso_zarzamora.short,data-desc:products.ice_queso_zarzamora.desc">
+                    <div class="card-img"><img src="assets/summer.png" alt="Queso y Zarz."></div>
+                    <h4 data-i18n="products.ice_queso_zarzamora.title">Queso y Zarzamora</h4>
+                    <p data-i18n="products.ice_queso_zarzamora.short">El dúo perfecto en helado.</p>
+                </div>
+                <div class="product-card extra-card" data-id="ice_rompope" data-price="45"
+                    data-title="Helado de Rompope" data-img="assets/slide01-08.png"
+                    data-short="Receta tradicional de la abuela."
+                    data-desc="Rompope auténtico convertido en un helado suave y delicioso. Su sabor casero y reconfortante simplemente fascina."
+                    data-i18n-attr="data-title:products.ice_rompope.title,data-short:products.ice_rompope.short,data-desc:products.ice_rompope.desc">
+                    <div class="card-img"><img src="assets/slide01-08.png" alt="Rompope"></div>
+                    <h4 data-i18n="products.ice_rompope.title">Rompope</h4>
+                    <p data-i18n="products.ice_rompope.short">Receta tradicional de la abuela.</p>
+                </div>
+                <div class="product-card extra-card" data-id="ice_menta_choco" data-price="45"
+                    data-title="Helado de Menta Choco" data-img="assets/strawberry-milkshake.png"
+                    data-short="Frescura intensa y crujiente."
+                    data-desc="Menta súper fresca acompañada de trocitos de chocolate de la más alta calidad. Un contraste inigualable y refrescante."
+                    data-i18n-attr="data-title:products.ice_menta_choco.title,data-short:products.ice_menta_choco.short,data-desc:products.ice_menta_choco.desc">
+                    <div class="card-img"><img src="assets/strawberry-milkshake.png" alt="Menta Choco"></div>
+                    <h4 data-i18n="products.ice_menta_choco.title">Menta con Chocolate</h4>
+                    <p data-i18n="products.ice_menta_choco.short">Frescura intensa y crujiente.</p>
+                </div>
+                <div class="product-card extra-card" data-id="ice_tamarindo" data-price="45"
+                    data-title="Helado de Tamarindo" data-img="assets/autumn.png"
+                    data-short="La mezcla perfecta dulce y acidita."
+                    data-desc="Preparado con la auténtica pulpa de tamarindo. Excelente opción para refrescar las tardes más soleadas en Yucatán."
+                    data-i18n-attr="data-title:products.ice_tamarindo.title,data-short:products.ice_tamarindo.short,data-desc:products.ice_tamarindo.desc">
+                    <div class="card-img"><img src="assets/autumn.png" alt="Tamarindo"></div>
+                    <h4 data-i18n="products.ice_tamarindo.title">Tamarindo</h4>
+                    <p data-i18n="products.ice_tamarindo.short">La mezcla perfecta dulce y acidita.</p>
+                </div>
+                <div class="product-card extra-card" data-id="ice_pitahaya" data-price="45"
+                    data-title="Helado de Pitahaya" data-img="assets/pineapple-icecream.png"
+                    data-short="Colores vívidos y exóticos."
+                    data-desc="Aprovechando la exquisita pitahaya yucateca, ofrecemos este helado visualmente espectacular y de sabor sutilmente dulce."
+                    data-i18n-attr="data-title:products.ice_pitahaya.title,data-short:products.ice_pitahaya.short,data-desc:products.ice_pitahaya.desc">
+                    <div class="card-img"><img src="assets/pineapple-icecream.png" alt="Pitahaya"></div>
+                    <h4 data-i18n="products.ice_pitahaya.title">Pitahaya</h4>
+                    <p data-i18n="products.ice_pitahaya.short">Colores vívidos y exóticos.</p>
+                </div>
+                <div class="product-card extra-card" data-id="ice_naranja" data-price="45"
+                    data-title="Helado de Naranja" data-img="assets/spring.png"
+                    data-short="Puro extracto cítrico y vitaminas."
+                    data-desc="Refrescante sorbete elaborado con jugo puro de naranja de nuestra tierra, el balance idóneo entre dulce y cítrico."
+                    data-i18n-attr="data-title:products.ice_naranja.title,data-short:products.ice_naranja.short,data-desc:products.ice_naranja.desc">
+                    <div class="card-img"><img src="assets/spring.png" alt="Naranja"></div>
+                    <h4 data-i18n="products.ice_naranja.title">Naranja</h4>
+                    <p data-i18n="products.ice_naranja.short">Puro extracto cítrico y vitaminas.</p>
+                </div>
+                <div class="product-card extra-card" data-id="ice_almendra" data-price="45"
+                    data-title="Helado de Almendra" data-img="assets/summer.png" data-short="Sutil, elegante y cremoso."
+                    data-desc="Una receta gourmet que destaca las notas ligeras y delicadas de las almendras, creando una crema exquisita."
+                    data-i18n-attr="data-title:products.ice_almendra.title,data-short:products.ice_almendra.short,data-desc:products.ice_almendra.desc">
+                    <div class="card-img"><img src="assets/summer.png" alt="Almendra"></div>
+                    <h4 data-i18n="products.ice_almendra.title">Almendra</h4>
+                    <p data-i18n="products.ice_almendra.short">Sutil, elegante y cremoso.</p>
+                </div>
+                <div class="product-card extra-card" data-id="ice_mango_chile" data-price="45"
+                    data-title="Helado de Mango con Chile" data-img="assets/slide01-08.png"
+                    data-short="Una explosión de sabor mexicano."
+                    data-desc="Toda la dulzura del mango ataulfo combinada con un toque de chile en polvo que genera un contraste delicioso."
+                    data-i18n-attr="data-title:products.ice_mango_chile.title,data-short:products.ice_mango_chile.short,data-desc:products.ice_mango_chile.desc">
+                    <div class="card-img"><img src="assets/slide01-08.png" alt="Mango con Chile"></div>
+                    <h4 data-i18n="products.ice_mango_chile.title">Mango con Chile</h4>
+                    <p data-i18n="products.ice_mango_chile.short">Una explosión de sabor mexicano.</p>
+                </div>
+                <div class="product-card extra-card" data-id="ice_arroz_leche" data-price="45"
+                    data-title="Helado de Arroz con Leche" data-img="assets/strawberry-milkshake.png"
+                    data-short="Como un postre casero pero frío."
+                    data-desc="Esencia cálida convertida en helado. Toque de canela y arroz suave que hacen de este postre una verdadera joya."
+                    data-i18n-attr="data-title:products.ice_arroz_leche.title,data-short:products.ice_arroz_leche.short,data-desc:products.ice_arroz_leche.desc">
+                    <div class="card-img"><img src="assets/strawberry-milkshake.png" alt="Arroz con Leche"></div>
+                    <h4 data-i18n="products.ice_arroz_leche.title">Arroz con Leche</h4>
+                    <p data-i18n="products.ice_arroz_leche.short">Como un postre casero pero frío.</p>
+                </div>
+                <div class="product-card extra-card" data-id="ice_chicle" data-price="45" data-title="Helado de Chicle"
+                    data-img="assets/autumn.png" data-short="El preferido de los más pequeños."
+                    data-desc="Súper divertido, cremoso y con unos colores que encantan a niños y adultos. Revive la diversión de tu infancia."
+                    data-i18n-attr="data-title:products.ice_chicle.title,data-short:products.ice_chicle.short,data-desc:products.ice_chicle.desc">
+                    <div class="card-img"><img src="assets/autumn.png" alt="Chicle"></div>
+                    <h4 data-i18n="products.ice_chicle.title">Chicle Azul</h4>
+                    <p data-i18n="products.ice_chicle.short">El preferido de los más pequeños.</p>
+                </div>
             </div>
-            <div class="product-card extra-card" data-id="ice_maracuya" data-price="45" data-title="Helado de Maracuyá" data-img="assets/autumn.png" data-short="Intenso sabor a la fruta de la pasión." data-desc="Dulce, cremoso y con ese distintivo punto ácido del maracuyá. Una verdadera fiesta para tus papilas gustativas." data-i18n-attr="data-title:products.ice_maracuya.title,data-short:products.ice_maracuya.short,data-desc:products.ice_maracuya.desc">
-                <div class="card-img"><img src="assets/autumn.png" alt="Maracuyá"></div>
-                <h4 data-i18n="products.ice_maracuya.title">Maracuyá</h4>
-                <p data-i18n="products.ice_maracuya.short">Intenso sabor a la fruta de la pasión.</p>
-            </div>
-            <div class="product-card extra-card" data-id="ice_cafe" data-price="45" data-title="Helado de Café" data-img="assets/pineapple-icecream.png" data-short="El postre ideal después de comer." data-desc="Elaborado con granos seleccionados tostados artesanalmente. Revitalizante y con profundo aroma a café." data-i18n-attr="data-title:products.ice_cafe.title,data-short:products.ice_cafe.short,data-desc:products.ice_cafe.desc">
-                <div class="card-img"><img src="assets/pineapple-icecream.png" alt="Café"></div>
-                <h4 data-i18n="products.ice_cafe.title">Café</h4>
-                <p data-i18n="products.ice_cafe.short">El postre ideal después de comer.</p>
-            </div>
-            <div class="product-card extra-card" data-id="ice_zarzamora" data-price="45" data-title="Helado de Zarzamora" data-img="assets/spring.png" data-short="Elegante y silvestre." data-desc="Toda la esencia de las moras silvestres en una consistencia suave y de brillante color morado. Completamente natural." data-i18n-attr="data-title:products.ice_zarzamora.title,data-short:products.ice_zarzamora.short,data-desc:products.ice_zarzamora.desc">
-                <div class="card-img"><img src="assets/spring.png" alt="Zarzamora"></div>
-                <h4 data-i18n="products.ice_zarzamora.title">Zarzamora</h4>
-                <p data-i18n="products.ice_zarzamora.short">Elegante y silvestre.</p>
-            </div>
-            <div class="product-card extra-card" data-id="ice_queso_zarzamora" data-price="45" data-title="Helado de Queso y Zarzamora" data-img="assets/summer.png" data-short="El dúo perfecto en helado." data-desc="Base ligera de crema de queso mezclada sutilmente con una exquisita y dulce mermelada natural de zarzamoras." data-i18n-attr="data-title:products.ice_queso_zarzamora.title,data-short:products.ice_queso_zarzamora.short,data-desc:products.ice_queso_zarzamora.desc">
-                <div class="card-img"><img src="assets/summer.png" alt="Queso y Zarz."></div>
-                <h4 data-i18n="products.ice_queso_zarzamora.title">Queso y Zarzamora</h4>
-                <p data-i18n="products.ice_queso_zarzamora.short">El dúo perfecto en helado.</p>
-            </div>
-            <div class="product-card extra-card" data-id="ice_rompope" data-price="45" data-title="Helado de Rompope" data-img="assets/slide01-08.png" data-short="Receta tradicional de la abuela." data-desc="Rompope auténtico convertido en un helado suave y delicioso. Su sabor casero y reconfortante simplemente fascina." data-i18n-attr="data-title:products.ice_rompope.title,data-short:products.ice_rompope.short,data-desc:products.ice_rompope.desc">
-                <div class="card-img"><img src="assets/slide01-08.png" alt="Rompope"></div>
-                <h4 data-i18n="products.ice_rompope.title">Rompope</h4>
-                <p data-i18n="products.ice_rompope.short">Receta tradicional de la abuela.</p>
-            </div>
-            <div class="product-card extra-card" data-id="ice_menta_choco" data-price="45" data-title="Helado de Menta Choco" data-img="assets/strawberry-milkshake.png" data-short="Frescura intensa y crujiente." data-desc="Menta súper fresca acompañada de trocitos de chocolate de la más alta calidad. Un contraste inigualable y refrescante." data-i18n-attr="data-title:products.ice_menta_choco.title,data-short:products.ice_menta_choco.short,data-desc:products.ice_menta_choco.desc">
-                <div class="card-img"><img src="assets/strawberry-milkshake.png" alt="Menta Choco"></div>
-                <h4 data-i18n="products.ice_menta_choco.title">Menta con Chocolate</h4>
-                <p data-i18n="products.ice_menta_choco.short">Frescura intensa y crujiente.</p>
-            </div>
-            <div class="product-card extra-card" data-id="ice_tamarindo" data-price="45" data-title="Helado de Tamarindo" data-img="assets/autumn.png" data-short="La mezcla perfecta dulce y acidita." data-desc="Preparado con la auténtica pulpa de tamarindo. Excelente opción para refrescar las tardes más soleadas en Yucatán." data-i18n-attr="data-title:products.ice_tamarindo.title,data-short:products.ice_tamarindo.short,data-desc:products.ice_tamarindo.desc">
-                <div class="card-img"><img src="assets/autumn.png" alt="Tamarindo"></div>
-                <h4 data-i18n="products.ice_tamarindo.title">Tamarindo</h4>
-                <p data-i18n="products.ice_tamarindo.short">La mezcla perfecta dulce y acidita.</p>
-            </div>
-            <div class="product-card extra-card" data-id="ice_pitahaya" data-price="45" data-title="Helado de Pitahaya" data-img="assets/pineapple-icecream.png" data-short="Colores vívidos y exóticos." data-desc="Aprovechando la exquisita pitahaya yucateca, ofrecemos este helado visualmente espectacular y de sabor sutilmente dulce." data-i18n-attr="data-title:products.ice_pitahaya.title,data-short:products.ice_pitahaya.short,data-desc:products.ice_pitahaya.desc">
-                <div class="card-img"><img src="assets/pineapple-icecream.png" alt="Pitahaya"></div>
-                <h4 data-i18n="products.ice_pitahaya.title">Pitahaya</h4>
-                <p data-i18n="products.ice_pitahaya.short">Colores vívidos y exóticos.</p>
-            </div>
-            <div class="product-card extra-card" data-id="ice_naranja" data-price="45" data-title="Helado de Naranja" data-img="assets/spring.png" data-short="Puro extracto cítrico y vitaminas." data-desc="Refrescante sorbete elaborado con jugo puro de naranja de nuestra tierra, el balance idóneo entre dulce y cítrico." data-i18n-attr="data-title:products.ice_naranja.title,data-short:products.ice_naranja.short,data-desc:products.ice_naranja.desc">
-                <div class="card-img"><img src="assets/spring.png" alt="Naranja"></div>
-                <h4 data-i18n="products.ice_naranja.title">Naranja</h4>
-                <p data-i18n="products.ice_naranja.short">Puro extracto cítrico y vitaminas.</p>
-            </div>
-            <div class="product-card extra-card" data-id="ice_almendra" data-price="45" data-title="Helado de Almendra" data-img="assets/summer.png" data-short="Sutil, elegante y cremoso." data-desc="Una receta gourmet que destaca las notas ligeras y delicadas de las almendras, creando una crema exquisita." data-i18n-attr="data-title:products.ice_almendra.title,data-short:products.ice_almendra.short,data-desc:products.ice_almendra.desc">
-                <div class="card-img"><img src="assets/summer.png" alt="Almendra"></div>
-                <h4 data-i18n="products.ice_almendra.title">Almendra</h4>
-                <p data-i18n="products.ice_almendra.short">Sutil, elegante y cremoso.</p>
-            </div>
-            <div class="product-card extra-card" data-id="ice_mango_chile" data-price="45" data-title="Helado de Mango con Chile" data-img="assets/slide01-08.png" data-short="Una explosión de sabor mexicano." data-desc="Toda la dulzura del mango ataulfo combinada con un toque de chile en polvo que genera un contraste delicioso." data-i18n-attr="data-title:products.ice_mango_chile.title,data-short:products.ice_mango_chile.short,data-desc:products.ice_mango_chile.desc">
-                <div class="card-img"><img src="assets/slide01-08.png" alt="Mango con Chile"></div>
-                <h4 data-i18n="products.ice_mango_chile.title">Mango con Chile</h4>
-                <p data-i18n="products.ice_mango_chile.short">Una explosión de sabor mexicano.</p>
-            </div>
-            <div class="product-card extra-card" data-id="ice_arroz_leche" data-price="45" data-title="Helado de Arroz con Leche" data-img="assets/strawberry-milkshake.png" data-short="Como un postre casero pero frío." data-desc="Esencia cálida convertida en helado. Toque de canela y arroz suave que hacen de este postre una verdadera joya." data-i18n-attr="data-title:products.ice_arroz_leche.title,data-short:products.ice_arroz_leche.short,data-desc:products.ice_arroz_leche.desc">
-                <div class="card-img"><img src="assets/strawberry-milkshake.png" alt="Arroz con Leche"></div>
-                <h4 data-i18n="products.ice_arroz_leche.title">Arroz con Leche</h4>
-                <p data-i18n="products.ice_arroz_leche.short">Como un postre casero pero frío.</p>
-            </div>
-            <div class="product-card extra-card" data-id="ice_chicle" data-price="45" data-title="Helado de Chicle" data-img="assets/autumn.png" data-short="El preferido de los más pequeños." data-desc="Súper divertido, cremoso y con unos colores que encantan a niños y adultos. Revive la diversión de tu infancia." data-i18n-attr="data-title:products.ice_chicle.title,data-short:products.ice_chicle.short,data-desc:products.ice_chicle.desc">
-                <div class="card-img"><img src="assets/autumn.png" alt="Chicle"></div>
-                <h4 data-i18n="products.ice_chicle.title">Chicle Azul</h4>
-                <p data-i18n="products.ice_chicle.short">El preferido de los más pequeños.</p>
-            </div>
-        </div>
             <div class="view-links-container" style="text-align: center; margin-top: 60px;">
-                <a href="#" class="view-all-link" data-i18n="products.view_all_icecream">Ver todos los helados <span>&rarr;</span></a>
-                <a href="#" class="hide-all-link" style="display: none;" data-i18n="products.view_less_icecream">Ver menos helados <span>&uarr;</span></a>
+                <a href="#" class="view-all-link" data-i18n="products.view_all_icecream">Ver todos los helados
+                    <span>&rarr;</span></a>
+                <a href="#" class="hide-all-link" style="display: none;" data-i18n="products.view_less_icecream">Ver
+                    menos helados <span>&uarr;</span></a>
             </div>
         </div>
     </section>
@@ -243,8 +341,11 @@
     <!-- Intro Paletas Parallax -->
     <section class="parallax-banner reveal-up">
         <div class="container relative z-10 text-center" style="position: relative; z-index: 10;">
-            <div class="section-title-center" style="margin-bottom: 20px; display: flex; flex-direction: column; align-items: center;">
-                <h2 class="script-font" style="font-size: 3.5rem; color: var(--white); margin-bottom: 15px; text-shadow: 2px 2px 8px rgba(0,0,0,0.8);" data-i18n="products.paletas_title">Disfruta nuestras paletas</h2>
+            <div class="section-title-center"
+                style="margin-bottom: 20px; display: flex; flex-direction: column; align-items: center;">
+                <h2 class="script-font"
+                    style="font-size: 3.5rem; color: var(--white); margin-bottom: 15px; text-shadow: 2px 2px 8px rgba(0,0,0,0.8);"
+                    data-i18n="products.paletas_title">Disfruta nuestras paletas</h2>
                 <div class="gold-line" style="width: 80px; height: 3px; background: var(--logo-orange);"></div>
             </div>
         </div>
@@ -253,144 +354,233 @@
     <!-- Paletas Highlights -->
     <section id="paletas" class="highlights reveal-up" style="padding-top: 40px;">
         <div class="container">
-            <h3 style="text-align: center; margin-bottom: 40px; color: var(--logo-brown); font-size: 2rem;" data-i18n="products.paletas_section">Nuestras Paletas</h3>
+            <h3 style="text-align: center; margin-bottom: 40px; color: var(--logo-brown); font-size: 2rem;"
+                data-i18n="products.paletas_section">Nuestras Paletas</h3>
             <div class="highlights-grid">
-            <div class="product-card" data-id="pal_fresa" data-price="25" data-title="Paleta de Fresa" data-img="assets/spring.png" data-short="Trozos naturales de fresa pura." data-desc="Elaborada a base de agua con trozos reales de fresas frescas cosechadas esta temporada. Ligera, dulce y súper refrescante." data-i18n-attr="data-title:products.pal_fresa.title,data-short:products.pal_fresa.short,data-desc:products.pal_fresa.desc">
-                <div class="card-img"><img src="assets/spring.png" alt="Paleta de Fresa"></div>
-                <h4 data-i18n="products.pal_fresa.title">Paleta de Fresa</h4>
-                <p data-i18n="products.pal_fresa.short">Trozos naturales de fresa pura.</p>
-            </div>
-            <div class="product-card" data-id="pal_mango" data-price="25" data-title="Paleta de Mango" data-img="assets/summer.png" data-short="Directo del árbol y muy refrescante." data-desc="La reina de los trópicos hecha paleta. Consistencia suave gracias a la pulpa dulce y jugosa del mejor mango." data-i18n-attr="data-title:products.pal_mango.title,data-short:products.pal_mango.short,data-desc:products.pal_mango.desc">
-                <div class="card-img"><img src="assets/summer.png" alt="Paleta de Mango"></div>
-                <h4 data-i18n="products.pal_mango.title">Paleta de Mango</h4>
-                <p data-i18n="products.pal_mango.short">Directo del árbol y muy refrescante.</p>
-            </div>
-            <div class="product-card" data-id="pal_coco" data-price="25" data-title="Paleta de Coco" data-img="assets/pineapple-icecream.png" data-short="De leche, con exquisita ralladura." data-desc="Base láctea muy cremosa con auténtica ralladura de dulce de coco. Un agasajo sureño." data-i18n-attr="data-title:products.pal_coco.title,data-short:products.pal_coco.short,data-desc:products.pal_coco.desc">
-                <div class="card-img"><img src="assets/pineapple-icecream.png" alt="Paleta de Coco"></div>
-                <h4 data-i18n="products.pal_coco.title">Paleta de Coco</h4>
-                <p data-i18n="products.pal_coco.short">De leche, con exquisita ralladura.</p>
-            </div>
-            <div class="product-card" data-id="pal_limon" data-price="25" data-title="Paleta de Limón" data-img="assets/slide01-08.png" data-short="El mejor remedio para el calor." data-desc="Sencilla, pura y refrescante. Jugo de limón recién exprimido." data-i18n-attr="data-title:products.pal_limon.title,data-short:products.pal_limon.short,data-desc:products.pal_limon.desc">
-                <div class="card-img"><img src="assets/slide01-08.png" alt="Paleta de Limón"></div>
-                <h4 data-i18n="products.pal_limon.title">Paleta de Limón</h4>
-                <p data-i18n="products.pal_limon.short">El mejor remedio para el calor.</p>
-            </div>
-            <div class="product-card" data-id="pal_chocolate" data-price="25" data-title="Paleta de Chocolate" data-img="assets/strawberry-milkshake.png" data-short="Crema de leche y cacao local." data-desc="Chocolate semi-amargo en base de crema y leche entera." data-i18n-attr="data-title:products.pal_chocolate.title,data-short:products.pal_chocolate.short,data-desc:products.pal_chocolate.desc">
-                <div class="card-img"><img src="assets/strawberry-milkshake.png" alt="Paleta de Chocolate"></div>
-                <h4 data-i18n="products.pal_chocolate.title">Paleta de Chocolate</h4>
-                <p data-i18n="products.pal_chocolate.short">Crema de leche y cacao local.</p>
-            </div>
-            <div class="product-card" data-id="pal_tamarindo" data-price="25" data-title="Paleta de Tamarindo" data-img="assets/autumn.png" data-short="Riquísima y con ese punto ácido." data-desc="Pulpa concentrada de tamarindo natural hervido." data-i18n-attr="data-title:products.pal_tamarindo.title,data-short:products.pal_tamarindo.short,data-desc:products.pal_tamarindo.desc">
-                <div class="card-img"><img src="assets/autumn.png" alt="Paleta de Tamarindo"></div>
-                <h4 data-i18n="products.pal_tamarindo.title">Paleta de Tamarindo</h4>
-                <p data-i18n="products.pal_tamarindo.short">Riquísima y con ese punto ácido.</p>
-            </div>
-            <div class="product-card" data-id="pal_nuez" data-price="25" data-title="Paleta de Nuez" data-img="assets/summer.png" data-short="Crujiente base cremosa." data-desc="Receta cremosa casera con trocitos incrustados de nuez fina." data-i18n-attr="data-title:products.pal_nuez.title,data-short:products.pal_nuez.short,data-desc:products.pal_nuez.desc">
-                <div class="card-img"><img src="assets/summer.png" alt="Paleta de Nuez"></div>
-                <h4 data-i18n="products.pal_nuez.title">Paleta de Nuez</h4>
-                <p data-i18n="products.pal_nuez.short">Crujiente base cremosa.</p>
-            </div>
-            <div class="product-card" data-id="pal_vainilla" data-price="25" data-title="Paleta de Vainilla" data-img="assets/spring.png" data-short="Una delicia suave que nunca falla." data-desc="Dulce, de color amarillito pálido y con puro extracto natural." data-i18n-attr="data-title:products.pal_vainilla.title,data-short:products.pal_vainilla.short,data-desc:products.pal_vainilla.desc">
-                <div class="card-img"><img src="assets/spring.png" alt="Paleta de Vainilla"></div>
-                <h4 data-i18n="products.pal_vainilla.title">Paleta de Vainilla</h4>
-                <p data-i18n="products.pal_vainilla.short">Una delicia suave que nunca falla.</p>
-            </div>
-            <div class="product-card" data-id="pal_pitahaya" data-price="25" data-title="Paleta de Pitahaya" data-img="assets/pineapple-icecream.png" data-short="Exótico color magenta." data-desc="Elaborada con jugo fresco de Pitahaya." data-i18n-attr="data-title:products.pal_pitahaya.title,data-short:products.pal_pitahaya.short,data-desc:products.pal_pitahaya.desc">
-                <div class="card-img"><img src="assets/pineapple-icecream.png" alt="Paleta de Pitahaya"></div>
-                <h4 data-i18n="products.pal_pitahaya.title">Paleta de Pitahaya</h4>
-                <p data-i18n="products.pal_pitahaya.short">Exótico color magenta.</p>
-            </div>
-            <div class="product-card" data-id="pal_mamey" data-price="25" data-title="Paleta de Mamey" data-img="assets/slide01-08.png" data-short="La maravilla cremosa y yucateca." data-desc="Pulpa dulce molida ligeramente para un toque de textura." data-i18n-attr="data-title:products.pal_mamey.title,data-short:products.pal_mamey.short,data-desc:products.pal_mamey.desc">
-                <div class="card-img"><img src="assets/slide01-08.png" alt="Paleta de Mamey"></div>
-                <h4 data-i18n="products.pal_mamey.title">Paleta de Mamey</h4>
-                <p data-i18n="products.pal_mamey.short">La maravilla cremosa y yucateca.</p>
-            </div>
-            <div class="product-card" data-id="pal_pina" data-price="25" data-title="Paleta de Piña" data-img="assets/autumn.png" data-short="Agua de piña congelada y deliciosa." data-desc="Sensación tropical para comer en cualquier parte." data-i18n-attr="data-title:products.pal_pina.title,data-short:products.pal_pina.short,data-desc:products.pal_pina.desc">
-                <div class="card-img"><img src="assets/autumn.png" alt="Paleta de Piña"></div>
-                <h4 data-i18n="products.pal_pina.title">Paleta de Piña</h4>
-                <p data-i18n="products.pal_pina.short">Agua de piña congelada y deliciosa.</p>
-            </div>
-            <div class="product-card" data-id="pal_sandia" data-price="25" data-title="Paleta de Sandia" data-img="assets/strawberry-milkshake.png" data-short="Jugo refrescante extra fresco." data-desc="Se siente como morder la sandia recién picada bien fría." data-i18n-attr="data-title:products.pal_sandia.title,data-short:products.pal_sandia.short,data-desc:products.pal_sandia.desc">
-                <div class="card-img"><img src="assets/strawberry-milkshake.png" alt="Paleta de Sandia"></div>
-                <h4 data-i18n="products.pal_sandia.title">Paleta de Sandia</h4>
-                <p data-i18n="products.pal_sandia.short">Jugo refrescante extra fresco.</p>
-            </div>
+                <div class="product-card" data-id="pal_fresa" data-price="25" data-title="Paleta de Fresa"
+                    data-img="assets/spring.png" data-short="Trozos naturales de fresa pura."
+                    data-desc="Elaborada a base de agua con trozos reales de fresas frescas cosechadas esta temporada. Ligera, dulce y súper refrescante."
+                    data-i18n-attr="data-title:products.pal_fresa.title,data-short:products.pal_fresa.short,data-desc:products.pal_fresa.desc">
+                    <div class="card-img"><img src="assets/spring.png" alt="Paleta de Fresa"></div>
+                    <h4 data-i18n="products.pal_fresa.title">Paleta de Fresa</h4>
+                    <p data-i18n="products.pal_fresa.short">Trozos naturales de fresa pura.</p>
+                </div>
+                <div class="product-card" data-id="pal_mango" data-price="25" data-title="Paleta de Mango"
+                    data-img="assets/summer.png" data-short="Directo del árbol y muy refrescante."
+                    data-desc="La reina de los trópicos hecha paleta. Consistencia suave gracias a la pulpa dulce y jugosa del mejor mango."
+                    data-i18n-attr="data-title:products.pal_mango.title,data-short:products.pal_mango.short,data-desc:products.pal_mango.desc">
+                    <div class="card-img"><img src="assets/summer.png" alt="Paleta de Mango"></div>
+                    <h4 data-i18n="products.pal_mango.title">Paleta de Mango</h4>
+                    <p data-i18n="products.pal_mango.short">Directo del árbol y muy refrescante.</p>
+                </div>
+                <div class="product-card" data-id="pal_coco" data-price="25" data-title="Paleta de Coco"
+                    data-img="assets/pineapple-icecream.png" data-short="De leche, con exquisita ralladura."
+                    data-desc="Base láctea muy cremosa con auténtica ralladura de dulce de coco. Un agasajo sureño."
+                    data-i18n-attr="data-title:products.pal_coco.title,data-short:products.pal_coco.short,data-desc:products.pal_coco.desc">
+                    <div class="card-img"><img src="assets/pineapple-icecream.png" alt="Paleta de Coco"></div>
+                    <h4 data-i18n="products.pal_coco.title">Paleta de Coco</h4>
+                    <p data-i18n="products.pal_coco.short">De leche, con exquisita ralladura.</p>
+                </div>
+                <div class="product-card" data-id="pal_limon" data-price="25" data-title="Paleta de Limón"
+                    data-img="assets/slide01-08.png" data-short="El mejor remedio para el calor."
+                    data-desc="Sencilla, pura y refrescante. Jugo de limón recién exprimido."
+                    data-i18n-attr="data-title:products.pal_limon.title,data-short:products.pal_limon.short,data-desc:products.pal_limon.desc">
+                    <div class="card-img"><img src="assets/slide01-08.png" alt="Paleta de Limón"></div>
+                    <h4 data-i18n="products.pal_limon.title">Paleta de Limón</h4>
+                    <p data-i18n="products.pal_limon.short">El mejor remedio para el calor.</p>
+                </div>
+                <div class="product-card" data-id="pal_chocolate" data-price="25" data-title="Paleta de Chocolate"
+                    data-img="assets/strawberry-milkshake.png" data-short="Crema de leche y cacao local."
+                    data-desc="Chocolate semi-amargo en base de crema y leche entera."
+                    data-i18n-attr="data-title:products.pal_chocolate.title,data-short:products.pal_chocolate.short,data-desc:products.pal_chocolate.desc">
+                    <div class="card-img"><img src="assets/strawberry-milkshake.png" alt="Paleta de Chocolate"></div>
+                    <h4 data-i18n="products.pal_chocolate.title">Paleta de Chocolate</h4>
+                    <p data-i18n="products.pal_chocolate.short">Crema de leche y cacao local.</p>
+                </div>
+                <div class="product-card" data-id="pal_tamarindo" data-price="25" data-title="Paleta de Tamarindo"
+                    data-img="assets/autumn.png" data-short="Riquísima y con ese punto ácido."
+                    data-desc="Pulpa concentrada de tamarindo natural hervido."
+                    data-i18n-attr="data-title:products.pal_tamarindo.title,data-short:products.pal_tamarindo.short,data-desc:products.pal_tamarindo.desc">
+                    <div class="card-img"><img src="assets/autumn.png" alt="Paleta de Tamarindo"></div>
+                    <h4 data-i18n="products.pal_tamarindo.title">Paleta de Tamarindo</h4>
+                    <p data-i18n="products.pal_tamarindo.short">Riquísima y con ese punto ácido.</p>
+                </div>
+                <div class="product-card" data-id="pal_nuez" data-price="25" data-title="Paleta de Nuez"
+                    data-img="assets/summer.png" data-short="Crujiente base cremosa."
+                    data-desc="Receta cremosa casera con trocitos incrustados de nuez fina."
+                    data-i18n-attr="data-title:products.pal_nuez.title,data-short:products.pal_nuez.short,data-desc:products.pal_nuez.desc">
+                    <div class="card-img"><img src="assets/summer.png" alt="Paleta de Nuez"></div>
+                    <h4 data-i18n="products.pal_nuez.title">Paleta de Nuez</h4>
+                    <p data-i18n="products.pal_nuez.short">Crujiente base cremosa.</p>
+                </div>
+                <div class="product-card" data-id="pal_vainilla" data-price="25" data-title="Paleta de Vainilla"
+                    data-img="assets/spring.png" data-short="Una delicia suave que nunca falla."
+                    data-desc="Dulce, de color amarillito pálido y con puro extracto natural."
+                    data-i18n-attr="data-title:products.pal_vainilla.title,data-short:products.pal_vainilla.short,data-desc:products.pal_vainilla.desc">
+                    <div class="card-img"><img src="assets/spring.png" alt="Paleta de Vainilla"></div>
+                    <h4 data-i18n="products.pal_vainilla.title">Paleta de Vainilla</h4>
+                    <p data-i18n="products.pal_vainilla.short">Una delicia suave que nunca falla.</p>
+                </div>
+                <div class="product-card" data-id="pal_pitahaya" data-price="25" data-title="Paleta de Pitahaya"
+                    data-img="assets/pineapple-icecream.png" data-short="Exótico color magenta."
+                    data-desc="Elaborada con jugo fresco de Pitahaya."
+                    data-i18n-attr="data-title:products.pal_pitahaya.title,data-short:products.pal_pitahaya.short,data-desc:products.pal_pitahaya.desc">
+                    <div class="card-img"><img src="assets/pineapple-icecream.png" alt="Paleta de Pitahaya"></div>
+                    <h4 data-i18n="products.pal_pitahaya.title">Paleta de Pitahaya</h4>
+                    <p data-i18n="products.pal_pitahaya.short">Exótico color magenta.</p>
+                </div>
+                <div class="product-card" data-id="pal_mamey" data-price="25" data-title="Paleta de Mamey"
+                    data-img="assets/slide01-08.png" data-short="La maravilla cremosa y yucateca."
+                    data-desc="Pulpa dulce molida ligeramente para un toque de textura."
+                    data-i18n-attr="data-title:products.pal_mamey.title,data-short:products.pal_mamey.short,data-desc:products.pal_mamey.desc">
+                    <div class="card-img"><img src="assets/slide01-08.png" alt="Paleta de Mamey"></div>
+                    <h4 data-i18n="products.pal_mamey.title">Paleta de Mamey</h4>
+                    <p data-i18n="products.pal_mamey.short">La maravilla cremosa y yucateca.</p>
+                </div>
+                <div class="product-card" data-id="pal_pina" data-price="25" data-title="Paleta de Piña"
+                    data-img="assets/autumn.png" data-short="Agua de piña congelada y deliciosa."
+                    data-desc="Sensación tropical para comer en cualquier parte."
+                    data-i18n-attr="data-title:products.pal_pina.title,data-short:products.pal_pina.short,data-desc:products.pal_pina.desc">
+                    <div class="card-img"><img src="assets/autumn.png" alt="Paleta de Piña"></div>
+                    <h4 data-i18n="products.pal_pina.title">Paleta de Piña</h4>
+                    <p data-i18n="products.pal_pina.short">Agua de piña congelada y deliciosa.</p>
+                </div>
+                <div class="product-card" data-id="pal_sandia" data-price="25" data-title="Paleta de Sandia"
+                    data-img="assets/strawberry-milkshake.png" data-short="Jugo refrescante extra fresco."
+                    data-desc="Se siente como morder la sandia recién picada bien fría."
+                    data-i18n-attr="data-title:products.pal_sandia.title,data-short:products.pal_sandia.short,data-desc:products.pal_sandia.desc">
+                    <div class="card-img"><img src="assets/strawberry-milkshake.png" alt="Paleta de Sandia"></div>
+                    <h4 data-i18n="products.pal_sandia.title">Paleta de Sandia</h4>
+                    <p data-i18n="products.pal_sandia.short">Jugo refrescante extra fresco.</p>
+                </div>
 
-            <!-- Extra 14 Cards for "Ver todos" -->
-            <div class="product-card extra-card" data-id="pal_chamoyada" data-price="25" data-title="Paleta de Chamoyada" data-img="assets/summer.png" data-short="Con chilito y chamoy en el centro." data-desc="Fabulosa paleta congelada con cubierta de hielo de chamoy." data-i18n-attr="data-title:products.pal_chamoyada.title,data-short:products.pal_chamoyada.short,data-desc:products.pal_chamoyada.desc">
-                <div class="card-img"><img src="assets/summer.png" alt="Chamoyada"></div>
-                <h4 data-i18n="products.pal_chamoyada.title">Paleta Chamoyada</h4>
-                <p data-i18n="products.pal_chamoyada.short">Con chilito y chamoy en el centro.</p>
+                <!-- Extra 14 Cards for "Ver todos" -->
+                <div class="product-card extra-card" data-id="pal_chamoyada" data-price="25"
+                    data-title="Paleta de Chamoyada" data-img="assets/summer.png"
+                    data-short="Con chilito y chamoy en el centro."
+                    data-desc="Fabulosa paleta congelada con cubierta de hielo de chamoy."
+                    data-i18n-attr="data-title:products.pal_chamoyada.title,data-short:products.pal_chamoyada.short,data-desc:products.pal_chamoyada.desc">
+                    <div class="card-img"><img src="assets/summer.png" alt="Chamoyada"></div>
+                    <h4 data-i18n="products.pal_chamoyada.title">Paleta Chamoyada</h4>
+                    <p data-i18n="products.pal_chamoyada.short">Con chilito y chamoy en el centro.</p>
+                </div>
+                <div class="product-card extra-card" data-id="pal_uva" data-price="25" data-title="Paleta de Uva"
+                    data-img="assets/spring.png" data-short="Refrescante y sutilmente dulce."
+                    data-desc="Paleta de agua con extracto real de uva, perfecta para purificar el paladar en un día caluroso."
+                    data-i18n-attr="data-title:products.pal_uva.title,data-short:products.pal_uva.short,data-desc:products.pal_uva.desc">
+                    <div class="card-img"><img src="assets/spring.png" alt="Paleta de Uva"></div>
+                    <h4 data-i18n="products.pal_uva.title">Paleta de Uva</h4>
+                    <p data-i18n="products.pal_uva.short">Refrescante y sutilmente dulce.</p>
+                </div>
+                <div class="product-card extra-card" data-id="pal_naranja" data-price="25"
+                    data-title="Paleta de Naranja" data-img="assets/slide01-08.png"
+                    data-short="Vitamina C en formato golosina."
+                    data-desc="Exprimimos la naranja yucateca para congelarla. Super natural."
+                    data-i18n-attr="data-title:products.pal_naranja.title,data-short:products.pal_naranja.short,data-desc:products.pal_naranja.desc">
+                    <div class="card-img"><img src="assets/slide01-08.png" alt="Paleta de Naranja"></div>
+                    <h4 data-i18n="products.pal_naranja.title">Paleta de Naranja</h4>
+                    <p data-i18n="products.pal_naranja.short">Vitamina C en formato golosina.</p>
+                </div>
+                <div class="product-card extra-card" data-id="pal_zarzamora" data-price="25"
+                    data-title="Paleta de Zarzamora" data-img="assets/strawberry-milkshake.png"
+                    data-short="Sabor a pequeños frutos del bosque."
+                    data-desc="Una paleta frutal y vibrante hecha con trozos y esencia natural de zarzamora."
+                    data-i18n-attr="data-title:products.pal_zarzamora.title,data-short:products.pal_zarzamora.short,data-desc:products.pal_zarzamora.desc">
+                    <div class="card-img"><img src="assets/strawberry-milkshake.png" alt="Paleta de Zarzamora"></div>
+                    <h4 data-i18n="products.pal_zarzamora.title">Paleta de Zarzamora</h4>
+                    <p data-i18n="products.pal_zarzamora.short">Sabor a pequeños frutos del bosque.</p>
+                </div>
+                <div class="product-card extra-card" data-id="pal_queso_zarzamora" data-price="25"
+                    data-title="Paleta de Queso con Zarzamora" data-img="assets/autumn.png"
+                    data-short="La combinación magistral."
+                    data-desc="Mitad sabor pastel de queso y mitad explosión de frutos rojos."
+                    data-i18n-attr="data-title:products.pal_queso_zarzamora.title,data-short:products.pal_queso_zarzamora.short,data-desc:products.pal_queso_zarzamora.desc">
+                    <div class="card-img"><img src="assets/autumn.png" alt="Paleta de Queso con Zarzamora"></div>
+                    <h4 data-i18n="products.pal_queso_zarzamora.title">Paleta Queso-Zarzamora</h4>
+                    <p data-i18n="products.pal_queso_zarzamora.short">La combinación magistral.</p>
+                </div>
+                <div class="product-card extra-card" data-id="pal_rompope" data-price="25"
+                    data-title="Paleta de Rompope" data-img="assets/pineapple-icecream.png"
+                    data-short="Con el toque de la abuela."
+                    data-desc="Directamente de la tradicional cantimplora de rompope y convertida en una paleta densa y cremosa."
+                    data-i18n-attr="data-title:products.pal_rompope.title,data-short:products.pal_rompope.short,data-desc:products.pal_rompope.desc">
+                    <div class="card-img"><img src="assets/pineapple-icecream.png" alt="Paleta de Rompope"></div>
+                    <h4 data-i18n="products.pal_rompope.title">Paleta de Rompope</h4>
+                    <p data-i18n="products.pal_rompope.short">Con el toque de la abuela.</p>
+                </div>
+                <div class="product-card extra-card" data-id="pal_chicle" data-price="25" data-title="Paleta de Chicle"
+                    data-img="assets/summer.png" data-short="Colores irreales y gran sabor."
+                    data-desc="Las favoritas de la casa para los más pequeños, una fiesta en tu boca."
+                    data-i18n-attr="data-title:products.pal_chicle.title,data-short:products.pal_chicle.short,data-desc:products.pal_chicle.desc">
+                    <div class="card-img"><img src="assets/summer.png" alt="Paleta de Chicle"></div>
+                    <h4 data-i18n="products.pal_chicle.title">Paleta de Chicle</h4>
+                    <p data-i18n="products.pal_chicle.short">Colores irreales y gran sabor.</p>
+                </div>
+                <div class="product-card extra-card" data-id="pal_guayaba" data-price="25"
+                    data-title="Paleta de Guayaba" data-img="assets/spring.png"
+                    data-short="El dulce aroma frutal definitivo."
+                    data-desc="Receta basada en la dulce fruta de temporada. Te transporta de inmediato."
+                    data-i18n-attr="data-title:products.pal_guayaba.title,data-short:products.pal_guayaba.short,data-desc:products.pal_guayaba.desc">
+                    <div class="card-img"><img src="assets/spring.png" alt="Paleta de Guayaba"></div>
+                    <h4 data-i18n="products.pal_guayaba.title">Paleta de Guayaba</h4>
+                    <p data-i18n="products.pal_guayaba.short">El dulce aroma frutal definitivo.</p>
+                </div>
+                <div class="product-card extra-card" data-id="pal_esquisita" data-price="25"
+                    data-title="Paleta Esquisita" data-img="assets/slide01-08.png"
+                    data-short="Nuestro sabor secreto premium."
+                    data-desc="Una receta confidencial de base láctea y ligeros trozos dorados. Tienes que probarla."
+                    data-i18n-attr="data-title:products.pal_esquisita.title,data-short:products.pal_esquisita.short,data-desc:products.pal_esquisita.desc">
+                    <div class="card-img"><img src="assets/slide01-08.png" alt="Paleta Esquisita"></div>
+                    <h4 data-i18n="products.pal_esquisita.title">Paleta Esquisita</h4>
+                    <p data-i18n="products.pal_esquisita.short">Nuestro sabor secreto premium.</p>
+                </div>
+                <div class="product-card extra-card" data-id="pal_fresa_leche" data-price="25"
+                    data-title="Paleta de Fresa de Leche" data-img="assets/strawberry-milkshake.png"
+                    data-short="Con dulce crema de rancho." data-desc="La variación láctea de nuestro icono frutal."
+                    data-i18n-attr="data-title:products.pal_fresa_leche.title,data-short:products.pal_fresa_leche.short,data-desc:products.pal_fresa_leche.desc">
+                    <div class="card-img"><img src="assets/strawberry-milkshake.png" alt="Paleta de Fresa de Leche">
+                    </div>
+                    <h4 data-i18n="products.pal_fresa_leche.title">Paleta Fresa de Leche</h4>
+                    <p data-i18n="products.pal_fresa_leche.short">Con dulce crema de rancho.</p>
+                </div>
+                <div class="product-card extra-card" data-id="pal_almendra" data-price="25"
+                    data-title="Paleta de Almendra" data-img="assets/autumn.png" data-short="Crujencia en crema base."
+                    data-desc="Dulces notas a frutos secos con suave y cremosa leche entera."
+                    data-i18n-attr="data-title:products.pal_almendra.title,data-short:products.pal_almendra.short,data-desc:products.pal_almendra.desc">
+                    <div class="card-img"><img src="assets/autumn.png" alt="Paleta de Almendra"></div>
+                    <h4 data-i18n="products.pal_almendra.title">Paleta de Almendra</h4>
+                    <p data-i18n="products.pal_almendra.short">Crujencia en crema base.</p>
+                </div>
+                <div class="product-card extra-card" data-id="pal_papaya" data-price="25" data-title="Paleta de Papaya"
+                    data-img="assets/pineapple-icecream.png" data-short="Rara pero absolutamente genial."
+                    data-desc="Aprovechando la dulce papaya maradol regional para un bocado tropical y excelente."
+                    data-i18n-attr="data-title:products.pal_papaya.title,data-short:products.pal_papaya.short,data-desc:products.pal_papaya.desc">
+                    <div class="card-img"><img src="assets/pineapple-icecream.png" alt="Paleta de Papaya"></div>
+                    <h4 data-i18n="products.pal_papaya.title">Paleta de Papaya</h4>
+                    <p data-i18n="products.pal_papaya.short">Rara pero absolutamente genial.</p>
+                </div>
+                <div class="product-card extra-card" data-id="pal_cafe" data-price="25" data-title="Paleta de Café"
+                    data-img="assets/spring.png" data-short="Un espresso que se mastica."
+                    data-desc="Revitaliza tu día con nuestra deliciosa mezcla cremosa infundida en café molido y tostado en leña."
+                    data-i18n-attr="data-title:products.pal_cafe.title,data-short:products.pal_cafe.short,data-desc:products.pal_cafe.desc">
+                    <div class="card-img"><img src="assets/spring.png" alt="Paleta de Café"></div>
+                    <h4 data-i18n="products.pal_cafe.title">Paleta de Café</h4>
+                    <p data-i18n="products.pal_cafe.short">Un espresso que se mastica.</p>
+                </div>
+                <div class="product-card extra-card" data-id="pal_melon" data-price="25" data-title="Paleta de Melon"
+                    data-img="assets/summer.png" data-short="Agua de melón helada al 100%."
+                    data-desc="Simplemente mágica. Un solo bocado y te olvidarás que afuera hay 40 grados."
+                    data-i18n-attr="data-title:products.pal_melon.title,data-short:products.pal_melon.short,data-desc:products.pal_melon.desc">
+                    <div class="card-img"><img src="assets/summer.png" alt="Paleta de Melon"></div>
+                    <h4 data-i18n="products.pal_melon.title">Paleta de Melon</h4>
+                    <p data-i18n="products.pal_melon.short">Agua de melón helada al 100%.</p>
+                </div>
             </div>
-            <div class="product-card extra-card" data-id="pal_uva" data-price="25" data-title="Paleta de Uva" data-img="assets/spring.png" data-short="Refrescante y sutilmente dulce." data-desc="Paleta de agua con extracto real de uva, perfecta para purificar el paladar en un día caluroso." data-i18n-attr="data-title:products.pal_uva.title,data-short:products.pal_uva.short,data-desc:products.pal_uva.desc">
-                <div class="card-img"><img src="assets/spring.png" alt="Paleta de Uva"></div>
-                <h4 data-i18n="products.pal_uva.title">Paleta de Uva</h4>
-                <p data-i18n="products.pal_uva.short">Refrescante y sutilmente dulce.</p>
-            </div>
-            <div class="product-card extra-card" data-id="pal_naranja" data-price="25" data-title="Paleta de Naranja" data-img="assets/slide01-08.png" data-short="Vitamina C en formato golosina." data-desc="Exprimimos la naranja yucateca para congelarla. Super natural." data-i18n-attr="data-title:products.pal_naranja.title,data-short:products.pal_naranja.short,data-desc:products.pal_naranja.desc">
-                <div class="card-img"><img src="assets/slide01-08.png" alt="Paleta de Naranja"></div>
-                <h4 data-i18n="products.pal_naranja.title">Paleta de Naranja</h4>
-                <p data-i18n="products.pal_naranja.short">Vitamina C en formato golosina.</p>
-            </div>
-            <div class="product-card extra-card" data-id="pal_zarzamora" data-price="25" data-title="Paleta de Zarzamora" data-img="assets/strawberry-milkshake.png" data-short="Sabor a pequeños frutos del bosque." data-desc="Una paleta frutal y vibrante hecha con trozos y esencia natural de zarzamora." data-i18n-attr="data-title:products.pal_zarzamora.title,data-short:products.pal_zarzamora.short,data-desc:products.pal_zarzamora.desc">
-                <div class="card-img"><img src="assets/strawberry-milkshake.png" alt="Paleta de Zarzamora"></div>
-                <h4 data-i18n="products.pal_zarzamora.title">Paleta de Zarzamora</h4>
-                <p data-i18n="products.pal_zarzamora.short">Sabor a pequeños frutos del bosque.</p>
-            </div>
-            <div class="product-card extra-card" data-id="pal_queso_zarzamora" data-price="25" data-title="Paleta de Queso con Zarzamora" data-img="assets/autumn.png" data-short="La combinación magistral." data-desc="Mitad sabor pastel de queso y mitad explosión de frutos rojos." data-i18n-attr="data-title:products.pal_queso_zarzamora.title,data-short:products.pal_queso_zarzamora.short,data-desc:products.pal_queso_zarzamora.desc">
-                <div class="card-img"><img src="assets/autumn.png" alt="Paleta de Queso con Zarzamora"></div>
-                <h4 data-i18n="products.pal_queso_zarzamora.title">Paleta Queso-Zarzamora</h4>
-                <p data-i18n="products.pal_queso_zarzamora.short">La combinación magistral.</p>
-            </div>
-            <div class="product-card extra-card" data-id="pal_rompope" data-price="25" data-title="Paleta de Rompope" data-img="assets/pineapple-icecream.png" data-short="Con el toque de la abuela." data-desc="Directamente de la tradicional cantimplora de rompope y convertida en una paleta densa y cremosa." data-i18n-attr="data-title:products.pal_rompope.title,data-short:products.pal_rompope.short,data-desc:products.pal_rompope.desc">
-                <div class="card-img"><img src="assets/pineapple-icecream.png" alt="Paleta de Rompope"></div>
-                <h4 data-i18n="products.pal_rompope.title">Paleta de Rompope</h4>
-                <p data-i18n="products.pal_rompope.short">Con el toque de la abuela.</p>
-            </div>
-            <div class="product-card extra-card" data-id="pal_chicle" data-price="25" data-title="Paleta de Chicle" data-img="assets/summer.png" data-short="Colores irreales y gran sabor." data-desc="Las favoritas de la casa para los más pequeños, una fiesta en tu boca." data-i18n-attr="data-title:products.pal_chicle.title,data-short:products.pal_chicle.short,data-desc:products.pal_chicle.desc">
-                <div class="card-img"><img src="assets/summer.png" alt="Paleta de Chicle"></div>
-                <h4 data-i18n="products.pal_chicle.title">Paleta de Chicle</h4>
-                <p data-i18n="products.pal_chicle.short">Colores irreales y gran sabor.</p>
-            </div>
-            <div class="product-card extra-card" data-id="pal_guayaba" data-price="25" data-title="Paleta de Guayaba" data-img="assets/spring.png" data-short="El dulce aroma frutal definitivo." data-desc="Receta basada en la dulce fruta de temporada. Te transporta de inmediato." data-i18n-attr="data-title:products.pal_guayaba.title,data-short:products.pal_guayaba.short,data-desc:products.pal_guayaba.desc">
-                <div class="card-img"><img src="assets/spring.png" alt="Paleta de Guayaba"></div>
-                <h4 data-i18n="products.pal_guayaba.title">Paleta de Guayaba</h4>
-                <p data-i18n="products.pal_guayaba.short">El dulce aroma frutal definitivo.</p>
-            </div>
-            <div class="product-card extra-card" data-id="pal_esquisita" data-price="25" data-title="Paleta Esquisita" data-img="assets/slide01-08.png" data-short="Nuestro sabor secreto premium." data-desc="Una receta confidencial de base láctea y ligeros trozos dorados. Tienes que probarla." data-i18n-attr="data-title:products.pal_esquisita.title,data-short:products.pal_esquisita.short,data-desc:products.pal_esquisita.desc">
-                <div class="card-img"><img src="assets/slide01-08.png" alt="Paleta Esquisita"></div>
-                <h4 data-i18n="products.pal_esquisita.title">Paleta Esquisita</h4>
-                <p data-i18n="products.pal_esquisita.short">Nuestro sabor secreto premium.</p>
-            </div>
-            <div class="product-card extra-card" data-id="pal_fresa_leche" data-price="25" data-title="Paleta de Fresa de Leche" data-img="assets/strawberry-milkshake.png" data-short="Con dulce crema de rancho." data-desc="La variación láctea de nuestro icono frutal." data-i18n-attr="data-title:products.pal_fresa_leche.title,data-short:products.pal_fresa_leche.short,data-desc:products.pal_fresa_leche.desc">
-                <div class="card-img"><img src="assets/strawberry-milkshake.png" alt="Paleta de Fresa de Leche"></div>
-                <h4 data-i18n="products.pal_fresa_leche.title">Paleta Fresa de Leche</h4>
-                <p data-i18n="products.pal_fresa_leche.short">Con dulce crema de rancho.</p>
-            </div>
-            <div class="product-card extra-card" data-id="pal_almendra" data-price="25" data-title="Paleta de Almendra" data-img="assets/autumn.png" data-short="Crujencia en crema base." data-desc="Dulces notas a frutos secos con suave y cremosa leche entera." data-i18n-attr="data-title:products.pal_almendra.title,data-short:products.pal_almendra.short,data-desc:products.pal_almendra.desc">
-                <div class="card-img"><img src="assets/autumn.png" alt="Paleta de Almendra"></div>
-                <h4 data-i18n="products.pal_almendra.title">Paleta de Almendra</h4>
-                <p data-i18n="products.pal_almendra.short">Crujencia en crema base.</p>
-            </div>
-            <div class="product-card extra-card" data-id="pal_papaya" data-price="25" data-title="Paleta de Papaya" data-img="assets/pineapple-icecream.png" data-short="Rara pero absolutamente genial." data-desc="Aprovechando la dulce papaya maradol regional para un bocado tropical y excelente." data-i18n-attr="data-title:products.pal_papaya.title,data-short:products.pal_papaya.short,data-desc:products.pal_papaya.desc">
-                <div class="card-img"><img src="assets/pineapple-icecream.png" alt="Paleta de Papaya"></div>
-                <h4 data-i18n="products.pal_papaya.title">Paleta de Papaya</h4>
-                <p data-i18n="products.pal_papaya.short">Rara pero absolutamente genial.</p>
-            </div>
-            <div class="product-card extra-card" data-id="pal_cafe" data-price="25" data-title="Paleta de Café" data-img="assets/spring.png" data-short="Un espresso que se mastica." data-desc="Revitaliza tu día con nuestra deliciosa mezcla cremosa infundida en café molido y tostado en leña." data-i18n-attr="data-title:products.pal_cafe.title,data-short:products.pal_cafe.short,data-desc:products.pal_cafe.desc">
-                <div class="card-img"><img src="assets/spring.png" alt="Paleta de Café"></div>
-                <h4 data-i18n="products.pal_cafe.title">Paleta de Café</h4>
-                <p data-i18n="products.pal_cafe.short">Un espresso que se mastica.</p>
-            </div>
-            <div class="product-card extra-card" data-id="pal_melon" data-price="25" data-title="Paleta de Melon" data-img="assets/summer.png" data-short="Agua de melón helada al 100%." data-desc="Simplemente mágica. Un solo bocado y te olvidarás que afuera hay 40 grados." data-i18n-attr="data-title:products.pal_melon.title,data-short:products.pal_melon.short,data-desc:products.pal_melon.desc">
-                <div class="card-img"><img src="assets/summer.png" alt="Paleta de Melon"></div>
-                <h4 data-i18n="products.pal_melon.title">Paleta de Melon</h4>
-                <p data-i18n="products.pal_melon.short">Agua de melón helada al 100%.</p>
-            </div>
-        </div>
             <div class="view-links-container" style="text-align: center; margin-top: 60px;">
-                <a href="#" class="view-all-link" data-i18n="products.view_all_paletas">Ver todas las paletas <span>&rarr;</span></a>
-                <a href="#" class="hide-all-link" style="display: none;" data-i18n="products.view_less_paletas">Ver menos paletas <span>&uarr;</span></a>
+                <a href="#" class="view-all-link" data-i18n="products.view_all_paletas">Ver todas las paletas
+                    <span>&rarr;</span></a>
+                <a href="#" class="hide-all-link" style="display: none;" data-i18n="products.view_less_paletas">Ver
+                    menos paletas <span>&uarr;</span></a>
             </div>
         </div>
     </section>
@@ -404,22 +594,34 @@
                     <img id="modal-img" src="" alt="Producto">
                 </div>
                 <div class="modal-info">
-                    <h3 id="modal-title" class="gold-text" style="color: var(--logo-brown); font-size: 2rem; margin-bottom: 5px;"></h3>
-                    <div class="gold-line" style="margin: 10px 0 20px 0; width: 60px; height: 3px; background: var(--logo-orange);"></div>
+                    <h3 id="modal-title" class="gold-text"
+                        style="color: var(--logo-brown); font-size: 2rem; margin-bottom: 5px;"></h3>
+                    <div class="gold-line"
+                        style="margin: 10px 0 20px 0; width: 60px; height: 3px; background: var(--logo-orange);"></div>
                     <p id="modal-desc" class="modal-description"></p>
-                    <div style="display: flex; justify-content: space-between; align-items: center; gap: 20px; margin-bottom: 25px; background: rgba(242, 150, 63, 0.05); padding: 15px; border-radius: 12px;">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; gap: 20px; margin-bottom: 25px; background: rgba(242, 150, 63, 0.05); padding: 15px; border-radius: 12px;">
                         <div class="modal-price-tag" style="margin-bottom: 0; padding: 0; background: none;">
                             <span class="price-label" data-i18n="modal.price">Precio:</span>
                             <span id="modal-price" class="price-value"></span>
                         </div>
-                        <div class="modal-quantity" style="display: flex; align-items: center; gap: 10px; margin-bottom: 0;">
-                            <label for="product-quantity" style="color: var(--text-dark); font-weight: 600;" data-i18n="modal.quantity">Cantidad:</label>
-                            <input type="number" id="product-quantity" value="1" min="1" max="100" style="width: 60px; padding: 8px; border: 1px solid #ddd; border-radius: 10px; font-family: inherit; font-size: 1rem; text-align: center;">
+                        <div class="modal-quantity"
+                            style="display: flex; align-items: center; gap: 10px; margin-bottom: 0;">
+                            <label for="product-quantity" style="color: var(--text-dark); font-weight: 600;"
+                                data-i18n="modal.quantity">Cantidad:</label>
+                            <input type="number" id="product-quantity" value="1" min="1" max="100"
+                                style="width: 60px; padding: 8px; border: 1px solid #ddd; border-radius: 10px; font-family: inherit; font-size: 1rem; text-align: center;">
                         </div>
                     </div>
                     <div class="modal-actions">
-                        <button id="add-to-cart-btn" class="btn-secondary" style="display: flex; align-items: center; justify-content: center; background-color: var(--logo-brown); color: white; padding: 15px 30px; border-radius: 30px; font-weight: 600; cursor: pointer; border: none; transition: var(--transition); width: 100%; height: 55px;">
-                            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                        <button id="add-to-cart-btn" class="btn-secondary"
+                            style="display: flex; align-items: center; justify-content: center; background-color: var(--logo-brown); color: white; padding: 15px 30px; border-radius: 30px; font-weight: 600; cursor: pointer; border: none; transition: var(--transition); width: 100%; height: 55px;">
+                            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg>
                             <span data-i18n="modal.add_to_cart">Agregar al carrito</span>
                         </button>
                     </div>
@@ -447,7 +649,8 @@
                     style="display: none; border-top: 2px dashed #eee; padding-top: 10px;">
                     <div
                         style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-                        <h3 style="margin: 0; color: var(--text-dark); font-size: 1.2rem;" data-i18n="cart.total">Total:</h3>
+                        <h3 style="margin: 0; color: var(--text-dark); font-size: 1.2rem;" data-i18n="cart.total">Total:
+                        </h3>
                         <span id="cart-total-price"
                             style="font-size: 1.6rem; font-weight: 700; color: var(--logo-orange);">$0.00</span>
                     </div>
@@ -456,22 +659,27 @@
                     <div id="shipping-section" class="shipping-section">
                         <div class="shipping-header">
                             <span class="shipping-title" data-i18n="cart.shipping_title">Envío</span>
-                            <p class="shipping-legend" data-i18n="cart.shipping_legend">Nota: El costo del envío varía según la ubicación.</p>
+                            <p class="shipping-legend" data-i18n="cart.shipping_legend">Nota: El costo del envío varía
+                                según la ubicación.</p>
                         </div>
                         <div class="address-container">
-                            <textarea id="address-input" placeholder="Escribe tu dirección..." 
+                            <textarea id="address-input" placeholder="Escribe tu dirección..."
                                 data-i18n="cart.address_placeholder" rows="2"></textarea>
-                            
-                            <div class="location-buttons" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+
+                            <div class="location-buttons"
+                                style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
                                 <button id="get-location-btn" class="btn-location">
-                                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor"
+                                        stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                                         <circle cx="12" cy="10" r="3"></circle>
                                     </svg>
-                                    <span data-i18n="cart.use_location" style="font-size: 0.8rem;">Ubicación Actual</span>
+                                    <span data-i18n="cart.use_location" style="font-size: 0.8rem;">Ubicación
+                                        Actual</span>
                                 </button>
                                 <button id="pick-map-btn" class="btn-location">
-                                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor"
+                                        stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon>
                                         <line x1="8" y1="2" x2="8" y2="18"></line>
                                         <line x1="16" y1="6" x2="16" y2="22"></line>
@@ -480,12 +688,17 @@
                                 </button>
                             </div>
 
-                            <div id="cart-map-preview" style="height: 120px; width: 100%; margin-top: 15px; border-radius: 12px; border: 1px solid #ddd; display: none; overflow: hidden;"></div>
+                            <div id="cart-map-preview"
+                                style="height: 120px; width: 100%; margin-top: 15px; border-radius: 12px; border: 1px solid #ddd; display: none; overflow: hidden;">
+                            </div>
 
                             <div class="references-section" style="margin-top: 10px;">
-                                <label style="font-size: 0.85rem; font-weight: 600; color: var(--logo-brown); margin-bottom: 5px; display: block;" data-i18n="cart.references_label">Referencias (Opcional)</label>
-                                <textarea id="references-input" placeholder="Fachada roja, entre calles..." 
-                                    data-i18n="cart.references_placeholder" rows="2" style="width: 100%; padding: 10px; border-radius: 12px; border: 1px solid #ddd; font-family: inherit; font-size: 0.85rem; resize: none;"></textarea>
+                                <label
+                                    style="font-size: 0.85rem; font-weight: 600; color: var(--logo-brown); margin-bottom: 5px; display: block;"
+                                    data-i18n="cart.references_label">Referencias (Opcional)</label>
+                                <textarea id="references-input" placeholder="Fachada roja, negocio cercano..."
+                                    data-i18n="cart.references_placeholder" rows="2"
+                                    style="width: 100%; padding: 10px; border-radius: 12px; border: 1px solid #ddd; font-family: inherit; font-size: 0.85rem; resize: none;"></textarea>
                             </div>
                         </div>
                     </div>
@@ -513,37 +726,66 @@
     <!-- Footer -->
     <footer style="background-color: var(--cream, #fdfbf7); padding-top: 80px; border-top: 1px solid rgba(0,0,0,0.05);">
         <div class="container footer-content" style="gap: 60px;">
-            <div class="footer-brand" style="display: flex; flex-direction: column; gap: 10px; align-items: center; text-align: center;">
-                <img src="assets/logoHelados.jpeg" alt="Logo Casfrela" style="height: 70px; width: 70px; align-self: center; margin-bottom: 5px; object-fit: contain; mix-blend-mode: multiply;">
-                <h2 class="logo-text" style="font-size: 1.8rem; margin: 0;">CASFRELA <span class="accent">ARTESANALES</span></h2>
-                <p style="color: var(--text-dark); line-height: 1.6;" data-i18n="footer.brand_desc">Tradición y sabor natural auténticamente yucateco. Llevando la frescura del campo a tu paladar.</p>
+            <div class="footer-brand"
+                style="display: flex; flex-direction: column; gap: 10px; align-items: center; text-align: center;">
+                <img src="assets/logoHelados.jpeg" alt="Logo Casfrela"
+                    style="height: 70px; width: 70px; align-self: center; margin-bottom: 5px; object-fit: contain; mix-blend-mode: multiply;">
+                <h2 class="logo-text" style="font-size: 1.8rem; margin: 0;">CASFRELA <span
+                        class="accent">ARTESANALES</span></h2>
+                <p style="color: var(--text-dark); line-height: 1.6;" data-i18n="footer.brand_desc">Tradición y sabor
+                    natural auténticamente yucateco. Llevando la frescura del campo a tu paladar.</p>
             </div>
             <div class="footer-links">
-                <h4 style="color: var(--logo-brown); font-size: 1.2rem; font-weight: 700; margin-bottom: 20px;" data-i18n="footer.nav_title">Navegación</h4>
+                <h4 style="color: var(--logo-brown); font-size: 1.2rem; font-weight: 700; margin-bottom: 20px;"
+                    data-i18n="footer.nav_title">Navegación</h4>
                 <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 12px;">
-                    <li><a href="index.html" style="color: var(--text-dark); transition: color 0.3s; display: inline-block;" data-i18n="nav.home">Inicio</a></li>
-                    <li><a href="nosotros.html" style="color: var(--text-dark); transition: color 0.3s; display: inline-block;" data-i18n="nav.about">Nosotros</a></li>
-                    <li><a href="productos.html" style="color: var(--text-dark); transition: color 0.3s; display: inline-block;" data-i18n="nav.products">Productos</a></li>
-                    <li><a href="contacto.html" style="color: var(--text-dark); transition: color 0.3s; display: inline-block;" data-i18n="nav.contact">Contacto</a></li>
+                    <li><a href="index.html"
+                            style="color: var(--text-dark); transition: color 0.3s; display: inline-block;"
+                            data-i18n="nav.home">Inicio</a></li>
+                    <li><a href="nosotros.html"
+                            style="color: var(--text-dark); transition: color 0.3s; display: inline-block;"
+                            data-i18n="nav.about">Nosotros</a></li>
+                    <li><a href="productos.html"
+                            style="color: var(--text-dark); transition: color 0.3s; display: inline-block;"
+                            data-i18n="nav.products">Productos</a></li>
+                    <li><a href="contacto.html"
+                            style="color: var(--text-dark); transition: color 0.3s; display: inline-block;"
+                            data-i18n="nav.contact">Contacto</a></li>
                 </ul>
             </div>
             <div class="footer-social">
-                <h4 style="color: var(--logo-brown); font-size: 1.2rem; font-weight: 700; margin-bottom: 20px;" data-i18n="footer.social_title">Conecta con nosotros</h4>
-                <p style="color: var(--text-dark); margin-bottom: 20px; font-size: 0.95rem;" data-i18n="footer.social_desc">Síguenos y contáctanos para hacer tu pedido o cotizar eventos.</p>
+                <h4 style="color: var(--logo-brown); font-size: 1.2rem; font-weight: 700; margin-bottom: 20px;"
+                    data-i18n="footer.social_title">Conecta con nosotros</h4>
+                <p style="color: var(--text-dark); margin-bottom: 20px; font-size: 0.95rem;"
+                    data-i18n="footer.social_desc">Síguenos y contáctanos para hacer tu pedido o cotizar eventos.</p>
                 <div class="social-icons-premium">
                     <a href="https://facebook.com" target="_blank" class="social-icon" aria-label="Facebook">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                        </svg>
                     </a>
                     <a href="https://wa.me/5219993960148" target="_blank" class="social-icon" aria-label="WhatsApp">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                            </path>
+                        </svg>
                     </a>
                     <a href="mailto:casfrelaheladosartesanales@gmail.com" class="social-icon" aria-label="Gmail">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                            </path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
                     </a>
                 </div>
             </div>
         </div>
-        <div class="footer-bottom" style="text-align: center; padding: 25px 0; border-top: 1px solid rgba(0, 0, 0, 0.08); font-size: 0.9rem; color: var(--text-light); margin-top: 20px;">
+        <div class="footer-bottom"
+            style="text-align: center; padding: 25px 0; border-top: 1px solid rgba(0, 0, 0, 0.08); font-size: 0.9rem; color: var(--text-light); margin-top: 20px;">
             <p data-i18n="footer.copyright">&copy; 2026 Helados Casfrela. Todos los derechos reservados.</p>
         </div>
     </footer>
@@ -553,11 +795,15 @@
             <div class="modal-header-premium">
                 <h3 class="script-font" data-i18n="cart.pick_on_map">Seleccionar Ubicación</h3>
             </div>
-            <div id="map-container" style="height: 300px; width: 100%; margin: 15px 0; border-radius: 12px; border: 1px solid #ddd;"></div>
-            <p style="font-size: 0.8rem; color: var(--text-light); text-align: center; margin-bottom: 15px;" data-i18n="cart.drag_marker">Arrastra el marcador hasta tu ubicación exacta.</p>
+            <div id="map-container"
+                style="height: 300px; width: 100%; margin: 15px 0; border-radius: 12px; border: 1px solid #ddd;"></div>
+            <p style="font-size: 0.8rem; color: var(--text-light); text-align: center; margin-bottom: 15px;"
+                data-i18n="cart.drag_marker">Arrastra el marcador o haz doble clic / toca dos veces para seleccionar tu ubicación exacta.</p>
             <div style="display: flex; gap: 10px;">
-                <button id="cancel-map-btn" class="btn-outline" style="flex: 1; padding: 10px;" data-i18n="common.cancel">Cancelar</button>
-                <button id="confirm-map-btn" class="whatsapp-btn" style="flex: 1; padding: 10px; height: auto;" data-i18n="common.confirm">Confirmar</button>
+                <button id="cancel-map-btn" class="btn-outline" style="flex: 1; padding: 10px;"
+                    data-i18n="common.cancel">Cancelar</button>
+                <button id="confirm-map-btn" class="whatsapp-btn" style="flex: 1; padding: 10px; height: auto;"
+                    data-i18n="common.confirm">Confirmar</button>
             </div>
         </div>
     </div>

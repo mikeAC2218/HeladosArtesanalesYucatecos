@@ -195,13 +195,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 const addressInput = document.getElementById('address-input');
                 const referencesInput = document.getElementById('references-input');
 
-                if (addressInput && addressInput.value.trim() !== "") {
+                const mapLink = addressInput ? addressInput.dataset.mapsUrl : "";
+                const addressValue = addressInput ? addressInput.value.trim() : "";
+                const refValue = referencesInput ? referencesInput.value.trim() : "";
+
+                if (addressValue !== "" || mapLink || refValue !== "") {
                     const shippingMsg = window.siteTranslator ? window.siteTranslator.getValue('cart.shipping_request_wa') : 'Requiero envío para esta dirección:';
-                    waMessage += encodeURIComponent(`\n\n${shippingMsg}\n${addressInput.value.trim()}`);
+                    waMessage += encodeURIComponent(`\n\n${shippingMsg}`);
                     
-                    if (referencesInput && referencesInput.value.trim() !== "") {
+                    if (addressValue !== "") {
+                        waMessage += encodeURIComponent(`\n${addressValue}`);
+                    }
+                    if (mapLink && mapLink !== addressValue) {
+                        waMessage += encodeURIComponent(`\n📍 Ubicación GPS: ${mapLink}`);
+                    }
+                    if (refValue !== "") {
                         const refMsg = window.siteTranslator ? window.siteTranslator.getValue('cart.references_wa') || 'Referencias:' : 'Referencias:';
-                        waMessage += encodeURIComponent(`\n${refMsg} ${referencesInput.value.trim()}`);
+                        waMessage += encodeURIComponent(`\n${refMsg} ${refValue}`);
                     }
                 }
                 
@@ -216,6 +226,60 @@ document.addEventListener('DOMContentLoaded', () => {
     // Map Picker Logic
     let pickerMap, pickerMarker;
     let previewMap, previewMarker;
+
+    const fillAddressFromCoords = (lat, lng, addressInput) => {
+        addressInput.dataset.mapsUrl = `https://www.google.com/maps?q=${lat},${lng}`;
+        fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json`)
+            .then(r => r.json())
+            .then(data => {
+                if (data && data.address) {
+                    const road = data.address.road || data.address.pedestrian;
+                    const suburb = data.address.suburb || data.address.neighbourhood;
+                    
+                    if (road && suburb) {
+                        addressInput.value = `${road} x ____ y ____, ${suburb}`;
+                    } else if (road) {
+                        addressInput.value = `${road} x ____ y ____`;
+                    } else if (suburb) {
+                        addressInput.value = `${suburb} (Especificar calle y cruzamientos)`;
+                    } else if (addressInput.value.includes('google.com/maps')) {
+                        addressInput.value = '';
+                    }
+
+                    let crossLegend = document.getElementById('cross-streets-legend');
+                    if (!crossLegend && addressInput.parentNode && (road || suburb)) {
+                        crossLegend = document.createElement('p');
+                        crossLegend.id = 'cross-streets-legend';
+                        crossLegend.style = "font-size: 0.8rem; color: var(--logo-orange); margin: 6px 0 12px 0; font-weight: 600; animation: fadeIn 0.4s ease-out;";
+                        
+                        const defaultMsg = 'Para un envío más rápido, puedes completar los cruzamientos de tus calles (Opcional).';
+                        const i18nText = window.siteTranslator ? window.siteTranslator.getValue('cart.cross_streets_legend') || defaultMsg : defaultMsg;
+                        
+                        crossLegend.innerHTML = `<span data-i18n="cart.cross_streets_legend">${i18nText}</span>`;
+                        addressInput.parentNode.insertBefore(crossLegend, addressInput.nextSibling);
+                    }
+                } else if (addressInput.value.includes('google.com/maps')) {
+                    addressInput.value = '';
+                    const crossLegend = document.getElementById('cross-streets-legend');
+                    if (crossLegend) crossLegend.remove();
+                }
+                updateCartUI();
+            })
+            .catch(() => {
+                if (addressInput.value.includes('google.com/maps')) {
+                    addressInput.value = '';
+                }
+                const crossLegend = document.getElementById('cross-streets-legend');
+                if (crossLegend && addressInput.value === '') crossLegend.remove();
+                updateCartUI();
+            });
+        
+        // Remove maps URL if it was already in there to prevent flashing
+        if (addressInput.value.includes('google.com/maps')) {
+            addressInput.value = '';
+        }
+        updateCartUI();
+    };
 
     const updateMapPreview = (lat, lng) => {
         const previewContainer = document.getElementById('cart-map-preview');
@@ -242,8 +306,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         const pos = previewMarker.getLatLng();
                         const addressInput = document.getElementById('address-input');
                         if (addressInput) {
-                            addressInput.value = `https://www.google.com/maps?q=${pos.lat},${pos.lng}`;
-                            updateCartUI();
+                            fillAddressFromCoords(pos.lat, pos.lng, addressInput);
                         }
                     });
                 } else {
@@ -264,12 +327,16 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             if (!pickerMap) {
                 const meridaPos = [20.9673, -89.6241];
-                pickerMap = L.map('map-container').setView(meridaPos, 13);
+                pickerMap = L.map('map-container', { doubleClickZoom: false }).setView(meridaPos, 13);
                 L.tileLayer('https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}', {
                     maxZoom: 20,
                     attribution: '© Google Maps'
                 }).addTo(pickerMap);
                 pickerMarker = L.marker(meridaPos, {draggable: true}).addTo(pickerMap);
+                
+                pickerMap.on('dblclick', function(e) {
+                    pickerMarker.setLatLng(e.latlng);
+                });
             } else {
                 pickerMap.invalidateSize();
             }
@@ -330,11 +397,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         const lat = position.coords.latitude;
                         const lng = position.coords.longitude;
                         const mapsUrl = `https://www.google.com/maps?q=${lat},${lng}`;
-                        
                         if (addressInput) {
-                            addressInput.value = mapsUrl;
+                            fillAddressFromCoords(lat, lng, addressInput);
                             updateMapPreview(lat, lng);
-                            updateCartUI();
                         }
                         
                         getLocationBtn.innerHTML = originalText;
@@ -374,9 +439,8 @@ document.addEventListener('DOMContentLoaded', () => {
             confirmMapBtn.addEventListener('click', () => {
                 if (pickerMarker && addressInput) {
                     const pos = pickerMarker.getLatLng();
-                    addressInput.value = `https://www.google.com/maps?q=${pos.lat},${pos.lng}`;
+                    fillAddressFromCoords(pos.lat, pos.lng, addressInput);
                     updateMapPreview(pos.lat, pos.lng);
-                    updateCartUI();
                 }
                 mapModal.classList.remove('active');
             });
@@ -394,7 +458,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (emptyCartBtn) emptyCartBtn.addEventListener('click', () => {
         showCustomConfirm(
             window.siteTranslator ? window.siteTranslator.getValue('cart.confirm_clear_title') : '¿Vaciar Carrito?',
-            window.siteTranslator ? window.siteTranslator.getValue('cart.confirm_clear') : '¿Estás seguro de que quieres quitar todos los productos?',
+            window.siteTranslator ? window.siteTranslator.getValue('cart.confirm_clear') : '¿Estás seguro de <b>vaciar el carrito</b>?',
             () => {
                 cart = [];
                 saveCart();
@@ -408,7 +472,9 @@ document.addEventListener('DOMContentLoaded', () => {
         dialog.style = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; z-index: 100000000; backdrop-filter: blur(5px); animation: fadeIn 0.3s;';
         dialog.innerHTML = `
             <div style="background: white; padding: 40px; border-radius: 24px; max-width: 400px; width: 90%; text-align: center; box-shadow: 0 20px 70px rgba(0,0,0,0.25);">
-                <div style="font-size: 3rem; margin-bottom: 20px;">🗑️</div>
+                <div style="margin-bottom: 20px;">
+                    <img src="assets/sad_pineapple.png" style="height: 120px; object-fit: contain; animation: float 3s ease-in-out infinite;">
+                </div>
                 <h3 style="margin: 0 0 10px; color: var(--logo-brown); font-size: 1.6rem; font-weight: 700;">${title}</h3>
                 <p style="color: var(--text-light); margin-bottom: 30px; line-height: 1.5;">${msg}</p>
                 <div style="display: flex; gap: 12px;">
