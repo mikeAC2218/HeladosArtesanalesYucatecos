@@ -226,6 +226,8 @@
   "cart.confirm_clear": "¿Estás seguro de <b>vaciar el carrito</b>?",
   "cart.remove": "Eliminar",
   "cart.shipping_title": "Envío",
+  "cart.name_label": "Nombre (Opcional)",
+  "cart.name_placeholder": "Escribe tu nombre...",
   "cart.address_placeholder": "Escribe tu dirección...",
   "cart.use_location": "Usar mi ubicación actual",
   "cart.pick_on_map": "Seleccionar en el mapa",

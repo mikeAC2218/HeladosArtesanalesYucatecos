@@ -226,6 +226,8 @@
   "cart.order_whatsapp": "Order via WhatsApp",
   "cart.remove": "Remove",
   "cart.shipping_title": "Shipping",
+  "cart.name_label": "Name (Optional)",
+  "cart.name_placeholder": "Enter your name...",
   "cart.address_placeholder": "Write your address...",
   "cart.use_location": "Use my current location",
   "cart.pick_on_map": "Pick on the map",

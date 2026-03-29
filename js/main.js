@@ -192,15 +192,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
                 waMessage += encodeURIComponent(`\n*Total: $${total.toFixed(2)}*`);
 
+                const nameInput = document.getElementById('name-input');
                 const addressInput = document.getElementById('address-input');
                 const referencesInput = document.getElementById('references-input');
 
+                const nameValue = nameInput ? nameInput.value.trim() : "";
                 const mapLink = addressInput ? addressInput.dataset.mapsUrl : "";
                 const addressValue = addressInput ? addressInput.value.trim() : "";
                 const refValue = referencesInput ? referencesInput.value.trim() : "";
 
+                if (nameValue !== "") {
+                    waMessage += encodeURIComponent(`\n\nNombre: ${nameValue}`);
+                }
+
                 if (addressValue !== "" || mapLink || refValue !== "") {
-                    const shippingMsg = window.siteTranslator ? window.siteTranslator.getValue('cart.shipping_request_wa') : 'Requiero envío para esta dirección:';
+                    const shippingMsg = 'Requiero envío para esta dirección:';
                     waMessage += encodeURIComponent(`\n\n${shippingMsg}`);
                     
                     if (addressValue !== "") {
@@ -210,7 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         waMessage += encodeURIComponent(`\n📍 Ubicación GPS: ${mapLink}`);
                     }
                     if (refValue !== "") {
-                        const refMsg = window.siteTranslator ? window.siteTranslator.getValue('cart.references_wa') || 'Referencias:' : 'Referencias:';
+                        const refMsg = 'Referencias:';
                         waMessage += encodeURIComponent(`\n${refMsg} ${refValue}`);
                     }
                 }
@@ -357,8 +363,14 @@ document.addEventListener('DOMContentLoaded', () => {
         updateCartUI();
         
         // Add listeners for shipping address input and location button
+        const nameInput = document.getElementById('name-input');
         const addressInput = document.getElementById('address-input');
         const referencesInput = document.getElementById('references-input');
+
+        if (nameInput && !nameInput.dataset.listenerAdded) {
+            nameInput.addEventListener('input', updateCartUI);
+            nameInput.dataset.listenerAdded = "true";
+        }
 
         if (addressInput && !addressInput.dataset.listenerAdded) {
             addressInput.addEventListener('input', updateCartUI);

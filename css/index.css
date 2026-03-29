@@ -496,7 +496,7 @@ section {
 
 @media (max-width: 480px) {
     .hero { height: 60vh; min-height: 400px; }
-    .grid-left { grid-template-columns: 1fr; }
-    .image-box { height: 180px; }
+    .grid-left { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .image-box { height: 140px; }
     .contact-form-box, .contact-info { padding: 30px 20px; }
 }
