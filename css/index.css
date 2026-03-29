@@ -452,7 +452,7 @@ section {
     .rotating-img { height: 180px; width: 140px; }
 
     .seasonal-grid { grid-template-columns: 1fr; gap: 40px; }
-    .contact-container { grid-template-columns: 1fr; gap: 40px; }
+    .contact-container { grid-template-columns: 1fr !important; gap: 40px; }
     .contact-form-box, .contact-info { padding: 40px; }
 
     .why-grid {
@@ -488,6 +488,7 @@ section {
         padding: 40px 20px;
         min-height: 400px;
         border-width: 8px;
+        width: 90%;
     }
 }
 

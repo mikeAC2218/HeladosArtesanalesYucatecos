@@ -54,3 +54,7 @@
 @media (max-width: 850px) {
     .contact-container { grid-template-columns: 1fr; }
 }
+
+@media (max-width: 480px) {
+    .contact-form-box { padding: 30px 20px; }
+}

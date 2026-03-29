@@ -278,5 +278,7 @@ section {
 
 @media (max-width: 768px) {
     .modal-body { flex-direction: column; }
-    .modal-image { height: 250px; }
+    .modal-image { height: 250px; padding: 20px; min-width: auto; }
+    .modal-image img { max-height: 210px; }
+    .modal-info { padding: 25px; }
 }

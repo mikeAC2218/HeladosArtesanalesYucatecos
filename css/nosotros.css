@@ -61,7 +61,7 @@
 }
 
 @media (max-width: 600px) {
-    .frame-box.custom-img-background { padding: 40px 20px; border-width: 6px; }
+    .frame-box.custom-img-background { padding: 40px 20px; border-width: 6px; width: 90%; }
     .content-frame .title { font-size: 1.5rem; }
     .rotating-img { width: 140px; height: 200px; }
 }

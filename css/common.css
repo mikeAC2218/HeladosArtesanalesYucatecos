@@ -252,6 +252,33 @@ footer {
     }
 }
 
+@media (max-width: 480px) {
+    .nav-content {
+        gap: 5px;
+    }
+    .logo-text {
+        font-size: 1.1rem;
+        display: none; /* Ocultar texto del logo en pantallas muy pequeñas para dar espacio */
+    }
+    .modal-content {
+        width: 98% !important;
+        border-radius: 15px;
+    }
+    .cart-modal-body {
+        padding: 15px !important;
+    }
+    .cart-actions {
+        flex-direction: column;
+    }
+    .btn-outline, .whatsapp-btn {
+        width: 100%;
+        text-align: center;
+    }
+    .location-buttons {
+        grid-template-columns: 1fr !important;
+    }
+}
+
 @media (min-width: 993px) {
     .nav-links {
         display: flex !important;
@@ -366,7 +393,14 @@ body.modal-open { overflow: hidden; }
     transform: rotate(90deg);
 }
 
-.modal-body { display: flex; flex-wrap: wrap; width: 100%; border: none; }
+.modal-body { 
+    display: flex; 
+    flex-wrap: wrap; 
+    width: 100%; 
+    border: none; 
+    max-height: 85vh;
+    overflow-y: auto;
+}
 
 /* Cart Modal Specifics */
 .cart-modal-body { 
