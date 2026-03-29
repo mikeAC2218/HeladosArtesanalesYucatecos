@@ -86,6 +86,13 @@ ul { list-style: none; }
     align-items: center;
 }
 
+.logo a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
 .logo-text {
     font-size: 1.5rem;
     font-weight: 700;
@@ -249,6 +256,12 @@ footer {
         grid-template-columns: 1fr;
         text-align: center;
         gap: 30px;
+    }
+    .footer-brand {
+        align-items: center;
+    }
+    .social-icons-premium {
+        justify-content: center;
     }
 }
 
@@ -719,4 +732,24 @@ body.modal-open { overflow: hidden; }
     border-color: var(--logo-brown);
     color: var(--logo-brown);
     background: rgba(92, 48, 28, 0.05);
+}
+
+/* Business Events B2B (Shared) */
+.business-events { padding: 90px 0; background-color: var(--white); border-bottom: 1px solid rgba(0,0,0,0.05); }
+.b2b-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: center; }
+.b2b-subtitle { color: var(--logo-orange); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; font-size: 0.95rem; }
+.b2b-title { font-size: 2.7rem; color: var(--logo-brown); margin: 15px 0; line-height: 1.2; font-family: 'Playball', cursive; }
+.b2b-desc { color: var(--text-dark); line-height: 1.8; margin-bottom: 25px; font-size: 1.05rem; }
+.b2b-list { list-style: none; padding: 0; margin-bottom: 30px; color: var(--text-dark); line-height: 2.2; font-weight: 600; font-size: 1.05rem; }
+.b2b-list li { display: flex; align-items: center; gap: 10px; }
+.b2b-list li::before { content: '✓'; color: var(--logo-orange); font-weight: bold; font-size: 1.2rem; }
+.business-image { border-radius: 20px; overflow: hidden; box-shadow: var(--shadow-card); background: var(--cream); height: 450px; }
+.business-image img { width: 100%; height: 100%; display: block; object-fit: cover; }
+
+@media (max-width: 900px) {
+    .business-events { padding: 60px 0; }
+    .b2b-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+    .b2b-list li { justify-content: center; }
+    .b2b-title { font-size: 2.3rem; }
+    .business-image { height: 350px; }
 }

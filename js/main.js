@@ -635,4 +635,23 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     updateCartUI();
+
+    // Contact form setup
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const inputs = contactForm.querySelectorAll('input, textarea');
+            const name = inputs[0] ? inputs[0].value.trim() : '';
+            const email = inputs[1] ? inputs[1].value.trim() : '';
+            const message = inputs[2] ? inputs[2].value.trim() : '';
+            
+            if (name && email && message) {
+                const waNumber = "5219993960148";
+                const text = `Hola, soy ${name} (${email}).\n\nMensaje:\n${message}`;
+                window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(text)}`, '_blank');
+                contactForm.reset();
+            }
+        });
+    }
 });
