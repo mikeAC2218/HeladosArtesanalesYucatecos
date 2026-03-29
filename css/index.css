@@ -440,16 +440,17 @@ section {
     
     .history-grid {
         grid-template-columns: 1fr;
-        gap: 30px;
+        gap: 40px;
     }
     
     .images-column { 
         flex-direction: row; 
         justify-content: center; 
         gap: 15px; 
+        flex-wrap: wrap;
     }
     
-    .rotating-img { height: 180px; width: 140px; }
+    .rotating-img { height: 200px; width: 140px; }
 
     .seasonal-grid { grid-template-columns: 1fr; gap: 40px; }
     .contact-container { grid-template-columns: 1fr !important; gap: 40px; }
@@ -497,8 +498,7 @@ section {
     .grid-left { grid-template-columns: 1fr; }
     .image-box { height: 180px; }
     
-    .images-column { flex-wrap: wrap; }
-    .rotating-img { height: 150px; width: 110px; }
+    .rotating-img { height: 200px; width: 140px; }
     
     .contact-form-box, .contact-info { padding: 30px 20px; }
 }
