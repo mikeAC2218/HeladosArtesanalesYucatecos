@@ -444,13 +444,12 @@ section {
     }
     
     .images-column { 
+        display: flex;
         flex-direction: row; 
         justify-content: center; 
         gap: 15px; 
         flex-wrap: wrap;
     }
-    
-    .rotating-img { height: 200px; width: 140px; }
 
     .seasonal-grid { grid-template-columns: 1fr; gap: 40px; }
     .contact-container { grid-template-columns: 1fr !important; gap: 40px; }
@@ -491,14 +490,13 @@ section {
         border-width: 8px;
         width: 90%;
     }
+    .content-frame .title { font-size: 1.5rem; }
+    .rotating-img { height: 200px; width: 140px; }
 }
 
 @media (max-width: 480px) {
     .hero { height: 60vh; min-height: 400px; }
     .grid-left { grid-template-columns: 1fr; }
     .image-box { height: 180px; }
-    
-    .rotating-img { height: 200px; width: 140px; }
-    
     .contact-form-box, .contact-info { padding: 30px 20px; }
 }
