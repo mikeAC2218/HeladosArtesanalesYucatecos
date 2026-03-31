@@ -139,7 +139,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     cart = [];
                     saveCart();
                     updateCartUI();
-                    if (cartModal) cartModal.classList.remove('active');
+                    if (cartModal) {
+                        cartModal.classList.remove('active');
+                        document.body.classList.remove('modal-open');
+                    }
                 }, 1500);
             }
         });
@@ -542,6 +545,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Wait 2 seconds before removing the dialog
                 setTimeout(() => {
                     dialog.remove();
+                    if (cartModal) {
+                        cartModal.classList.remove('active');
+                        document.body.classList.remove('modal-open');
+                    }
                 }, 2000);
             }
         );
