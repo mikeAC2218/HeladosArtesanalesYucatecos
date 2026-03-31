@@ -163,6 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <h3 data-i18n="cart.empty_title">${window.siteTranslator ? window.siteTranslator.getValue('cart.empty_title') : '¡Tu carrito está vacío!'}</h3>
                         <p data-i18n="cart.empty">${window.siteTranslator ? window.siteTranslator.getValue('cart.empty') : 'Agrega algunos deliciosos helados para comenzar.'}</p>
                     </div>`;
+                if (cartTotalPrice) cartTotalPrice.textContent = "$0.00";
                 cartSummary.style.display = 'none';
             } else {
                 cartItemsContainer.innerHTML = '';
@@ -381,7 +382,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 }).addTo(pickerMap);
                 pickerMarker = L.marker(meridaPos, {draggable: true}).addTo(pickerMap);
                 
-                pickerMap.on('dblclick', function(e) {
+                // Handle single click/tap for both mobile and desktop
+                pickerMap.on('click', function(e) {
+                    pickerMarker.setLatLng(e.latlng);
+                });
+                
+                // Also handle long press on mobile
+                pickerMap.on('contextmenu', function(e) {
                     pickerMarker.setLatLng(e.latlng);
                 });
             } else {
@@ -459,13 +466,17 @@ document.addEventListener('DOMContentLoaded', () => {
                         getLocationBtn.disabled = false;
                     }, (error) => {
                         console.error('Error getting location:', error);
-                        alert('No se pudo obtener la ubicación exacta. Por favor, intenta de nuevo o elige en el mapa.');
+                        // Fallback: try again without high accuracy if first attempt failed
+                        if (error.code === 3 || error.code === 1) { // Timeout or Permission
+                             alert('No se pudo obtener la ubicación exacta. Por favor, asegúrate de dar permisos de GPS o elige en el mapa.');
+                        } else {
+                             alert('Error al obtener ubicación. Intenta elegir directamente en el mapa.');
+                        }
                         getLocationBtn.innerHTML = originalText;
                         getLocationBtn.disabled = false;
-                        // Remover leyenda si falla
                         const note = document.getElementById('location-accuracy-note');
                         if (note) note.remove();
-                    }, { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 });
+                    }, { enableHighAccuracy: false, timeout: 15000 });
                 } else {
                     alert('Tu navegador no soporta geolocalización.');
                     getLocationBtn.innerHTML = originalText;
@@ -517,7 +528,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const dialogContent = dialog.querySelector('div');
                 dialogContent.innerHTML = `
                     <div style="margin-bottom: 20px;">
-                        <img src="assets/happy_pineapple.png" style="height: 120px; object-fit: contain; animation: bounce 0.8s infinite alternate;">
+                        <img src="assets/crying_pineapple.png" style="height: 120px; object-fit: contain; animation: bounce 0.8s infinite alternate;">
                     </div>
                     <h3 style="margin: 0 0 10px; color: var(--logo-brown); font-size: 1.6rem; font-weight: 700;">¡Carrito vaciado!</h3>
                     <p style="color: var(--text-light); margin-bottom: 0; line-height: 1.5;">Hemos limpiado tu selección para ti.</p>
