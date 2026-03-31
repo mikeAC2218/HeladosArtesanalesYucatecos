@@ -130,6 +130,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const emptyCartBtn = document.getElementById('empty-cart-btn');
     const cartWaBtn = document.getElementById('cart-whatsapp-btn');
     
+    // Add Click listener to WhatsApp button to empty cart when clicked
+    if (cartWaBtn) {
+        cartWaBtn.addEventListener('click', () => {
+            if (cart.length > 0) {
+                // Empty the cart after a small delay to let the WhatsApp redirect happen
+                setTimeout(() => {
+                    cart = [];
+                    saveCart();
+                    updateCartUI();
+                    if (cartModal) cartModal.classList.remove('active');
+                }, 1500);
+            }
+        });
+    }
+    
     let cart = JSON.parse(localStorage.getItem('casfrela_cart')) || [];
     const waNumber = '5219993960148';
 
@@ -162,7 +177,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     itemEl.innerHTML = `
                         <img src="${item.img}" class="cart-item-img">
                         <div class="cart-item-name">${item.title}</div>
-                        <div class="cart-item-qty">x${item.quantity}</div>
+                        <div class="cart-item-qty-control">
+                            <button class="qty-btn qty-minus" data-index="${index}" title="Quitar">&#8722;</button>
+                            <span class="qty-display">${item.quantity}</span>
+                            <button class="qty-btn qty-plus" data-index="${index}" title="Agregar">&#43;</button>
+                        </div>
                         <div class="cart-item-price">$${item.price.toFixed(2)}</div>
                         <button class="remove-item-btn" data-index="${index}" title="${window.siteTranslator ? window.siteTranslator.getValue('cart.remove') : 'Eliminar'}">
                             <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
@@ -177,13 +196,35 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Add remove listeners
                 document.querySelectorAll('.remove-item-btn').forEach(btn => {
                     btn.addEventListener('click', (e) => {
-                        const idx = e.currentTarget.getAttribute('data-index');
+                        const idx = parseInt(e.currentTarget.getAttribute('data-index'));
                         cart.splice(idx, 1);
                         saveCart();
                         updateCartUI();
                     });
                 });
-                
+
+                // Qty +/- listeners
+                document.querySelectorAll('.qty-minus').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const idx = parseInt(e.currentTarget.getAttribute('data-index'));
+                        if (cart[idx].quantity > 1) {
+                            cart[idx].quantity -= 1;
+                        } else {
+                            cart.splice(idx, 1);
+                        }
+                        saveCart();
+                        updateCartUI();
+                    });
+                });
+                document.querySelectorAll('.qty-plus').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const idx = parseInt(e.currentTarget.getAttribute('data-index'));
+                        cart[idx].quantity += 1;
+                        saveCart();
+                        updateCartUI();
+                    });
+                });
+
                 // Update WhatsApp Link for Entire Cart
                 const waNumber = "5219993960148";
                 let waMessage = encodeURIComponent("Hola! Me gustaría hacer un pedido:\n\n");
@@ -471,10 +512,26 @@ document.addEventListener('DOMContentLoaded', () => {
         showCustomConfirm(
             window.siteTranslator ? window.siteTranslator.getValue('cart.confirm_clear_title') : '¿Vaciar Carrito?',
             window.siteTranslator ? window.siteTranslator.getValue('cart.confirm_clear') : '¿Estás seguro de <b>vaciar el carrito</b>?',
-            () => {
+            (dialog) => {
+                // Success feedback animation (2 seconds)
+                const dialogContent = dialog.querySelector('div');
+                dialogContent.innerHTML = `
+                    <div style="margin-bottom: 20px;">
+                        <img src="assets/happy_pineapple.png" style="height: 120px; object-fit: contain; animation: bounce 0.8s infinite alternate;">
+                    </div>
+                    <h3 style="margin: 0 0 10px; color: var(--logo-brown); font-size: 1.6rem; font-weight: 700;">¡Carrito vaciado!</h3>
+                    <p style="color: var(--text-light); margin-bottom: 0; line-height: 1.5;">Hemos limpiado tu selección para ti.</p>
+                `;
+                
+                // Perform the clear
                 cart = [];
                 saveCart();
                 updateCartUI();
+
+                // Wait 2 seconds before removing the dialog
+                setTimeout(() => {
+                    dialog.remove();
+                }, 2000);
             }
         );
     });
@@ -497,7 +554,15 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         document.body.appendChild(dialog);
         document.getElementById('cancel-confirm').onclick = () => dialog.remove();
-        document.getElementById('ok-confirm').onclick = () => { onConfirm(); dialog.remove(); };
+        document.getElementById('ok-confirm').onclick = () => {
+            // If the callback takes a parameter, it handles the dialog removal (animation)
+            if (onConfirm.length > 0) {
+                onConfirm(dialog);
+            } else {
+                onConfirm();
+                dialog.remove();
+            }
+        };
     };
 
     // Product Modal Logic

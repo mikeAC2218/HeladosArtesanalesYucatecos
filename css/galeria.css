@@ -1,30 +1,208 @@
 @import url('common.css');
 
-.gallery { padding: 80px 0; }
-.section-title-center { text-align: center; margin-bottom: 40px; }
+/* =====================================================
+   GALERÍA — Diseño Premium con Cards Flotantes
+   ===================================================== */
 
-.masonry-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: 250px;
-    gap: 20px;
+.gallery-page {
+    padding: 60px 0 100px;
 }
 
-.masonry-item { border-radius: 15px; overflow: hidden; }
-.masonry-item img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
+/* ── Header de página ── */
+.gallery-page-header {
+    text-align: center;
+    padding: 50px 0 60px;
+    position: relative;
+}
 
-.masonry-item:hover img { transform: scale(1.05); }
+.gallery-page-header::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--logo-orange), var(--logo-brown));
+    border-radius: 4px;
+    margin: 20px auto 0;
+}
 
-.item-large { grid-column: span 2; }
-.item-tall { grid-row: span 2; }
+.gallery-page-header .gallery-label {
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--logo-orange);
+    margin-bottom: 12px;
+    display: block;
+}
 
-/* Responsive Galeria */
+.gallery-page-header h1 {
+    font-family: 'Playball', cursive;
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    color: var(--logo-brown);
+    margin: 0;
+    line-height: 1.2;
+}
+
+.gallery-page-header p {
+    color: var(--text-light);
+    font-size: 1rem;
+    margin-top: 14px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ── Grid Masonry Premium ── */
+.gallery-masonry {
+    columns: 5 160px;
+    column-gap: 14px;
+}
+
+.gallery-card {
+    break-inside: avoid;
+    margin-bottom: 14px;
+    border-radius: 14px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(92, 48, 28, 0.08);
+    transition: transform 0.38s cubic-bezier(.34,1.56,.64,1),
+                box-shadow 0.35s ease;
+}
+
+.gallery-card:hover {
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: 0 20px 50px rgba(92, 48, 28, 0.18);
+}
+
+.gallery-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.55s cubic-bezier(.25,.8,.25,1);
+}
+
+.gallery-card:hover img {
+    transform: scale(1.08);
+}
+
+/* Overlay on hover — gradient only, no icon */
+.gallery-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(92,48,28,0.55) 0%, transparent 55%);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    display: flex;
+    align-items: flex-end;
+    padding: 16px;
+}
+
+.gallery-card:hover .gallery-card-overlay {
+    opacity: 1;
+}
+
+/* Card size variants */
+.gallery-card.size-tall img { height: 520px; }
+.gallery-card.size-medium img { height: 300px; }
+.gallery-card.size-small img { height: 220px; }
+.gallery-card.size-wide img { height: 260px; }
+
+/* ── Lightbox ── */
+#gallery-lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 8, 4, 0.92);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    backdrop-filter: blur(12px);
+}
+
+#gallery-lightbox.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+#gallery-lightbox img {
+    max-width: 88vw;
+    max-height: 85vh;
+    border-radius: 16px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+    object-fit: contain;
+    transform: scale(0.9);
+    transition: transform 0.35s cubic-bezier(.34,1.56,.64,1);
+}
+
+#gallery-lightbox.active img {
+    transform: scale(1);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+    border: 2px solid rgba(255,255,255,0.25);
+    color: #fff;
+    font-size: 1.4rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.lightbox-close:hover {
+    background: var(--logo-orange);
+    transform: rotate(90deg);
+}
+
+.lightbox-prev,
+.lightbox-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+    border: 2px solid rgba(255,255,255,0.25);
+    color: #fff;
+    font-size: 1.3rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, transform 0.3s;
+}
+
+.lightbox-prev { left: 20px; }
+.lightbox-next { right: 20px; }
+.lightbox-prev:hover { background: var(--logo-orange); transform: translateY(-50%) translateX(-3px); }
+.lightbox-next:hover { background: var(--logo-orange); transform: translateY(-50%) translateX(3px); }
+
+/* ── Responsive ── */
+@media (max-width: 1200px) {
+    .gallery-masonry { columns: 4 140px; column-gap: 12px; }
+}
+
 @media (max-width: 900px) {
-    .masonry-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 200px; }
+    .gallery-masonry { columns: 3 130px; column-gap: 10px; }
+    .gallery-card { margin-bottom: 10px; }
 }
 
 @media (max-width: 600px) {
-    .masonry-grid { grid-template-columns: 1fr; grid-auto-rows: 250px; }
-    .item-large { grid-column: span 1; }
-    .item-tall { grid-row: span 1; }
+    .gallery-masonry { columns: 2 120px; column-gap: 8px; }
+    .gallery-card.size-tall img { height: 220px; }
+    .gallery-card.size-medium img { height: 180px; }
+    .gallery-card.size-small img { height: 150px; }
 }

@@ -1,5 +1,8 @@
 @import url('common.css');
 
+/* =============================
+   CONTACTO – Formulario base
+   ============================= */
 .contact-section { padding: 80px 0; }
 
 .contact-container {
@@ -40,6 +43,456 @@
     background: var(--logo-brown);
 }
 
+/* =============================
+   B2B – Eventos y Negocios
+   ============================= */
+.business-events {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #fff8f0 0%, #fdfbf7 100%);
+}
+
+.b2b-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.b2b-subtitle {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--logo-orange);
+    margin-bottom: 14px;
+}
+
+.b2b-title {
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 800;
+    color: var(--logo-brown);
+    line-height: 1.2;
+    margin: 0 0 18px 0;
+}
+
+.b2b-desc {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text-dark);
+    margin-bottom: 24px;
+}
+
+.b2b-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.b2b-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+.b2b-list li::before {
+    content: "✦";
+    color: var(--logo-orange);
+    font-size: 0.8rem;
+}
+
+.business-image {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+}
+
+.business-image img {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    display: block;
+}
+
+/* =============================
+   SOCIAL CTA SECTION
+   ============================= */
+.social-cta-section {
+    padding: 80px 0 80px;
+    background: var(--logo-brown);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle background pattern */
+.social-cta-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(circle at 15% 30%, rgba(242,150,63,0.2) 0%, transparent 55%),
+        radial-gradient(circle at 85% 70%, rgba(255,255,255,0.05) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.social-cta-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+}
+
+/* Header */
+.social-cta-header {
+    text-align: center;
+    max-width: 640px;
+}
+
+.social-cta-icon-top {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 18px;
+    animation: social-float 3s ease-in-out infinite;
+}
+
+@keyframes social-float {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-10px); }
+}
+
+.social-cta-title {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 800;
+    color: var(--cream);
+    margin: 0 0 16px 0;
+    line-height: 1.2;
+    font-family: 'Playball', cursive;
+}
+
+.social-cta-subtitle {
+    font-size: 1.05rem;
+    color: rgba(239,231,209,0.8);
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* Buttons Grid */
+.social-buttons-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    width: 100%;
+    max-width: 780px;
+}
+
+/* Base btn */
+.social-cta-btn {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 20px 24px;
+    border-radius: 18px;
+    text-decoration: none;
+    color: #fff;
+    font-family: inherit;
+    transition: transform 0.28s cubic-bezier(.34,1.56,.64,1),
+                box-shadow 0.28s ease,
+                filter 0.28s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Ripple layer on tap/hover */
+.social-cta-btn::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0);
+    transition: background 0.2s ease;
+    border-radius: inherit;
+}
+
+.social-cta-btn:hover::after,
+.social-cta-btn:active::after {
+    background: rgba(255,255,255,0.08);
+}
+
+.social-cta-btn:hover {
+    transform: translateY(-5px) scale(1.015);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+    filter: brightness(1.08);
+}
+
+.social-cta-btn:active {
+    transform: scale(0.96);
+    transition-duration: 0.1s;
+}
+
+/* Brand colours */
+.facebook-btn   { background: linear-gradient(135deg, #1877f2 0%, #0d5bbd 100%);
+                  box-shadow: 0 8px 30px rgba(24,119,242,0.35); }
+.instagram-btn  { background: linear-gradient(135deg, #e1306c 0%, #833ab4 50%, #fcaf45 100%);
+                  box-shadow: 0 8px 30px rgba(225,48,108,0.35); }
+.whatsapp-cta-btn { background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+                    box-shadow: 0 8px 30px rgba(37,211,102,0.35); }
+.gmail-btn      { background: linear-gradient(135deg, #ea4335 0%, #c5221f 100%);
+                  box-shadow: 0 8px 30px rgba(234,67,53,0.35); }
+
+/* Icon wrap */
+.social-btn-icon-wrap {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.social-cta-btn:hover .social-btn-icon-wrap {
+    background: rgba(255,255,255,0.3);
+    transform: rotate(-5deg) scale(1.1);
+}
+
+.social-btn-icon-wrap svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* Text */
+.social-btn-text {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    flex: 1;
+}
+
+.social-btn-name {
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+.social-btn-handle {
+    font-size: 0.8rem;
+    opacity: 0.8;
+    font-weight: 400;
+}
+
+/* Arrow */
+.social-btn-arrow {
+    font-size: 1.2rem;
+    opacity: 0.7;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.social-cta-btn:hover .social-btn-arrow {
+    transform: translateX(5px);
+    opacity: 1;
+}
+
+/* Note at bottom */
+.social-cta-note {
+    font-size: 1rem;
+    color: rgba(239,231,209,0.7);
+    text-align: center;
+    margin: 0;
+    padding: 14px 24px;
+    border: 1px solid rgba(242,150,63,0.3);
+    border-radius: 50px;
+    background: rgba(242,150,63,0.1);
+}
+
+/* =============================
+   INDEX – Contact CTA Section
+   ============================= */
+.contact-cta-section {
+    padding: 100px 0 60px;
+    background: linear-gradient(135deg, #ff7c2a 0%, #e84c8b 40%, #7b3fa8 80%, #2d1b6e 100%);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+/* Animated gradient background pulse */
+.contact-cta-section::before {
+    content: "";
+    position: absolute;
+    inset: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.08) 0%, transparent 60%);
+    animation: cta-pulse 6s ease-in-out infinite;
+}
+
+@keyframes cta-pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50%       { transform: scale(1.15); opacity: 0.6; }
+}
+
+/* Floating emojis */
+.cta-floating-emojis {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.cta-emoji {
+    position: absolute;
+    left: var(--x);
+    font-size: var(--size);
+    top: -3rem;
+    animation: cta-fall var(--duration, 8s) var(--delay) linear infinite;
+    opacity: 0.7;
+    filter: drop-shadow(0 3px 6px rgba(0,0,0,0.2));
+}
+
+/* Each emoji gets a slightly different duration via nth-child */
+.cta-emoji:nth-child(1)  { --duration: 9s; }
+.cta-emoji:nth-child(2)  { --duration: 11s; }
+.cta-emoji:nth-child(3)  { --duration: 8s; }
+.cta-emoji:nth-child(4)  { --duration: 13s; }
+.cta-emoji:nth-child(5)  { --duration: 10s; }
+.cta-emoji:nth-child(6)  { --duration: 7.5s; }
+.cta-emoji:nth-child(7)  { --duration: 12s; }
+.cta-emoji:nth-child(8)  { --duration: 9.5s; }
+
+@keyframes cta-fall {
+    0%   { transform: translateY(0)    rotate(0deg);   opacity: 0; }
+    10%  { opacity: 0.8; }
+    90%  { opacity: 0.6; }
+    100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+}
+
+/* Content */
+.cta-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+}
+
+.cta-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(8px);
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 8px 20px;
+    border-radius: 50px;
+    border: 1px solid rgba(255,255,255,0.35);
+}
+
+.cta-title {
+    font-size: clamp(2rem, 5vw, 3.6rem);
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.15;
+    margin: 0;
+    text-shadow: 0 3px 30px rgba(0,0,0,0.25);
+}
+
+.cta-subtitle {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: rgba(255,255,255,0.88);
+    max-width: 600px;
+    margin: 0;
+    line-height: 1.7;
+}
+
+.cta-highlights {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.cta-highlight-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255,255,255,0.9);
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.cta-highlight-icon { font-size: 1.3rem; }
+
+/* CTA Button */
+.cta-main-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 44px;
+    background: #fff;
+    color: #e84c8b;
+    font-size: 1.1rem;
+    font-weight: 800;
+    border-radius: 60px;
+    text-decoration: none;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.25), 0 0 0 0 rgba(255,255,255,0.3);
+    transition: transform 0.3s cubic-bezier(.34,1.56,.64,1),
+                box-shadow 0.3s ease,
+                color 0.3s ease;
+    letter-spacing: 0.02em;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.cta-main-btn:hover {
+    transform: translateY(-4px) scale(1.04);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3), 0 0 0 6px rgba(255,255,255,0.15);
+    color: #c2296a;
+}
+
+.cta-main-btn:active {
+    transform: scale(0.97);
+    transition-duration: 0.1s;
+}
+
+.cta-btn-icon { font-size: 1.4rem; }
+
+.cta-arrow {
+    transition: transform 0.25s ease;
+}
+
+.cta-main-btn:hover .cta-arrow {
+    transform: translateX(5px);
+}
+
+/* Wave decoration at bottom */
+.cta-wave-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    line-height: 0;
+}
+
+.cta-wave-bottom svg {
+    width: 100%;
+    height: 60px;
+}
+
+/* =============================
+   MAP
+   ============================= */
 .map-placeholder {
     height: 200px;
     background: #333;
@@ -50,9 +503,20 @@
     border-radius: 10px;
 }
 
-/* Responsive Contacto */
+/* =============================
+   RESPONSIVE
+   ============================= */
 @media (max-width: 850px) {
     .contact-container { grid-template-columns: 1fr; }
+    .b2b-grid { grid-template-columns: 1fr; }
+    .social-buttons-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+    .contact-cta-section { padding: 80px 0 60px; }
+    .cta-highlights { gap: 18px; }
+    .cta-main-btn { padding: 16px 30px; font-size: 1rem; }
+    .social-cta-section { padding: 60px 0; }
 }
 
 @media (max-width: 480px) {

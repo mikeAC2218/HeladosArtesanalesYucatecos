@@ -15,48 +15,15 @@
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/contacto.css">
     <!-- Leaflet for Map Picking -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" 
-        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" 
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 </head>
 
 <body>
-    <!-- Navbar -->
-    <nav id="main-nav">
-        <div class="container nav-content">
-            <div class="logo">
-                <a href="index.html">
-                    <img src="assets/logoHelados.jpeg" alt="Helados Casfrela Logo"
-                        style="height: 50px; margin-right: 10px; vertical-align: middle; border-radius: 5px;">
-                    <span class="logo-text">CASFRELA</span>
-                </a>
-            </div>
-                <div class="nav-actions" style="display: flex; align-items: center; gap: 20px;">
-                    <ul class="nav-links">
-                        <li><a href="index.html" data-i18n="nav.home">Inicio</a></li>
-                        <li><a href="nosotros.html" data-i18n="nav.about">Nosotros</a></li>
-                        <li><a href="productos.html" data-i18n="nav.products">Productos</a></li>
-                        <li><a href="galeria.html" data-i18n="nav.gallery">Galería</a></li>
-                        <li><a href="contacto.html" class="active" data-i18n="nav.contact">Contacto</a></li>
-                    </ul>
-                    <div class="cart-nav-container">
-                        <button id="cart-btn" class="cart-btn-nav">
-                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
-                            <span id="cart-count" class="cart-badge">0</span>
-                        </button>
-                    </div>
-                    <div class="lang-selector-modern">
-                        <button class="lang-btn" data-lang="es">ES</button>
-                        <div class="lang-divider"></div>
-                        <button class="lang-btn" data-lang="en">EN</button>
-                    </div>
-                </div>
-            <div class="mobile-menu-btn">
-                <span></span><span></span><span></span>
-            </div>
-        </div>
-    </nav>
+    <!-- Shared Navbar -->
+    <div id="navbar-placeholder"></div>
 
     <div class="page-header-spacer"></div>
 
@@ -65,9 +32,11 @@
         <div class="container b2b-grid">
             <div class="business-text">
                 <span class="b2b-subtitle" data-i18n="contact.b2b_subtitle">Para Eventos y Negocios</span>
-                <h2 class="b2b-title" data-i18n="contact.b2b_title">Deleita a tus invitados y clientes con el mejor sabor</h2>
+                <h2 class="b2b-title" data-i18n="contact.b2b_title">Deleita a tus invitados y clientes con el mejor
+                    sabor</h2>
                 <p class="b2b-desc" data-i18n="contact.b2b_desc">
-                    Ofrecemos precios especiales de mayoreo para restaurantes, hoteles y negocios, así como carritos y estaciones de helados personalizados para bodas, fiestas y eventos corporativos.
+                    Ofrecemos precios especiales de mayoreo para restaurantes, hoteles y negocios, así como carritos y
+                    estaciones de helados personalizados para bodas, fiestas y eventos corporativos.
                 </p>
                 <ul class="b2b-list">
                     <li><span data-i18n="contact.b2b_list1">Sabores exclusivos bajo pedido</span></li>
@@ -81,67 +50,165 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contacto" class="contact-section">
-        <div class="container contact-container">
-            <div class="contact-form-box">
-                <h2 data-i18n="contact.title">Contáctanos</h2>
-                <form id="contact-form">
-                    <input type="text" placeholder="Nombre completo" data-i18n="contact.name_placeholder" required>
-                    <input type="email" placeholder="Correo electrónico" data-i18n="contact.email_placeholder" required>
-                    <textarea placeholder="Tu mensaje..." data-i18n="contact.message_placeholder" rows="5" required></textarea>
-                    <button type="submit" class="btn-submit" data-i18n="contact.submit">Enviar Mensaje</button>
-                </form>
+    <!-- Social Media CTA Section -->
+    <section class="social-cta-section">
+        <div class="container social-cta-inner">
+            <div class="social-cta-header">
+                <h2 class="social-cta-title" data-i18n="social.cta_title">Para una mejor cotización</h2>
+                <p class="social-cta-subtitle" data-i18n="social.cta_subtitle">Contáctanos por alguna de nuestras redes
+                    sociales y te responderemos a la brevedad con la mejor oferta personalizada para ti.</p>
             </div>
+
+            <div class="social-buttons-grid">
+                <!-- Facebook -->
+                <a href="https://www.facebook.com/115710801020605/" target="_blank" class="social-cta-btn facebook-btn"
+                    aria-label="Facebook">
+                    <div class="social-btn-icon-wrap">
+                        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                        </svg>
+                    </div>
+                    <div class="social-btn-text">
+                        <span class="social-btn-name">Facebook</span>
+                        <span class="social-btn-handle" data-i18n="social.fb_handle">Helados Casfrela</span>
+                    </div>
+                    <div class="social-btn-arrow">→</div>
+                </a>
+
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/maya_helados_artesanales" target="_blank"
+                    class="social-cta-btn instagram-btn" aria-label="Instagram">
+                    <div class="social-btn-icon-wrap">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                        </svg>
+                    </div>
+                    <div class="social-btn-text">
+                        <span class="social-btn-name">Instagram</span>
+                        <span class="social-btn-handle">@maya_helados_artesanales</span>
+                    </div>
+                    <div class="social-btn-arrow">→</div>
+                </a>
+
+                <!-- WhatsApp -->
+                <a href="https://wa.me/5219993960148" target="_blank" class="social-cta-btn whatsapp-cta-btn"
+                    aria-label="WhatsApp">
+                    <div class="social-btn-icon-wrap">
+                        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                            <path
+                                d="M12 0C5.373 0 0 5.373 0 12c0 2.098.542 4.072 1.49 5.793L0 24l6.385-1.674A11.937 11.937 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.808 9.808 0 0 1-5.022-1.38l-.36-.214-3.727.977.995-3.632-.234-.373A9.799 9.799 0 0 1 2.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z" />
+                        </svg>
+                    </div>
+                    <div class="social-btn-text">
+                        <span class="social-btn-name">WhatsApp</span>
+                        <span class="social-btn-handle" data-i18n="social.wa_handle">+52 999 396 0148</span>
+                    </div>
+                    <div class="social-btn-arrow">→</div>
+                </a>
+
+                <!-- Gmail -->
+                <a href="mailto:casfrelaheladosartesanales@gmail.com" class="social-cta-btn gmail-btn"
+                    aria-label="Gmail">
+                    <div class="social-btn-icon-wrap">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                            <polyline points="22,6 12,13 2,6" />
+                        </svg>
+                    </div>
+                    <div class="social-btn-text">
+                        <span class="social-btn-name">Gmail</span>
+                        <span class="social-btn-handle">casfrelahelados@gmail.com</span>
+                    </div>
+                    <div class="social-btn-arrow">→</div>
+                </a>
+            </div>
+
+            <p class="social-cta-note" data-i18n="social.cta_note">¡Te responderemos lo antes posible con la mejor
+                cotización!</p>
         </div>
     </section>
 
     <!-- Footer -->
     <footer style="background-color: var(--cream, #fdfbf7); padding-top: 80px; border-top: 1px solid rgba(0,0,0,0.05);">
         <div class="container footer-content" style="gap: 60px;">
-            <div class="footer-brand" style="display: flex; flex-direction: column; gap: 10px; align-items: center; text-align: center;">
-                <img src="assets/logoHelados.jpeg" alt="Logo Casfrela"
+            <div class="footer-brand"
+                style="display: flex; flex-direction: column; gap: 10px; align-items: center; text-align: center;">
+                <img src="assets/logoHelados.png" alt="Logo Casfrela"
                     style="height: 70px; width: 70px; align-self: center; margin-bottom: 5px; object-fit: contain; mix-blend-mode: multiply;">
                 <h2 class="logo-text" style="font-size: 1.8rem; margin: 0;">CASFRELA <span
                         class="accent">ARTESANALES</span></h2>
-                <p style="color: var(--text-dark); line-height: 1.6;" data-i18n="footer.brand_desc">Tradición y sabor natural auténticamente yucateco.
+                <p style="color: var(--text-dark); line-height: 1.6;" data-i18n="footer.brand_desc">Tradición y sabor
+                    natural auténticamente yucateco.
                     Llevando la frescura del campo a tu paladar.</p>
             </div>
             <div class="footer-links">
-                <h4 style="color: var(--logo-brown); font-size: 1.2rem; font-weight: 700; margin-bottom: 20px;" data-i18n="footer.nav_title">
+                <h4 style="color: var(--logo-brown); font-size: 1.2rem; font-weight: 700; margin-bottom: 20px;"
+                    data-i18n="footer.nav_title">
                     Navegación</h4>
                 <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 12px;">
                     <li><a href="index.html"
-                            style="color: var(--text-dark); transition: color 0.3s; display: inline-block;" data-i18n="nav.home">Inicio</a>
+                            style="color: var(--text-dark); transition: color 0.3s; display: inline-block;"
+                            data-i18n="nav.home">Inicio</a>
                     </li>
                     <li><a href="nosotros.html"
-                            style="color: var(--text-dark); transition: color 0.3s; display: inline-block;" data-i18n="nav.about">Nosotros</a>
+                            style="color: var(--text-dark); transition: color 0.3s; display: inline-block;"
+                            data-i18n="nav.about">Nosotros</a>
                     </li>
                     <li><a href="productos.html"
-                            style="color: var(--text-dark); transition: color 0.3s; display: inline-block;" data-i18n="nav.products">Productos</a>
+                            style="color: var(--text-dark); transition: color 0.3s; display: inline-block;"
+                            data-i18n="nav.products">Productos</a>
                     </li>
                     <li><a href="contacto.html"
-                            style="color: var(--text-dark); transition: color 0.3s; display: inline-block;" data-i18n="nav.contact">Contacto</a>
+                            style="color: var(--text-dark); transition: color 0.3s; display: inline-block;"
+                            data-i18n="nav.contact">Contacto</a>
                     </li>
                 </ul>
             </div>
             <div class="footer-social">
-                <h4 style="color: var(--logo-brown); font-size: 1.2rem; font-weight: 700; margin-bottom: 20px;" data-i18n="footer.social_title">Conecta
+                <h4 style="color: var(--logo-brown); font-size: 1.2rem; font-weight: 700; margin-bottom: 20px;"
+                    data-i18n="footer.social_title">Conecta
                     con nosotros</h4>
-                <p style="color: var(--text-dark); margin-bottom: 20px; font-size: 0.95rem;" data-i18n="footer.social_desc">Síguenos y contáctanos para
+                <p style="color: var(--text-dark); margin-bottom: 20px; font-size: 0.95rem;"
+                    data-i18n="footer.social_desc">Síguenos y contáctanos para
                     hacer tu pedido o cotizar eventos.</p>
                 <div class="social-icons-premium">
-                    <a href="https://www.facebook.com/115710801020605/" target="_blank" class="social-icon" aria-label="Facebook">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                    <a href="https://www.facebook.com/115710801020605/" target="_blank" class="social-icon"
+                        aria-label="Facebook">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                        </svg>
                     </a>
-                    <a href="https://www.instagram.com/maya_helados_artesanales" target="_blank" class="social-icon" aria-label="Instagram">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    <a href="https://www.instagram.com/maya_helados_artesanales" target="_blank" class="social-icon"
+                        aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
                     </a>
                     <a href="https://wa.me/5219993960148" target="_blank" class="social-icon" aria-label="WhatsApp">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                            </path>
+                        </svg>
                     </a>
                     <a href="mailto:casfrelaheladosartesanales@gmail.com" class="social-icon" aria-label="Gmail">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                            </path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
                     </a>
                 </div>
             </div>
@@ -171,7 +238,8 @@
                     style="display: none; border-top: 2px dashed #eee; padding-top: 10px;">
                     <div
                         style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-                        <h3 style="margin: 0; color: var(--text-dark); font-size: 1.2rem;" data-i18n="cart.total">Total:</h3>
+                        <h3 style="margin: 0; color: var(--text-dark); font-size: 1.2rem;" data-i18n="cart.total">Total:
+                        </h3>
                         <span id="cart-total-price"
                             style="font-size: 1.6rem; font-weight: 700; color: var(--logo-orange);">$0.00</span>
                     </div>
@@ -180,26 +248,35 @@
                     <div id="shipping-section" class="shipping-section">
                         <div class="shipping-header">
                             <span class="shipping-title" data-i18n="cart.shipping_title">Envío</span>
-                            <p class="shipping-legend" data-i18n="cart.shipping_legend">Nota: El costo del envío varía según la ubicación.</p>
+                            <p class="shipping-legend" data-i18n="cart.shipping_legend">Nota: El costo del envío varía
+                                según la ubicación.</p>
                         </div>
                         <div class="address-container">
                             <div class="name-section" style="margin-bottom: 10px;">
-                                <label style="font-size: 0.85rem; font-weight: 600; color: var(--logo-brown); margin-bottom: 5px; display: block;" data-i18n="cart.name_label">Nombre (Opcional)</label>
-                                <input type="text" id="name-input" placeholder="Escribe tu nombre..." data-i18n="cart.name_placeholder" style="width: 100%; padding: 10px; border-radius: 12px; border: 1px solid #ddd; font-family: inherit; font-size: 0.85rem; background: var(--white);">
+                                <label
+                                    style="font-size: 0.85rem; font-weight: 600; color: var(--logo-brown); margin-bottom: 5px; display: block;"
+                                    data-i18n="cart.name_label">Nombre (Opcional)</label>
+                                <input type="text" id="name-input" placeholder="Escribe tu nombre..."
+                                    data-i18n="cart.name_placeholder"
+                                    style="width: 100%; padding: 10px; border-radius: 12px; border: 1px solid #ddd; font-family: inherit; font-size: 0.85rem; background: var(--white);">
                             </div>
-                            <textarea id="address-input" placeholder="Escribe tu dirección..." 
+                            <textarea id="address-input" placeholder="Escribe tu dirección..."
                                 data-i18n="cart.address_placeholder" rows="2"></textarea>
-                            
-                            <div class="location-buttons" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+
+                            <div class="location-buttons"
+                                style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
                                 <button id="get-location-btn" class="btn-location">
-                                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor"
+                                        stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                                         <circle cx="12" cy="10" r="3"></circle>
                                     </svg>
-                                    <span data-i18n="cart.use_location" style="font-size: 0.8rem;">Ubicación Actual</span>
+                                    <span data-i18n="cart.use_location" style="font-size: 0.8rem;">Ubicación
+                                        Actual</span>
                                 </button>
                                 <button id="pick-map-btn" class="btn-location">
-                                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor"
+                                        stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon>
                                         <line x1="8" y1="2" x2="8" y2="18"></line>
                                         <line x1="16" y1="6" x2="16" y2="22"></line>
@@ -208,12 +285,17 @@
                                 </button>
                             </div>
 
-                            <div id="cart-map-preview" style="height: 120px; width: 100%; margin-top: 15px; border-radius: 12px; border: 1px solid #ddd; display: none; overflow: hidden;"></div>
+                            <div id="cart-map-preview"
+                                style="height: 120px; width: 100%; margin-top: 15px; border-radius: 12px; border: 1px solid #ddd; display: none; overflow: hidden;">
+                            </div>
 
                             <div class="references-section" style="margin-top: 10px;">
-                                <label style="font-size: 0.85rem; font-weight: 600; color: var(--logo-brown); margin-bottom: 5px; display: block;" data-i18n="cart.references_label">Referencias (Opcional)</label>
-                                <textarea id="references-input" placeholder="Fachada roja, negocio cercano..." 
-                                    data-i18n="cart.references_placeholder" rows="2" style="width: 100%; padding: 10px; border-radius: 12px; border: 1px solid #ddd; font-family: inherit; font-size: 0.85rem; resize: none;"></textarea>
+                                <label
+                                    style="font-size: 0.85rem; font-weight: 600; color: var(--logo-brown); margin-bottom: 5px; display: block;"
+                                    data-i18n="cart.references_label">Referencias (Opcional)</label>
+                                <textarea id="references-input" placeholder="Fachada roja, negocio cercano..."
+                                    data-i18n="cart.references_placeholder" rows="2"
+                                    style="width: 100%; padding: 10px; border-radius: 12px; border: 1px solid #ddd; font-family: inherit; font-size: 0.85rem; resize: none;"></textarea>
                             </div>
                         </div>
                     </div>
@@ -244,15 +326,21 @@
             <div class="modal-header-premium">
                 <h3 class="script-font" data-i18n="cart.pick_on_map">Seleccionar Ubicación</h3>
             </div>
-            <div id="map-container" style="height: 300px; width: 100%; margin: 15px 0; border-radius: 12px; border: 1px solid #ddd;"></div>
-            <p style="font-size: 0.8rem; color: var(--text-light); text-align: center; margin-bottom: 15px;" data-i18n="cart.drag_marker">Arrastra el marcador o haz doble clic / toca dos veces para seleccionar tu ubicación exacta.</p>
+            <div id="map-container"
+                style="height: 300px; width: 100%; margin: 15px 0; border-radius: 12px; border: 1px solid #ddd;"></div>
+            <p style="font-size: 0.8rem; color: var(--text-light); text-align: center; margin-bottom: 15px;"
+                data-i18n="cart.drag_marker">Arrastra el marcador o haz doble clic / toca dos veces para seleccionar tu
+                ubicación exacta.</p>
             <div style="display: flex; gap: 10px;">
-                <button id="cancel-map-btn" class="btn-outline" style="flex: 1; padding: 10px;" data-i18n="common.cancel">Cancelar</button>
-                <button id="confirm-map-btn" class="whatsapp-btn" style="flex: 1; padding: 10px; height: auto;" data-i18n="common.confirm">Confirmar</button>
+                <button id="cancel-map-btn" class="btn-outline" style="flex: 1; padding: 10px;"
+                    data-i18n="common.cancel">Cancelar</button>
+                <button id="confirm-map-btn" class="whatsapp-btn" style="flex: 1; padding: 10px; height: auto;"
+                    data-i18n="common.confirm">Confirmar</button>
             </div>
         </div>
     </div>
 
+    <script src="js/navbar.js"></script>
     <script src="js/i18n.js"></script>
     <script src="js/main.js"></script>
 </body>

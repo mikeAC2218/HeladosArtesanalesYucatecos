@@ -50,6 +50,9 @@
   "why.daily_title": "Daily Production",
   "why.daily_desc": "We guarantee maximum freshness in each of our products.",
   "gallery.title": "Our Moments",
+  "gallery.label": "Our Collection",
+  "gallery.subtitle": "Every image is a bite of Yucatecan tradition and flavor.",
+  "gallery.view_all": "View full gallery",
   "footer.brand_desc": "Authentic Yucatecan tradition and natural flavor. Bringing local freshness to your palate.",
   "footer.nav_title": "Navigation",
   "footer.social_title": "Connect with us",
@@ -250,5 +253,17 @@
   "common.cancel": "Cancel",
   "common.confirm": "Confirm",
   "products.icecream_section": "Our Ice Creams",
-  "products.paletas_section": "Our Paletas"
+  "products.paletas_section": "Our Paletas",
+  "cta.badge": "We're waiting for you!",
+  "cta.title": "Ready for a flavor you'll never forget?",
+  "cta.subtitle": "Artisanal ice creams made with love and the finest ingredients from yucatán. Place your order, quote an event, or just say hi. We're here to sweeten your day!",
+  "cta.fast": "Fast response",
+  "cta.events": "Special events",
+  "cta.love": "Made with love",
+  "cta.button": "Contact Us Now!",
+  "social.cta_title": "For a better quote",
+  "social.cta_subtitle": "Reach out through any of our social networks and we'll get back to you quickly with the best personalized offer.",
+  "social.fb_handle": "Helados Casfrela",
+  "social.wa_handle": "+52 999 396 0148",
+  "social.cta_note": "🍦 We'll respond as soon as possible with the best quote!"
 }

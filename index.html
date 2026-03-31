@@ -26,46 +26,8 @@
 </head>
 
 <body>
-    <!-- Navbar -->
-    <nav id="main-nav">
-        <div class="container nav-content">
-            <div class="logo">
-                <a href="index.html">
-                    <img src="assets/logoHelados.jpeg" alt="Helados Casfrela Logo"
-                        style="height: 50px; margin-right: 10px; vertical-align: middle; border-radius: 5px;">
-                    <span class="logo-text">CASFRELA</span>
-                </a>
-            </div>
-            <div class="nav-actions" style="display: flex; align-items: center; gap: 20px;">
-                <ul class="nav-links">
-                    <li><a href="index.html" class="active" data-i18n="nav.home">Inicio</a></li>
-                    <li><a href="nosotros.html" data-i18n="nav.about">Nosotros</a></li>
-                    <li><a href="productos.html" data-i18n="nav.products">Productos</a></li>
-                    <li><a href="galeria.html" data-i18n="nav.gallery">Galería</a></li>
-                    <li><a href="contacto.html" data-i18n="nav.contact">Contacto</a></li>
-                </ul>
-                <div class="cart-nav-container">
-                    <button id="cart-btn" class="cart-btn-nav">
-                        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2"
-                            fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="9" cy="21" r="1"></circle>
-                            <circle cx="20" cy="21" r="1"></circle>
-                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                        </svg>
-                        <span id="cart-count" class="cart-badge">0</span>
-                    </button>
-                </div>
-                <div class="lang-selector-modern">
-                    <button class="lang-btn" data-lang="es">ES</button>
-                    <div class="lang-divider"></div>
-                    <button class="lang-btn" data-lang="en">EN</button>
-                </div>
-            </div>
-            <div class="mobile-menu-btn">
-                <span></span><span></span><span></span>
-            </div>
-        </div>
-    </nav>
+    <!-- Shared Navbar -->
+    <div id="navbar-placeholder"></div>
 
     <!-- Hero Section -->
     <section id="inicio" class="hero">
@@ -169,7 +131,7 @@
                                         calor Yucateco. Refrescancia pura
                                         en cada bocado, ideal para disfrutar bajo el sol del Mayab.</p>
                                     <ul class="seasonal-list">
-                                        <li data-i18n="seasonal.summer_list1">Helado de Coconut & Lime</li>
+                                        <li data-i18n="seasonal.summer_list1">Helado de Coconut &amp; Lime</li>
                                         <li data-i18n="seasonal.summer_list2">Malteadas de Vainilla helada</li>
                                         <li data-i18n="seasonal.summer_list3">Yogurt helado de Mango</li>
                                     </ul>
@@ -237,37 +199,89 @@
             </div>
         </section>
 
-        <!-- Gallery -->
-        <section id="galeria" class="gallery container">
-            <div class="section-title-center">
-                <h2 data-i18n="gallery.title">Nuestros Momentos</h2>
-            </div>
-            <div class="masonry-grid">
-                <div class="masonry-item item-large"><img src="assets/hero-bg.png" alt="Gallery 1"></div>
-                <div class="masonry-item"><img src="assets/spring.png" alt="Gallery 2"></div>
-                <div class="masonry-item"><img src="assets/summer.png" alt="Gallery 3"></div>
-                <div class="masonry-item item-tall"><img src="assets/strawberry-milkshake.png" alt="Gallery 4"></div>
-                <div class="masonry-item"><img src="assets/autumn.png" alt="Gallery 5"></div>
-                <div class="masonry-item"><img src="assets/pineapple-icecream.png" alt="Gallery 6"></div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contacto" class="contact-section">
-            <div class="container contact-container">
-                <div class="contact-form-box">
-                    <h2 data-i18n="contact.title">Contáctanos</h2>
-                    <form id="contact-form">
-                        <input type="text" placeholder="Nombre completo" data-i18n="contact.name_placeholder" required>
-                        <input type="email" placeholder="Correo electrónico" data-i18n="contact.email_placeholder"
-                            required>
-                        <textarea placeholder="Tu mensaje..." data-i18n="contact.message_placeholder" rows="5"
-                            required></textarea>
-                        <button type="submit" class="btn-submit" data-i18n="contact.submit">Enviar Mensaje</button>
-                    </form>
+        <!-- Gallery: Nuestros Momentos - Premium Grid -->
+        <section id="galeria" class="gallery-index">
+            <div class="container">
+                <div class="gallery-index-header">
+                    <span class="gallery-index-label" data-i18n="gallery.label">Nuestra Colección</span>
+                    <h2 data-i18n="gallery.title">Nuestros Momentos</h2>
+                    <p data-i18n="gallery.subtitle">Cada imagen es un bocado de tradición y sabor yucateco.</p>
+                </div>
+                <div class="gallery-index-grid">
+                    <div class="gi-card gi-featured">
+                        <img src="assets/hero-bg.png" alt="Helados Artesanales">
+                        <div class="gi-overlay"><span data-i18n="gallery.label">Nuestra Colección</span></div>
+                    </div>
+                    <div class="gi-card">
+                        <img src="assets/spring.png" alt="Temporada Primavera">
+                        <div class="gi-overlay"></div>
+                    </div>
+                    <div class="gi-card">
+                        <img src="assets/summer.png" alt="Temporada Verano">
+                        <div class="gi-overlay"></div>
+                    </div>
+                    <div class="gi-card gi-tall">
+                        <img src="assets/strawberry-milkshake.png" alt="Malteada">
+                        <div class="gi-overlay"></div>
+                    </div>
+                    <div class="gi-card">
+                        <img src="assets/autumn.png" alt="Temporada Otoño">
+                        <div class="gi-overlay"></div>
+                    </div>
+                    <div class="gi-card">
+                        <img src="assets/pineapple-icecream.png" alt="Piña">
+                        <div class="gi-overlay"></div>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 36px;">
+                    <a href="galeria.html" class="gi-view-all" data-i18n="gallery.view_all">Ver toda la galería &rarr;</a>
                 </div>
             </div>
         </section>
+
+        <!-- ===== Contact CTA Section ===== -->
+        <section id="contacto" class="contact-cta-section">
+            <!-- Floating ice cream emojis -->
+            <div class="cta-floating-emojis" aria-hidden="true">
+                <span class="cta-emoji" style="--delay:0s; --x:5%; --size:2.2rem;">🍦</span>
+                <span class="cta-emoji" style="--delay:1.2s; --x:15%; --size:1.8rem;">🍧</span>
+                <span class="cta-emoji" style="--delay:0.4s; --x:28%; --size:2.5rem;">🍨</span>
+                <span class="cta-emoji" style="--delay:2s; --x:42%; --size:1.6rem;">🌺</span>
+                <span class="cta-emoji" style="--delay:0.8s; --x:58%; --size:2rem;">🍓</span>
+                <span class="cta-emoji" style="--delay:1.6s; --x:70%; --size:2.4rem;">🍍</span>
+                <span class="cta-emoji" style="--delay:0.2s; --x:82%; --size:1.9rem;">🍦</span>
+                <span class="cta-emoji" style="--delay:1s; --x:93%; --size:2.1rem;">🥭</span>
+            </div>
+
+            <div class="cta-inner container">
+                <div class="cta-badge" data-i18n="cta.badge">¡Te estamos esperando!</div>
+                <h2 class="cta-title" data-i18n="cta.title">¿Listo para el sabor<br>que nunca olvidarás?</h2>
+                <p class="cta-subtitle" data-i18n="cta.subtitle">Helados artesanales hechos con amor y los mejores ingredientes de Yucatán. Haz tu pedido, cotiza un evento o simplemente dinos hola. ¡Estamos aquí para endulzar tu día!</p>
+                <div class="cta-highlights">
+                    <div class="cta-highlight-item">
+                        <span data-i18n="cta.fast">Respuesta rápida</span>
+                    </div>
+                    <div class="cta-highlight-item">
+                        <span data-i18n="cta.events">Eventos especiales</span>
+                    </div>
+                    <div class="cta-highlight-item">
+                        <span data-i18n="cta.love">Hecho con amor</span>
+                    </div>
+                </div>
+                <a href="contacto.html" class="cta-main-btn" id="cta-contact-btn">
+                    <span data-i18n="cta.button">¡Contáctanos Ahora!</span>
+                    <svg class="cta-arrow" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+            </div>
+
+            <!-- Decorative melting wave at bottom -->
+            <div class="cta-wave-bottom" aria-hidden="true">
+                <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0,40 C240,80 480,0 720,40 C960,80 1200,0 1440,40 L1440,80 L0,80 Z" fill="var(--cream, #fdfbf7)"/>
+                </svg>
+            </div>
+        </section>
+
     </div> <!-- Close scroll-transition -->
 
     <!-- Footer -->
@@ -275,7 +289,7 @@
         <div class="container footer-content" style="gap: 60px;">
             <div class="footer-brand"
                 style="display: flex; flex-direction: column; gap: 10px; align-items: center; text-align: center;">
-                <img src="assets/logoHelados.jpeg" alt="Logo Casfrela"
+                <img src="assets/logoHelados.png" alt="Logo Casfrela"
                     style="height: 70px; width: 70px; align-self: center; margin-bottom: 5px; object-fit: contain; mix-blend-mode: multiply;">
                 <h2 class="logo-text" style="font-size: 1.8rem; margin: 0;">CASFRELA <span
                         class="accent">ARTESANALES</span></h2>
@@ -446,6 +460,7 @@
         </div>
     </div>
 
+    <script src="js/navbar.js"></script>
     <script src="js/i18n.js"></script>
     <script src="js/main.js"></script>
 </body>

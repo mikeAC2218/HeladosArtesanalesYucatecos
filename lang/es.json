@@ -50,6 +50,9 @@
   "why.daily_title": "Producción Diaria",
   "why.daily_desc": "Garantizamos la frescura máxima en cada uno de nuestros productos.",
   "gallery.title": "Nuestros Momentos",
+  "gallery.label": "Nuestra Colección",
+  "gallery.subtitle": "Cada imagen es un bocado de tradición y sabor yucateco.",
+  "gallery.view_all": "Ver toda la galería",
   "footer.brand_desc": "Tradición y sabor natural auténticamente yucateco. Llevando la frescura del campo a tu paladar.",
   "footer.nav_title": "Navegación",
   "footer.social_title": "Conecta con nosotros",
@@ -250,5 +253,17 @@
   "common.cancel": "Cancelar",
   "common.confirm": "Confirmar",
   "products.icecream_section": "Nuestros Helados",
-  "products.paletas_section": "Nuestras Paletas"
+  "products.paletas_section": "Nuestras Paletas",
+  "cta.badge": "¡Te estamos esperando!",
+  "cta.title": "¿Listo para el sabor que nunca olvidarás?",
+  "cta.subtitle": "Helados artesanales hechos con amor y los mejores ingredientes de Yucatán. Haz tu pedido, cotiza un evento o simplemente dinos hola. ¡Estamos aquí para endulzar tu día!",
+  "cta.fast": "Respuesta rápida",
+  "cta.events": "Eventos especiales",
+  "cta.love": "Hecho con amor",
+  "cta.button": "¡Contáctanos Ahora!",
+  "social.cta_title": "Para una mejor cotización",
+  "social.cta_subtitle": "Contáctanos por alguna de nuestras redes sociales y te responderemos a la brevedad con la mejor oferta personalizada para ti.",
+  "social.fb_handle": "Helados Casfrela",
+  "social.wa_handle": "+52 999 396 0148",
+  "social.cta_note": "🍦 ¡Te responderemos lo antes posible con la mejor cotización!"
 }
