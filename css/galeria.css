@@ -8,6 +8,12 @@
     padding: 60px 0 100px;
 }
 
+.container-wide {
+    max-width: 1750px;
+    width: 98%;
+    margin: 0 auto;
+}
+
 /* ── Header de página ── */
 .gallery-page-header {
     text-align: center;
@@ -54,13 +60,13 @@
 
 /* ── Grid Masonry Premium ── */
 .gallery-masonry {
-    columns: 5 160px;
-    column-gap: 14px;
+    columns: 6 140px;
+    column-gap: 8px;
 }
 
 .gallery-card {
     break-inside: avoid;
-    margin-bottom: 14px;
+    margin-bottom: 8px;
     border-radius: 14px;
     overflow: hidden;
     position: relative;
@@ -191,17 +197,22 @@
 .lightbox-next:hover { background: var(--logo-orange); transform: translateY(-50%) translateX(3px); }
 
 /* ── Responsive ── */
+@media (max-width: 1400px) {
+    .gallery-masonry { columns: 5 140px; column-gap: 6px; }
+}
+
 @media (max-width: 1200px) {
-    .gallery-masonry { columns: 4 140px; column-gap: 12px; }
+    .gallery-masonry { columns: 4 130px; column-gap: 6px; }
 }
 
 @media (max-width: 900px) {
-    .gallery-masonry { columns: 3 130px; column-gap: 10px; }
-    .gallery-card { margin-bottom: 10px; }
+    .gallery-masonry { columns: 3 120px; column-gap: 6px; }
+    .gallery-card { margin-bottom: 6px; }
 }
 
 @media (max-width: 600px) {
-    .gallery-masonry { columns: 2 120px; column-gap: 8px; }
+    .gallery-masonry { columns: 2 110px; column-gap: 4px; }
+    .gallery-card { margin-bottom: 4px; }
     .gallery-card.size-tall img { height: 220px; }
     .gallery-card.size-medium img { height: 180px; }
     .gallery-card.size-small img { height: 150px; }

@@ -717,6 +717,61 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // === 6. Product Presentation Filter ===
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    if (filterButtons.length > 0) {
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const filterValue = btn.getAttribute('data-filter');
+                
+                // Update active button
+                filterButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                // Filter cards
+                const productsSection = document.getElementById('productos');
+                const viewLinks = productsSection.querySelector('.view-links-container');
+                const cards = productsSection.querySelectorAll('.product-card');
+                const isExpanded = productsSection.querySelector('.view-all-link').style.display === 'none';
+                
+                if (filterValue === 'all') {
+                    // Show/Hide view links based on state
+                    if (viewLinks) viewLinks.style.display = 'block';
+                    
+                    cards.forEach(card => {
+                        const isExtra = card.classList.contains('extra-card');
+                        if (isExtra) {
+                            if (isExpanded) {
+                                card.classList.remove('hidden');
+                                card.style.display = 'flex';
+                            } else {
+                                card.classList.add('hidden');
+                                card.style.display = 'none';
+                            }
+                        } else {
+                            card.classList.remove('hidden');
+                            card.style.display = 'flex';
+                        }
+                    });
+                } else {
+                    // Specific filter: Hide view links and show ALL matching items
+                    if (viewLinks) viewLinks.style.display = 'none';
+                    
+                    cards.forEach(card => {
+                        const presentation = card.getAttribute('data-presentation');
+                        if (presentation === filterValue) {
+                            card.classList.remove('hidden');
+                            card.style.display = 'flex';
+                        } else {
+                            card.classList.add('hidden');
+                            card.style.display = 'none';
+                        }
+                    });
+                }
+            });
+        });
+    }
+
     updateCartUI();
 
     // Contact form setup

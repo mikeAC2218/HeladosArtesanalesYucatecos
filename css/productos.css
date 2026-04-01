@@ -21,6 +21,53 @@ section {
     align-items: center;
 }
 
+@media (max-width: 768px) {
+    .hero-full-screen {
+        height: 60vh;
+        min-height: 400px;
+        background-position: center bottom; /* Better for focus on product */
+    }
+}
+
+/* Filter Branding Buttons */
+.product-filters {
+    padding: 0 10px;
+}
+
+.filter-btn {
+    padding: 12px 28px;
+    border-radius: 50px;
+    border: 2px solid var(--logo-brown);
+    background: transparent;
+    color: var(--logo-brown);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 0.95rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.filter-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.filter-btn.active {
+    background: var(--logo-brown);
+    color: white;
+    box-shadow: 0 8px 25px rgba(103, 64, 40, 0.3);
+}
+
+.product-card {
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease;
+}
+
+.product-card.hidden {
+    display: none;
+    opacity: 0;
+    transform: scale(0.8);
+}
+
 .hero-overlay {
     position: absolute;
     top: 0;
@@ -54,6 +101,10 @@ section {
     margin: 40px auto 30px;
     max-width: 1800px;
     width: 98%;
+}
+
+.intro-paletas .intro-content-wrapper {
+    margin-top: 10px;
 }
 
 .intro-text-center {
