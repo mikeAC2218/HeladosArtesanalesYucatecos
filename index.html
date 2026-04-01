@@ -251,9 +251,94 @@
                         <div class="gi-overlay"></div>
                     </div>
                 </div>
-                <div style="text-align: center; margin-top: 36px;">
+                <div style="text-align: center; margin-top: 24px;">
                     <a href="galeria.html" class="gi-view-all" data-i18n="gallery.view_all">Ver toda la galería
                         &rarr;</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Upcoming Events Section -->
+        <section id="proximos-eventos" class="upcoming-events-section"
+            style="background: var(--cream); border-bottom: 1px solid rgba(0,0,0,0.05);">
+            <div class="container">
+                <div class="section-header-premium" style="margin-bottom: 40px;">
+                    <h2 class="script-font" data-i18n="upcoming.title">Próximos Eventos</h2>
+                    <p data-i18n="upcoming.desc">¡Acompáñanos en nuestras próximas aventuras heladas! No te pierdas la
+                        oportunidad de disfrutar lo mejor de Yucatán.</p>
+                </div>
+                <div class="upcoming-card">
+                    <div class="epc-img"
+                        style="background-image: url('assets/Galeria/Eventos/heladizaINS.png'); height: 100%; min-height: 300px;">
+                    </div>
+                    <div class="epc-content"
+                        style="text-align: left; display: flex; flex-direction: column; justify-content: center;">
+                        <h4 data-i18n="events.e1_name">Heladiza Fest Vol. 4</h4>
+                        <p data-i18n="events.e1_desc">¡Nos vemos este 4 y 5 de abril en el Parque de la Paz! Sabores
+                            exclusivos y mucha diversión.</p>
+                        <div style="margin-top: 20px; display: flex; align-items: center; gap: 20px;">
+                            <button id="open-event-modal" class="btn-more-events"
+                                style="padding: 10px 25px; font-size: 0.9rem;" data-i18n="events.view_details">Ver
+                                más</button>
+                            <div style="display: flex; gap: 10px;">
+                                <a href="https://www.instagram.com/reel/DVsbnLQjk3-/" target="_blank"
+                                    class="social-icon" aria-label="Instagram" style="width: 36px; height: 36px;">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                    </svg>
+                                </a>
+                                <a href="https://www.facebook.com/share/r/1CBic518he/" target="_blank"
+                                    class="social-icon" aria-label="Facebook" style="width: 36px; height: 36px;">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z">
+                                        </path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Events Participation Section -->
+        <section id="eventos-inicio" class="events-preview-section">
+            <div class="container">
+                <div class="section-header-premium">
+                    <h2 class="script-font" data-i18n="events.title_inicio">Nuestra participación en eventos</h2>
+                    <p data-i18n="events.desc_inicio">Hemos llevado la frescura de Yucatán a diversos rincones. Descubre
+                        nuestra historia en cada evento.</p>
+                </div>
+                <div class="events-preview-grid">
+                    <div class="event-preview-card">
+                        <div class="epc-img" style="background-image: url('assets/Galeria/Eventos/heladizaFB.png');"></div>
+                        <div class="epc-content">
+                            <h4 data-i18n="events.e1_name">Heladiza Fest Vol. 4</h4>
+                            <p data-i18n="events.e1_desc">Festival de Heladería y Postres. ¡Te esperamos 4 y 5 de abril en el Parque de la Paz!</p>
+                        </div>
+                    </div>
+                    <div class="event-preview-card">
+                        <div class="epc-img" style="background-image: url('assets/Galeria/sesionFotos/2.jpeg');"></div>
+                        <div class="epc-content">
+                            <h4 data-i18n="events.e2_name">Bazares Locales</h4>
+                            <p data-i18n="events.e2_desc">Presentes en los mejores espacios de emprendimiento.</p>
+                        </div>
+                    </div>
+                    <div class="event-preview-card">
+                        <div class="epc-img" style="background-image: url('assets/Galeria/sesionFotos/3.jpeg');"></div>
+                        <div class="epc-content">
+                            <h4 data-i18n="events.e3_name">Eventos Privados</h4>
+                            <p data-i18n="events.e3_desc">Haciendo de cada celebración algo inolvidable.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="events-cta-container">
+                    <a href="eventos.html" class="btn-more-events" data-i18n="events.view_more">Ver todos los
+                        eventos</a>
                 </div>
             </div>
         </section>
@@ -310,90 +395,76 @@
 
     </div> <!-- Close scroll-transition -->
 
-    <!-- Footer -->
-    <footer style="background-color: var(--cream, #fdfbf7); padding-top: 80px; border-top: 1px solid rgba(0,0,0,0.05);">
-        <div class="container footer-content" style="gap: 60px;">
-            <div class="footer-brand"
-                style="display: flex; flex-direction: column; gap: 10px; align-items: center; text-align: center;">
-                <img src="assets/logoHelados.png" alt="Logo Casfrela"
-                    style="height: 70px; width: 70px; align-self: center; margin-bottom: 5px; object-fit: contain; mix-blend-mode: multiply;">
-                <h2 class="logo-text" style="font-size: 1.8rem; margin: 0;">CASFRELA <span
-                        class="accent">ARTESANALES</span></h2>
-                <p style="color: var(--text-dark); line-height: 1.6;" data-i18n="footer.brand_desc">Tradición y
-                    sabor natural auténticamente
-                    yucateco. Llevando la frescura del campo a tu paladar.</p>
+    <div id="footer-placeholder"></div>
+
+    <!-- Heladiza Fest Modal -->
+    <div id="event-modal" class="modal-overlay">
+        <div class="modal-content event-modal-content" style="max-width: 1150px; border-radius: 24px;">
+            <span class="modal-close event-modal-close" style="top: 20px; right: 20px;">&times;</span>
+            <div class="modal-header-premium" style="padding: 30px 40px 10px;">
+                <h2 class="script-font" style="font-size: 2.5rem; color: var(--logo-brown); margin: 0;">Heladiza Fest
+                    Vol. 4</h2>
+                <div class="gold-line"
+                    style="margin: 10px 0; width: 60px; height: 3px; background: var(--logo-orange);"></div>
             </div>
-            <div class="footer-links">
-                <h4 style="color: var(--logo-brown); font-size: 1.2rem; font-weight: 700; margin-bottom: 20px;"
-                    data-i18n="footer.nav_title">
-                    Navegación</h4>
-                <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 12px;">
-                    <li><a href="index.html"
-                            style="color: var(--text-dark); transition: color 0.3s; display: inline-block;"
-                            data-i18n="nav.home">Inicio</a>
-                    </li>
-                    <li><a href="nosotros.html"
-                            style="color: var(--text-dark); transition: color 0.3s; display: inline-block;"
-                            data-i18n="nav.about">Nosotros</a>
-                    </li>
-                    <li><a href="productos.html"
-                            style="color: var(--text-dark); transition: color 0.3s; display: inline-block;"
-                            data-i18n="nav.products">Productos</a>
-                    </li>
-                    <li><a href="contacto.html"
-                            style="color: var(--text-dark); transition: color 0.3s; display: inline-block;"
-                            data-i18n="nav.contact">Contacto</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="footer-social">
-                <h4 style="color: var(--logo-brown); font-size: 1.2rem; font-weight: 700; margin-bottom: 20px;"
-                    data-i18n="footer.social_title">
-                    Conecta con nosotros</h4>
-                <p style="color: var(--text-dark); margin-bottom: 20px; font-size: 0.95rem;"
-                    data-i18n="footer.social_desc">Síguenos y contáctanos
-                    para hacer tu pedido o cotizar eventos.</p>
-                <div class="social-icons-premium">
-                    <a href="https://www.facebook.com/115710801020605/" target="_blank" class="social-icon"
-                        aria-label="Facebook">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                        </svg>
-                    </a>
-                    <a href="https://www.instagram.com/maya_helados_artesanales" target="_blank" class="social-icon"
-                        aria-label="Instagram">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                        </svg>
-                    </a>
-                    <a href="https://wa.me/5219993960148" target="_blank" class="social-icon" aria-label="WhatsApp">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path
-                                d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
-                            </path>
-                        </svg>
-                    </a>
-                    <a href="mailto:casfrelaheladosartesanales@gmail.com" class="social-icon" aria-label="Gmail">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
-                            </path>
-                            <polyline points="22,6 12,13 2,6"></polyline>
-                        </svg>
-                    </a>
+            <div class="modal-body event-modal-body" style="padding: 0 40px 30px; display: block;">
+                <div class="event-details-grid" style="display: grid; grid-template-columns: 1fr 1fr 1.2fr; gap: 30px; align-items: start;">
+                    <!-- Column 1: General Info -->
+                    <div class="event-general-info">
+                        <p style="font-weight: 700; color: var(--logo-orange); margin-bottom: 20px; font-size: 1.05rem; display: flex; align-items: center; gap: 8px;">
+                            🍰🍦 ¡Llega el festival! 🍦🍰
+                        </p>
+                        
+                        <ul class="event-details-list" style="list-style: none; padding: 0; margin-bottom: 0;">
+                            <li style="display: flex; gap: 10px; margin-bottom: 15px;">
+                                <span style="font-size: 1.2rem;">📍</span>
+                                <div style="font-size: 0.9rem;">
+                                    <strong style="color: var(--logo-brown);">Ubicación:</strong><br>
+                                    Parque de la Paz, Mérida
+                                </div>
+                            </li>
+                            <li style="display: flex; gap: 10px; margin-bottom: 15px;">
+                                <span style="font-size: 1.2rem;">📅</span>
+                                <div style="font-size: 0.9rem;">
+                                    <strong style="color: var(--logo-brown);">Horarios:</strong><br>
+                                    Sáb: 2pm - 11pm<br>Dom: 10am - 10pm
+                                </div>
+                            </li>
+                            <li style="display: flex; gap: 10px;">
+                                <span style="font-size: 1.2rem;">🎟️</span>
+                                <div style="font-size: 0.9rem;"><strong style="color: var(--logo-brown);">Entrada Libre</strong></div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Column 2: More Details -->
+                    <div class="event-more-info">
+                        <h5 style="color: var(--logo-orange); font-size: 1.05rem; font-weight: 700; margin-bottom: 20px;">Más detalles</h5>
+                        <div class="event-highlights" style="font-size: 0.9rem; color: var(--text-dark); line-height: 1.6;">
+                            <p>✨ +100 sabores únicos.</p>
+                            <p>🍨 Helados, gelato y postres.</p>
+                            <p>🍦 Opciones sin azúcar.</p>
+                            <p>🎶 Música en vivo & DJ.</p>
+                            <p>📸 Spots para fotos.</p>
+                            <p>💥 Ambiente familiar.</p>
+                        </div>
+                    </div>
+
+                    <!-- Column 3: Map -->
+                    <div class="event-map-container">
+                        <h5 style="color: var(--logo-brown); font-size: 1.05rem; font-weight: 700; margin-bottom: 15px; text-align: center;">¿Cómo llegar?</h5>
+                        <div class="map-wrapper" style="border-radius: 20px; overflow: hidden; height: 200px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid #eee;">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3371.4074026354347!2d-89.6413147!3d20.971523899999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f5673c1ac1a322b%3A0xbd1afc56171004d0!2sParque%20de%20la%20Paz!5e1!3m2!1ses-419!2smx!4v1775085165079!5m2!1ses-419!2smx" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="modal-footer" style="margin-top: 25px; border-top: 1px solid #eee; padding-top: 15px; text-align: center;">
+                    <p style="font-size: 0.85rem; color: var(--text-light); font-style: italic; margin-bottom: 0;">📲 ¡Etiqueta a tus amigos y arma el plan!</p>
                 </div>
             </div>
         </div>
-        <div class="footer-bottom"
-            style="text-align: center; padding: 25px 0; border-top: 1px solid rgba(0, 0, 0, 0.08); font-size: 0.9rem; color: var(--text-light); margin-top: 20px;">
-            <p data-i18n="footer.copyright">&copy; 2026 Helados Casfrela. Todos los derechos reservados.</p>
-        </div>
-    </footer>
+    </div>
 
     <!-- Shopping Cart Modal -->
     <div id="cart-modal" class="modal-overlay">
@@ -512,6 +583,7 @@
     </div>
 
     <script src="js/navbar.js"></script>
+    <script src="js/footer.js"></script>
     <script src="js/i18n.js"></script>
     <script src="js/main.js"></script>
 </body>

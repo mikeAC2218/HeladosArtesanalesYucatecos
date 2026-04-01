@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="nav.events">Eventos | Helados Casfrela</title>
+    <meta name="description" content="Descubre nuestra participación en eventos, ferias y bazares.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playball&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/i18n.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/eventos.css">
+</head>
+
+<body>
+    <!-- Shared Navbar -->
+    <div id="navbar-placeholder"></div>
+
+    <!-- Events Hero -->
+    <section class="events-hero">
+        <div class="events-hero-content container">
+            <h1 class="script-font" data-i18n="events.hero_title">Nuestros Momentos en Eventos</h1>
+            <p data-i18n="events.hero_subtitle">Capturas de nuestra participación en ferias, bazares y celebraciones especiales.</p>
+        </div>
+    </section>
+
+    <!-- Upcoming Events Section (Same as Index) -->
+    <section id="proximos-eventos" class="upcoming-events-section" style="background: var(--cream); padding: 80px 0;">
+        <div class="container">
+            <div class="section-header-premium" style="margin-bottom: 40px;">
+                <h2 class="script-font" data-i18n="upcoming.title">Próximos Eventos</h2>
+                <p data-i18n="upcoming.desc">¡Acompáñanos en nuestras próximas aventuras heladas! No te pierdas la oportunidad de disfrutar lo mejor de Yucatán.</p>
+            </div>
+            <div class="upcoming-card">
+                <div class="epc-img" style="background-image: url('assets/Galeria/Eventos/heladizaINS.png'); height: 100%; min-height: 300px;"></div>
+                <div class="epc-content" style="text-align: left; display: flex; flex-direction: column; justify-content: center;">
+                    <h4 data-i18n="events.e1_name">Heladiza Fest Vol. 4</h4>
+                    <p data-i18n="events.e1_desc">Festival de Heladería y Postres. ¡Te esperamos 4 y 5 de abril en el Parque de la Paz!</p>
+                    <div style="margin-top: 20px; display: flex; align-items: center; gap: 20px;">
+                        <button id="open-event-modal" class="btn-more-events" style="padding: 10px 25px; font-size: 0.9rem;" data-i18n="events.view_details">Ver más</button>
+                        <div style="display: flex; gap: 10px;">
+                            <a href="https://www.instagram.com/reel/DVsbnLQjk3-/" target="_blank" class="social-icon" aria-label="Instagram" style="width: 36px; height: 36px;">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                            </a>
+                            <a href="https://www.facebook.com/share/r/1CBic518he/" target="_blank" class="social-icon" aria-label="Facebook" style="width: 36px; height: 36px;">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Feed Section -->
+    <section class="social-feed-section">
+        <div class="container">
+            <div class="section-header-premium">
+                <span class="section-badge" data-i18n="events.badge">Nuestra Participación</span>
+                <h2 class="script-font" data-i18n="events.feed_title">Historias y Publicaciones</h2>
+                <p data-i18n="events.feed_desc">Síguenos en nuestras redes sociales para estar al tanto de nuestros próximos destinos.</p>
+            </div>
+
+            <div class="feed-grid">
+                <!-- Post 1: Instagram (Heladiza Fest) -->
+                <article class="social-post-card instagram">
+                    <header class="post-header">
+                        <div class="post-avatar">
+                            <img src="assets/logoHelados.png" alt="Casfrela" style="width: 100%; height: 100%; object-fit: contain;">
+                        </div>
+                        <div class="post-user-info">
+                            <h5>@maya_helados_artesanales</h5>
+                            <span>Instagram Reel</span>
+                        </div>
+                    </header>
+                    <div class="post-media">
+                        <img src="assets/Galeria/Eventos/heladizaINS.png" alt="Heladiza Fest Instagram">
+                        <a href="https://www.instagram.com/reel/DVsbnLQjk3-/" target="_blank" class="post-overlay-link">
+                            <div class="social-btn-circle">
+                                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                            </div>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Post 2: Facebook (Heladiza Fest) -->
+                <article class="social-post-card facebook">
+                    <header class="post-header">
+                        <div class="post-avatar">
+                            <img src="assets/logoHelados.png" alt="Casfrela" style="width: 100%; height: 100%; object-fit: contain;">
+                        </div>
+                        <div class="post-user-info">
+                            <h5>Helados Casfrela</h5>
+                            <span>Facebook Reel</span>
+                        </div>
+                    </header>
+                    <div class="post-media">
+                        <img src="assets/Galeria/Eventos/heladizaFB.png" alt="Heladiza Fest Facebook">
+                        <a href="https://www.facebook.com/share/r/1CBic518he/" target="_blank" class="post-overlay-link">
+                            <div class="social-btn-circle">
+                                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                            </div>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Post 3: Instagram (Placeholder) -->
+                <article class="social-post-card instagram">
+                    <header class="post-header">
+                        <div class="post-avatar">
+                            <img src="assets/logoHelados.png" alt="Casfrela" style="width: 100%; height: 100%; object-fit: contain;">
+                        </div>
+                        <div class="post-user-info">
+                            <h5>@maya_helados_artesanales</h5>
+                            <span>Instagram Post</span>
+                        </div>
+                    </header>
+                    <div class="post-media">
+                        <img src="assets/Galeria/sesionFotos/3.jpeg" alt="Evento 3">
+                        <a href="https://www.instagram.com/maya_helados_artesanales" target="_blank" class="post-overlay-link">
+                            <div class="social-btn-circle">
+                                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                            </div>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Heladiza Fest Modal -->
+    <div id="event-modal" class="modal-overlay">
+        <div class="modal-content event-modal-content" style="max-width: 1150px; border-radius: 24px;">
+            <span class="modal-close event-modal-close" style="top: 20px; right: 20px;">&times;</span>
+            <div class="modal-header-premium" style="padding: 30px 40px 10px;">
+                <h2 class="script-font" style="font-size: 2.5rem; color: var(--logo-brown); margin: 0;">Heladiza Fest
+                    Vol. 4</h2>
+                <div class="gold-line"
+                    style="margin: 10px 0; width: 60px; height: 3px; background: var(--logo-orange);"></div>
+            </div>
+            <div class="modal-body event-modal-body" style="padding: 0 40px 30px; display: block;">
+                <div class="event-details-grid" style="display: grid; grid-template-columns: 1fr 1fr 1.2fr; gap: 30px; align-items: start;">
+                    <!-- Column 1: General Info -->
+                    <div class="event-general-info">
+                        <p style="font-weight: 700; color: var(--logo-orange); margin-bottom: 20px; font-size: 1.05rem; display: flex; align-items: center; gap: 8px;">
+                            🍰🍦 ¡Llega el festival! 🍦🍰
+                        </p>
+
+                        <ul class="event-details-list" style="list-style: none; padding: 0; margin-bottom: 0;">
+                            <li style="display: flex; gap: 10px; margin-bottom: 15px;">
+                                <span style="font-size: 1.2rem;">📍</span>
+                                <div style="font-size: 0.9rem;">
+                                    <strong style="color: var(--logo-brown);">Ubicación:</strong><br>
+                                    Parque de la Paz, Mérida
+                                </div>
+                            </li>
+                            <li style="display: flex; gap: 10px; margin-bottom: 15px;">
+                                <span style="font-size: 1.2rem;">📅</span>
+                                <div style="font-size: 0.9rem;">
+                                    <strong style="color: var(--logo-brown);">Horarios:</strong><br>
+                                    Sáb: 2pm - 11pm<br>Dom: 10am - 10pm
+                                </div>
+                            </li>
+                            <li style="display: flex; gap: 10px;">
+                                <span style="font-size: 1.2rem;">🎟️</span>
+                                <div style="font-size: 0.9rem;"><strong style="color: var(--logo-brown);">Entrada Libre</strong></div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Column 2: More Details -->
+                    <div class="event-more-info">
+                        <h5
+                            style="color: var(--logo-orange); font-size: 1.05rem; font-weight: 700; margin-bottom: 20px;">
+                            Más detalles</h5>
+                        <div class="event-highlights"
+                            style="font-size: 0.9rem; color: var(--text-dark); line-height: 1.6;">
+                            <p>✨ +100 sabores únicos.</p>
+                            <p>🍨 Helados, gelato y postres.</p>
+                            <p>🍦 Opciones sin azúcar.</p>
+                            <p>🎶 Música en vivo & DJ.</p>
+                            <p>📸 Spots para fotos.</p>
+                            <p>💥 Ambiente familiar.</p>
+                        </div>
+                    </div>
+
+                    <!-- Column 3: Map -->
+                    <div class="event-map-container">
+                        <h5
+                            style="color: var(--logo-brown); font-size: 1.05rem; font-weight: 700; margin-bottom: 15px; text-align: center;">
+                            ¿Cómo llegar?</h5>
+                        <div class="map-wrapper"
+                            style="border-radius: 20px; overflow: hidden; height: 200px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid #eee;">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3371.4074026354347!2d-89.6413147!3d20.971523899999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f5673c1ac1a322b%3A0xbd1afc56171004d0!2sParque%20de%20la%20Paz!5e1!3m2!1ses-419!2smx!4v1775085165079!5m2!1ses-419!2smx"
+                                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer"
+                    style="margin-top: 25px; border-top: 1px solid #eee; padding-top: 15px; text-align: center;">
+                    <p style="font-size: 0.85rem; color: var(--text-light); font-style: italic; margin-bottom: 0;">📲
+                        ¡Etiqueta a tus amigos y arma el plan!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Shared Footer -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="js/navbar.js"></script>
+    <script src="js/footer.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

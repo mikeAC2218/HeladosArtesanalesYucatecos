@@ -1,0 +1,177 @@
+@import url('common.css');
+
+.events-hero {
+    height: 60vh;
+    min-height: 400px;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../assets/Galeria/sesionFotos/4.jpeg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--white);
+    margin-top: -80px;
+}
+
+.events-hero-content h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    margin-bottom: 15px;
+}
+
+.events-hero-content p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto;
+    opacity: 0.9;
+}
+
+.social-feed-section {
+    padding: 100px 0;
+    background: var(--white);
+}
+
+.feed-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 40px;
+    margin-top: 50px;
+}
+
+/* Custom Social Card Design */
+.social-post-card {
+    background: var(--white);
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    transition: var(--transition);
+    border: 1px solid rgba(92, 48, 28, 0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+.social-post-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 30px 60px rgba(92, 48, 28, 0.15);
+}
+
+.post-header {
+    padding: 20px 25px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.post-avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: var(--cream);
+    padding: 5px;
+}
+
+.post-user-info h5 {
+    font-size: 1rem;
+    color: var(--logo-brown);
+    margin: 0;
+}
+
+.post-user-info span {
+    font-size: 0.8rem;
+    color: var(--text-light);
+}
+
+.post-media {
+    width: 100%;
+    aspect-ratio: 1/1;
+    background: #f0f0f0;
+    position: relative;
+    overflow: hidden;
+}
+
+.post-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.post-overlay-link {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.social-post-card:hover .post-overlay-link {
+    opacity: 1;
+}
+
+.social-btn-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--white);
+    color: var(--logo-brown);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    transform: scale(0.8);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.social-post-card:hover .social-btn-circle {
+    transform: scale(1);
+}
+
+.post-footer {
+    padding: 25px;
+}
+
+.post-caption {
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    line-height: 1.6;
+    margin-bottom: 15px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.post-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 15px;
+    border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+.post-platform {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.platform-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.instagram .platform-icon { color: #E1306C; }
+.facebook .platform-icon { color: #1877F2; }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .feed-grid {
+        grid-template-columns: 1fr;
+        padding: 0 20px;
+    }
+}

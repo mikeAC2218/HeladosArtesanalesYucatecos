@@ -837,3 +837,83 @@ body.modal-open { overflow: hidden; }
     .b2b-title { font-size: 2.3rem; }
     .business-image { height: 350px; }
 }
+/* Shared Events & Upcoming Cards */
+.upcoming-events-section,
+.events-preview-section {
+    padding: 60px 0 80px;
+    background: var(--cream);
+}
+
+.upcoming-card {
+    display: grid; 
+    grid-template-columns: 1fr 1.2fr; 
+    max-width: 900px; 
+    margin: 0 auto;
+    background: var(--white);
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+}
+
+.epc-img {
+    height: 100%;
+    min-height: 250px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.epc-content {
+    padding: 30px;
+}
+
+.epc-content h4 {
+    font-size: 1.4rem;
+    color: var(--logo-brown);
+    margin-bottom: 10px;
+}
+
+.epc-content p {
+    color: var(--text-light);
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.btn-more-events {
+    display: inline-block;
+    padding: 12px 30px;
+    background: var(--logo-orange);
+    color: var(--white);
+    border-radius: 50px;
+    font-weight: 700;
+    transition: var(--transition);
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(242, 150, 63, 0.2);
+}
+
+.btn-more-events:hover {
+    background: var(--logo-brown);
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(92, 48, 28, 0.2);
+}
+
+.event-details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.2fr;
+    gap: 30px;
+    align-items: start;
+}
+
+@media (max-width: 992px) {
+    .upcoming-card {
+        grid-template-columns: 1fr;
+    }
+    .upcoming-card .epc-img {
+        height: 250px;
+    }
+    .event-details-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+}

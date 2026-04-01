@@ -676,9 +676,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const cartCloseBtn = document.querySelector('.cart-close');
     if (cartCloseBtn) cartCloseBtn.addEventListener('click', () => closeModal(cartModal));
 
+    // Event Modal Logic
+    const eventModal = document.getElementById('event-modal');
+    const openEventBtn = document.getElementById('open-event-modal');
+    const eventModalClose = document.querySelector('.event-modal-close');
+
+    if (openEventBtn && eventModal) {
+        openEventBtn.addEventListener('click', () => {
+            eventModal.classList.add('active');
+            document.body.classList.add('modal-open');
+        });
+    }
+
+    if (eventModalClose) {
+        eventModalClose.addEventListener('click', () => {
+            eventModal.classList.remove('active');
+            document.body.classList.remove('modal-open');
+        });
+    }
+
     window.addEventListener('click', (e) => {
         if (e.target === modalOverlay) closeModal(modalOverlay);
         if (e.target === cartModal) closeModal(cartModal);
+        if (e.target === eventModal) closeModal(eventModal);
     });
 
     // === 5. View All Products Logic ===

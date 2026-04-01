@@ -9,6 +9,7 @@
         { href: 'nosotros.html', key: 'nav.about', default: 'Nosotros' },
         { href: 'productos.html', key: 'nav.products', default: 'Productos' },
         { href: 'galeria.html', key: 'nav.gallery', default: 'Galería' },
+        { href: 'eventos.html', key: 'nav.events', default: 'Eventos' },
         { href: 'contacto.html', key: 'nav.contact', default: 'Contacto' },
     ];
 
