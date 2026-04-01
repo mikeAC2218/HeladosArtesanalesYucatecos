@@ -415,13 +415,13 @@ body.modal-open { overflow: hidden; }
 .modal-content {
     background: var(--white);
     border-radius: 20px;
-    width: 90%;
+    width: 95%;
     position: relative;
     transform: scale(0.9);
     transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    overflow: hidden;
+    overflow-y: auto;
     box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
-    max-height: 85vh;
+    max-height: 90vh;
 }
 
 .modal-overlay.active .modal-content { transform: scale(1); }
@@ -898,6 +898,10 @@ body.modal-open { overflow: hidden; }
     box-shadow: 0 15px 30px rgba(92, 48, 28, 0.2);
 }
 
+.modal-header-premium h2 {
+    font-size: 2.3rem;
+}
+
 .event-details-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1.2fr;
@@ -915,5 +919,17 @@ body.modal-open { overflow: hidden; }
     .event-details-grid {
         grid-template-columns: 1fr;
         gap: 30px;
+    }
+    .event-modal-content {
+        max-width: 95% !important;
+    }
+    .modal-header-premium h2 {
+        font-size: 1.8rem !important;
+    }
+    .modal-body.event-modal-body {
+        padding: 0 20px 20px !important;
+    }
+    .map-wrapper {
+        height: 200px !important;
     }
 }
