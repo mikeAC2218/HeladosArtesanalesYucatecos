@@ -283,8 +283,8 @@ section {
     background-repeat: no-repeat;
     background-position: center 0px;
     padding: 120px 20px;
-    margin-top: 80px;
-    margin-bottom: 20px;
+    margin-top: 0;
+    margin-bottom: 40px;
     overflow: hidden;
 }
 
@@ -332,4 +332,54 @@ section {
     .modal-image { height: 250px; padding: 20px; min-width: auto; }
     .modal-image img { max-height: 210px; }
     .modal-info { padding: 25px; }
+
+}
+
+/* Also Have Section Layout Customization */
+.also-have-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    align-items: stretch;
+    justify-content: center;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.video-wrapper-container {
+    flex: 1.4;
+    display: flex;
+    align-items: center;
+}
+
+.single-product-display {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 992px) {
+    .also-have-wrapper {
+        flex-direction: column;
+        gap: 40px;
+    }
+    
+    .video-wrapper-container, 
+    .single-product-display {
+        flex: 1 1 100%;
+        width: 100%;
+    }
+    
+    .video-wrapper {
+        margin-bottom: 0 !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .also-have-wrapper {
+        padding: 10px;
+        gap: 30px;
+    }
 }
