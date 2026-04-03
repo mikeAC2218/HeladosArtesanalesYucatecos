@@ -287,5 +287,9 @@
   "events.hero_title": "Nuestros Momentos en Eventos",
   "events.hero_subtitle": "Capturas de nuestra participación en ferias, bazares y celebraciones especiales.",
   "events.feed_title": "Historias y Publicaciones",
-  "events.feed_desc": "Síguenos en nuestras redes sociales para estar al tanto de nuestros próximos destinos."
+  "events.feed_desc": "Síguenos en nuestras redes sociales para estar al tanto de nuestros próximos destinos.",
+  "products.also_have": "También tenemos:",
+  "products.bomba_chocolate.title": "Bomba de Chocolate",
+  "products.bomba_chocolate.short": "Una explosión de chocolate artesanal.",
+  "products.bomba_chocolate.desc": "Nuestra exclusiva Bomba de Chocolate es una esfera de chocolate de la más alta calidad que, al contacto con leche caliente, revela una mezcla mágica de malvaviscos y cacao. Una experiencia sensorial única."
 }

@@ -287,5 +287,9 @@
   "events.hero_title": "Our Moments in Events",
   "events.hero_subtitle": "Captures of our participation in fairs, bazaars and special celebrations.",
   "events.feed_title": "Stories and Posts",
-  "events.feed_desc": "Follow us on our social networks to be aware of our next destinations."
+  "events.feed_desc": "Follow us on our social networks to be aware of our next destinations.",
+  "products.also_have": "We also have:",
+  "products.bomba_chocolate.title": "Chocolate Bomb",
+  "products.bomba_chocolate.short": "An explosion of artisanal chocolate.",
+  "products.bomba_chocolate.desc": "Our exclusive Chocolate Bomb is a high-quality chocolate sphere that, when in contact with hot milk, reveals a magic mix of marshmallows and cocoa. A unique sensory experience."
 }
