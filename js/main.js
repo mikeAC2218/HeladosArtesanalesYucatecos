@@ -162,9 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (cart.length === 0) {
                 cartItemsContainer.innerHTML = `
                     <div class="empty-cart-msg">
-                        <span class="empty-icon">🛒</span>
                         <h3 data-i18n="cart.empty_title">${window.siteTranslator ? window.siteTranslator.getValue('cart.empty_title') : '¡Tu carrito está vacío!'}</h3>
-                        <p data-i18n="cart.empty">${window.siteTranslator ? window.siteTranslator.getValue('cart.empty') : 'Agrega algunos deliciosos helados para comenzar.'}</p>
                     </div>`;
                 if (cartTotalPrice) cartTotalPrice.textContent = "$0.00";
                 cartSummary.style.display = 'none';
