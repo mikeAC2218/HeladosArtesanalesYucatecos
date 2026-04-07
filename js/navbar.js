@@ -34,6 +34,17 @@
             <div class="nav-actions" style="display: flex; align-items: center; gap: 20px;">
                 <ul class="nav-links">
                     ${links}
+                    <!-- Language selector inside mobile menu (hidden on desktop) -->
+                    <li class="nav-lang-mobile">
+                        <div class="nav-lang-mobile-inner">
+                            <span class="nav-lang-label">Idioma / Language</span>
+                            <div class="lang-selector-modern lang-selector-in-menu">
+                                <button class="lang-btn" data-lang="es">ES</button>
+                                <div class="lang-divider"></div>
+                                <button class="lang-btn" data-lang="en">EN</button>
+                            </div>
+                        </div>
+                    </li>
                 </ul>
                 <div class="cart-nav-container">
                     <button id="cart-btn" class="cart-btn-nav">
@@ -46,7 +57,8 @@
                         <span id="cart-count" class="cart-badge">0</span>
                     </button>
                 </div>
-                <div class="lang-selector-modern">
+                <!-- Language selector in top bar (desktop only, hidden on mobile) -->
+                <div class="lang-selector-modern lang-selector-desktop">
                     <button class="lang-btn" data-lang="es">ES</button>
                     <div class="lang-divider"></div>
                     <button class="lang-btn" data-lang="en">EN</button>

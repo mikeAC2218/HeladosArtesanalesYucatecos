@@ -51,6 +51,35 @@ document.addEventListener('DOMContentLoaded', () => {
                 parallaxBanner.style.backgroundPositionY = `${distance * 0.5}px`;
             }
         }
+
+        // === Explosion blob scroll animation ===
+        const explosionBg = document.getElementById('explosion-bg');
+        const alsoHaveSection = document.getElementById('also-have-section');
+        if (explosionBg && alsoHaveSection) {
+            const rect = alsoHaveSection.getBoundingClientRect();
+            const sectionH = alsoHaveSection.offsetHeight;
+            const viewH = window.innerHeight;
+
+            // progress: 0 when top of section hits bottom of viewport,
+            //           1 when bottom of section hits top of viewport
+            const rawProgress = 1 - (rect.bottom / (viewH + sectionH));
+            const progress = Math.max(0, Math.min(1, rawProgress));
+
+            // Scale: 0.05 → 1.0 as progress goes 0 → 0.55, then back down to 0.05 as it goes 0.55 → 1
+            let scale, opacity;
+            if (progress < 0.55) {
+                const t = progress / 0.55;
+                scale = 0.05 + t * 0.95;
+                opacity = t;
+            } else {
+                const t = (progress - 0.55) / 0.45;
+                scale = 1 - t * 0.95;
+                opacity = 1 - t;
+            }
+
+            explosionBg.style.transform = `scale(${scale.toFixed(3)})`;
+            explosionBg.style.opacity   = opacity.toFixed(3);
+        }
     });
 
     // === 3. Carousel Center Mode Logic ===
@@ -791,6 +820,58 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     updateCartUI();
+
+    // === 7. Product Search Logic ===
+    function initSearchBar(inputId, clearBtnId, noResultsId, sectionId) {
+        const searchInput = document.getElementById(inputId);
+        const clearBtn    = document.getElementById(clearBtnId);
+        const noResults   = document.getElementById(noResultsId);
+        const section     = document.getElementById(sectionId);
+        if (!searchInput || !section) return;
+
+        function runSearch() {
+            const query = searchInput.value.trim().toLowerCase();
+            const cards = section.querySelectorAll('.product-card');
+            clearBtn.style.display = query.length ? 'block' : 'none';
+            let visibleCount = 0;
+
+            cards.forEach(card => {
+                const title = (card.getAttribute('data-title') || '').toLowerCase();
+                const shortDesc = (card.getAttribute('data-short') || '').toLowerCase();
+                const matches = !query || title.includes(query) || shortDesc.includes(query);
+
+                if (matches) {
+                    card.style.display = 'flex';
+                    card.style.opacity = '1';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            if (noResults) {
+                noResults.style.display = visibleCount === 0 && query ? 'block' : 'none';
+            }
+
+            // Hide/show view-all links when searching
+            const viewLinks = section.querySelector('.view-links-container');
+            if (viewLinks) {
+                viewLinks.style.display = query ? 'none' : 'block';
+            }
+        }
+
+        searchInput.addEventListener('input', runSearch);
+        clearBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            runSearch();
+            searchInput.focus();
+        });
+    }
+
+    // Init for helados section
+    initSearchBar('product-search-input', 'search-clear-btn', 'search-no-results', 'productos');
+    // Init for paletas section
+    initSearchBar('paletas-search-input', 'paletas-search-clear-btn', 'paletas-no-results', 'paletas');
 
     // Contact form setup
     const contactForm = document.getElementById('contact-form');
