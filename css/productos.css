@@ -774,7 +774,7 @@ section {
 
 .also-have-title {
     font-size: clamp(2.4rem, 5vw, 3.5rem);
-    color: var(--logo-brown);
+    color: #fff;
     margin: 0;
 }
 
@@ -786,7 +786,7 @@ section {
 }
 
 .also-have-subtitle {
-    color: var(--text-light);
+    color: rgba(255, 255, 255, 0.9);
     font-size: 1rem;
     max-width: 420px;
     line-height: 1.6;
