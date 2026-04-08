@@ -317,6 +317,20 @@
   "products.no_results": "No encontramos ese sabor, ¡pero tenemos muchos más!",
   "products.section_subtitle_helados": "Encuentra el sabor perfecto para ti",
   "products.section_subtitle_paletas": "Frías, naturales y del tamaño justo",
-  "products.also_subtitle": "Descubre nuestra exclusiva Bomba de Chocolate y más sorpresas",
-  "hero.title_products": "Sabores que enamoran"
+  "hero.title_products": "Sabores que enamoran",
+  "locations.badge": "Puntos de Venta",
+  "locations.title": "También nos pueden encontrar en",
+  "locations.subtitle": "Visita nuestros locales asociados y disfruta de tus helados favoritos cerca de ti.",
+  "locations.l1_name": "Sucursal 1 (Ejemplo)",
+  "locations.l1_desc": "Añade aquí tu primera dirección en tu código HTML dentro de index.html.",
+  "locations.l2_name": "Sucursal 2 (Ejemplo)",
+  "locations.l2_desc": "Añade aquí tu segunda dirección directamente en el index.html.",
+  "locations.l3_name": "Sucursal 3 (Ejemplo)",
+  "locations.l3_desc": "Añade aquí tu tercera dirección directamente en el index.html.",
+  "locations.l4_name": "Sucursal 4 (Ejemplo)",
+  "locations.l4_desc": "Añade aquí tu cuarta dirección directamente en el index.html.",
+  "locations.l5_name": "Sucursal 5 (Ejemplo)",
+  "locations.l5_desc": "Añade aquí tu quinta dirección directamente en el index.html.",
+  "locations.l6_name": "Sucursal 6 (Ejemplo)",
+  "locations.l6_desc": "Añade aquí tu sexta dirección directamente en el index.html."
 }
