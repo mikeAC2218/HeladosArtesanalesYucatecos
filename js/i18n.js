@@ -25,7 +25,7 @@ class Translator {
 
     async fetchTranslations(lang) {
         try {
-            const response = await fetch(`lang/${lang}.json`);
+            const response = await fetch(`lang/${lang}.json?v=${new Date().getTime()}`);
             if (!response.ok) {
                 console.warn(`No se pudo cargar el idioma: ${lang}`);
                 return {};
