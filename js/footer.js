@@ -4,7 +4,7 @@
  */
 (function () {
     const footerHTML = `
-    <footer style="background-color: var(--cream, #fdfbf7); padding-top: 80px; border-top: 1px solid rgba(0,0,0,0.05);">
+    <footer style="background-color: var(--cream, #fdfbf7); padding-top: 80px;">
         <div class="container footer-content" style="gap: 60px;">
             <div class="footer-brand"
                 style="display: flex; flex-direction: column; gap: 10px; align-items: center; text-align: center;">

@@ -175,3 +175,186 @@
         padding: 0 20px;
     }
 }
+
+/* ============================================================
+   EVENTS / PROXIMAMENTE SECTION (Copied from index.css)
+   ============================================================ */
+.upcoming-events-section,
+.events-preview-section {
+    padding: 60px 0 80px;
+    background: var(--white);
+}
+
+.upcoming-card {
+    display: grid; 
+    grid-template-columns: 1fr 1.2fr; 
+    max-width: 900px; 
+    margin: 0 auto;
+    background: var(--white);
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+}
+
+.event-details-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 30px;
+}
+
+.section-header-premium {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-badge {
+    display: inline-block;
+    background: rgba(92, 48, 28, 0.08);
+    color: var(--logo-brown);
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.section-header-premium h2 {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    color: var(--logo-brown);
+    margin: 0 0 15px;
+}
+
+.section-header-premium p {
+    color: var(--text-light);
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+}
+
+.epc-img {
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.epc-img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.4), transparent);
+}
+
+.epc-content {
+    padding: 30px;
+    text-align: center;
+}
+
+.epc-content h4 {
+    font-size: 1.4rem;
+    color: var(--logo-brown);
+    margin-bottom: 10px;
+}
+
+.epc-content p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.btn-more-events {
+    display: inline-block;
+    padding: 16px 40px;
+    background: var(--logo-orange);
+    color: var(--white);
+    border-radius: 50px;
+    font-weight: 700;
+    transition: var(--transition);
+    box-shadow: 0 10px 25px rgba(242, 150, 63, 0.3);
+}
+
+.btn-more-events:hover {
+    background: var(--logo-brown);
+    transform: scale(1.05);
+}
+
+@media (max-width: 992px) {
+    .upcoming-card {
+        grid-template-columns: 1fr;
+    }
+    .upcoming-card .epc-img {
+        height: 250px;
+    }
+    .event-details-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .proximamente-img {
+        min-height: 200px;
+    }
+    .prox-inner h3 { font-size: 1.4rem; }
+}
+
+/* ============================================================
+   PRÓXIMAMENTE CARD
+   ============================================================ */
+.proximamente-card {
+    border: 2px dashed rgba(242, 150, 63, 0.35);
+    background: linear-gradient(135deg, #fffaf5 0%, #fff8f0 100%);
+}
+
+.proximamente-img {
+    background: linear-gradient(135deg, var(--logo-brown) 0%, #7a4228 100%) !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    min-height: 260px;
+}
+
+.prox-inner {
+    text-align: center;
+    padding: 30px 24px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.prox-icon {
+    width: 72px;
+    height: 72px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 4px;
+    animation: pulseClock 2.5s ease-in-out infinite;
+}
+
+.prox-icon svg {
+    stroke: rgba(255,255,255,0.9);
+}
+
+@keyframes pulseClock {
+    0%,100% { transform: scale(1);    box-shadow: 0 0 0 0 rgba(255,255,255,0.2); }
+    50%      { transform: scale(1.07); box-shadow: 0 0 0 12px rgba(255,255,255,0); }
+}
+
+.prox-inner h3 {
+    font-family: 'Playball', cursive;
+    font-size: 1.7rem;
+    color: #fff;
+    margin: 0;
+}
+
+.prox-inner p {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.75);
+    margin: 0;
+    max-width: 200px;
+    line-height: 1.5;
+}

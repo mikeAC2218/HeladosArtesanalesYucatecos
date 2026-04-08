@@ -407,10 +407,125 @@
             <div class="cta-wave-bottom" aria-hidden="true">
                 <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M0,40 C240,80 480,0 720,40 C960,80 1200,0 1440,40 L1440,80 L0,80 Z"
-                        fill="var(--cream, #fdfbf7)" />
+                        fill="var(--white, #ffffff)" />
                 </svg>
             </div>
         </section>
+
+        <!-- ===== Testimonials Section ===== -->
+        <section id="testimonios" style="background: var(--white); padding: 40px 0 140px; position: relative;">
+            <div class="container">
+                <div class="section-header-premium" style="margin-bottom: 40px;">
+                    <span class="section-badge">Nuestra Comunidad</span>
+                    <h2 class="script-font">Lo que dicen de nosotros</h2>
+                    <p>El cariño de nuestros clientes es nuestro ingrediente secreto.</p>
+                </div>
+
+                <!-- Formulario para agregar testimonio -->
+                <div style="max-width: 600px; margin: 0 auto 50px; background: var(--cream); padding: 25px; border-radius: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.05);">
+                    <h4 style="margin-bottom: 15px; color: var(--logo-brown); text-align: center;">¡Déjanos tu comentario!</h4>
+                    <div style="display: flex; flex-direction: column; gap: 15px;">
+                        <input type="text" id="t-name" placeholder="Tu Nombre" style="padding: 12px; border-radius: 10px; border: 1px solid rgba(0,0,0,0.1); font-family: inherit; width: 100%; outline: none;">
+                        <textarea id="t-text" placeholder="¿Qué te parecieron nuestros helados?" rows="3" style="padding: 12px; border-radius: 10px; border: 1px solid rgba(0,0,0,0.1); font-family: inherit; resize: none; width: 100%; outline: none;"></textarea>
+                        <button id="t-submit" class="cta-main-btn" style="margin: 0 auto; padding: 10px 30px; font-size: 0.95rem; border: none; cursor: pointer; display: flex; align-items: center; gap: 8px;">
+                            <span>Publicar</span>
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div id="testimonials-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                    <!-- Testimonial 1 -->
+                    <div style="background: var(--cream); padding: 30px; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); position: relative;">
+                        <div style="color: var(--logo-orange); font-size: 3rem; position: absolute; top: 10px; right: 20px; opacity: 0.2; font-family: Georgia, serif;">"</div>
+                        <p style="font-style: italic; color: var(--text-dark); margin-bottom: 20px; position: relative; z-index: 1;">¡Los mejores helados de Mérida! El de mamey es una locura, súper natural y refrescante. Siempre los pedimos para reuniones.</p>
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--logo-orange); display: flex; justify-content: center; align-items: center; color: white; font-weight: bold; font-size: 1.2rem;">M</div>
+                            <div>
+                                <h5 style="margin: 0; color: var(--logo-brown);">María Fernanda</h5>
+                                <span style="font-size: 0.85rem; color: var(--text-light);">Cliente Frecuente</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testimonial 2 -->
+                    <div style="background: var(--cream); padding: 30px; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); position: relative;">
+                        <div style="color: var(--logo-orange); font-size: 3rem; position: absolute; top: 10px; right: 20px; opacity: 0.2; font-family: Georgia, serif;">"</div>
+                        <p style="font-style: italic; color: var(--text-dark); margin-bottom: 20px; position: relative; z-index: 1;">Los contratamos para el cumpleaños de mi hijo y la atención fue espectacular. El carrito de helados le dio un toque mágico.</p>
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <div style="width: 50px; height: 50px; border-radius: 50%; background: #6da278; display: flex; justify-content: center; align-items: center; color: white; font-weight: bold; font-size: 1.2rem;">C</div>
+                            <div>
+                                <h5 style="margin: 0; color: var(--logo-brown);">Carlos R.</h5>
+                                <span style="font-size: 0.85rem; color: var(--text-light);">Evento Privado</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testimonial 3 -->
+                    <div style="background: var(--cream); padding: 30px; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); position: relative;">
+                        <div style="color: var(--logo-orange); font-size: 3rem; position: absolute; top: 10px; right: 20px; opacity: 0.2; font-family: Georgia, serif;">"</div>
+                        <p style="font-style: italic; color: var(--text-dark); margin-bottom: 20px; position: relative; z-index: 1;">Me encanta que son 100% artesanales. Se nota la diferencia en la textura y el sabor. Mi favorito por siempre será el de coco.</p>
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--logo-brown); display: flex; justify-content: center; align-items: center; color: white; font-weight: bold; font-size: 1.2rem;">A</div>
+                            <div>
+                                <h5 style="margin: 0; color: var(--logo-brown);">Ana G.</h5>
+                                <span style="font-size: 0.85rem; color: var(--text-light);">Amante de los helados</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Wave transitioning into the Footer (Footer is cream) -->
+            <div style="position: absolute; bottom: 0; left: 0; width: 100%; overflow: hidden; line-height: 0; transform: translateY(2px);">
+                <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display: block; width: 100%; height: 60px;">
+                    <path d="M0,80 C320,0 480,80 960,20 C1200,-10 1360,60 1440,80 L1440,80 L0,80 Z" fill="var(--cream, #fdfbf7)" />
+                </svg>
+            </div>
+        </section>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const btn = document.getElementById('t-submit');
+                if(btn) {
+                    btn.addEventListener('click', () => {
+                        const name = document.getElementById('t-name').value.trim();
+                        const text = document.getElementById('t-text').value.trim();
+                        if(!name || !text) {
+                            alert('Por favor, llena tu nombre y tu comentario.');
+                            return;
+                        }
+                        
+                        const initial = name.charAt(0).toUpperCase();
+                        const colors = ['#f2963f', '#5c301c', '#6da278', '#e87265'];
+                        const bgColor = colors[Math.floor(Math.random() * colors.length)];
+
+                        const card = document.createElement('div');
+                        card.style.cssText = 'background: var(--cream); padding: 30px; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); position: relative; opacity: 0; transform: translateY(20px); transition: all 0.5s ease;';
+                        card.innerHTML = `
+                            <div style="color: var(--logo-orange); font-size: 3rem; position: absolute; top: 10px; right: 20px; opacity: 0.2; font-family: Georgia, serif;">"</div>
+                            <p style="font-style: italic; color: var(--text-dark); margin-bottom: 20px; position: relative; z-index: 1;">${text}</p>
+                            <div style="display: flex; align-items: center; gap: 15px;">
+                                <div style="width: 50px; height: 50px; border-radius: 50%; background: ${bgColor}; display: flex; justify-content: center; align-items: center; color: white; font-weight: bold; font-size: 1.2rem;">${initial}</div>
+                                <div>
+                                    <h5 style="margin: 0; color: var(--logo-brown);">${name}</h5>
+                                    <span style="font-size: 0.85rem; color: var(--text-light);">Nuevo Testimonio</span>
+                                </div>
+                            </div>
+                        `;
+                        const grid = document.getElementById('testimonials-grid');
+                        grid.insertBefore(card, grid.firstChild);
+                        
+                        // Trigger animation
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 50);
+
+                        document.getElementById('t-name').value = '';
+                        document.getElementById('t-text').value = '';
+                    });
+                }
+            });
+        </script>
 
     </div> <!-- Close scroll-transition -->
 
