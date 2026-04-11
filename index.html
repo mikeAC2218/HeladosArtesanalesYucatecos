@@ -430,114 +430,43 @@
         <section id="puntos-venta" style="background: var(--white); padding: 40px 0 140px; position: relative;">
             <div class="container" style="max-width: 100%; width: 100%; padding: 0 3%; ">
                 <div class="section-header-premium" style="margin-bottom: 40px;">
-                    <span class="section-badge" data-i18n="locations.badge">Puntos de Venta</span>
                     <h2 class="script-font" data-i18n="locations.title">También nos pueden encontrar en</h2>
                     <p data-i18n="locations.subtitle">Visita nuestros locales asociados y disfruta de tus helados
                         favoritos cerca de ti.</p>
                 </div>
 
-                <div id="locations-grid"
-                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
-                    <!-- Location 1 -->
-                    <div
-                        style="background: var(--cream); border-radius: 24px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.03); display: flex; flex-direction: column;">
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3370.1873290728013!2d-89.57604542528566!3d21.0255534878898!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f567169c903a37%3A0x3b4164eab4b6a8b7!2sCarnitas%20-%20Oasis%20Mexicano!5e1!3m2!1ses-419!2smx!4v1775669073886!5m2!1ses-419!2smx"
-                            width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        <div style="padding: 25px; flex: 1;">
-                            <h4
-                                style="margin: 0 0 10px; color: var(--logo-brown); display: flex; align-items: center; gap: 8px;">
-                                <span style="font-size: 1.2rem;">📍</span> <span data-i18n="locations.l1_name">Oasis Mexicano</span>
-                            </h4>
-                            <p style="color: var(--text-dark); font-size: 0.95rem; margin-bottom: 0;"
-                                data-i18n="locations.l1_desc">Encuentra nuestros helados artesanales en Carnitas Oasis Mexicano.</p>
+                <div id="zones-grid"
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 20px;">
+                    <!-- Zone Card: Mérida -->
+                    <div class="zone-card reveal-up">
+                        <div class="zone-card-bg" style="background-image: url('assets/Ubicaciones/merida.webp');"></div>
+                        <div class="zone-card-overlay"></div>
+                        <div class="zone-card-content">
+                            <span class="zone-tag">Yucatán</span>
+                            <h3 data-i18n="locations.zone_merida">Mérida</h3>
+                            <p data-i18n="locations.zone_merida_desc">Explora nuestros puntos de venta en la capital yucateca.</p>
+                            <button class="open-zone-btn" data-zone="merida">
+                                <span data-i18n="locations.view_locations">Ver ubicaciones</span>
+                            </button>
                         </div>
                     </div>
-                    <!-- Location 2 -->
-                    <div
-                        style="background: var(--cream); border-radius: 24px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.03); display: flex; flex-direction: column;">
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3369.8229778401064!2d-89.62622382528524!3d21.041662687336373!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f567681bcf3df63%3A0x3667b0273fc2d732!2sEL%20CORRAL%20DEL%20CARNERO!5e1!3m2!1ses-419!2smx!4v1775669308703!5m2!1ses-419!2smx"
-                            width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        <div style="padding: 25px; flex: 1;">
-                            <h4
-                                style="margin: 0 0 10px; color: var(--logo-brown); display: flex; align-items: center; gap: 8px;">
-                                <span style="font-size: 1.2rem;">📍</span> <span data-i18n="locations.l2_name">El Corral del Carnero</span>
-                            </h4>
-                            <p style="color: var(--text-dark); font-size: 0.95rem; margin-bottom: 0;"
-                                data-i18n="locations.l2_desc">Disfruta de la frescura yucateca en El Corral del Carnero.</p>
-                        </div>
-                    </div>
-                    <!-- Location 3 -->
-                    <div
-                        style="background: var(--cream); border-radius: 24px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.03); display: flex; flex-direction: column;">
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3370.4444639874705!2d-89.61113142528599!3d21.014177588280337!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f56776afaf05c1b%3A0x123c8066639fc4f3!2sFuego%20Real%20-%20Restaurante%20Buffet!5e1!3m2!1ses-419!2smx!4v1775669430399!5m2!1ses-419!2smx"
-                            width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        <div style="padding: 25px; flex: 1;">
-                            <h4
-                                style="margin: 0 0 10px; color: var(--logo-brown); display: flex; align-items: center; gap: 8px;">
-                                <span style="font-size: 1.2rem;">📍</span> <span data-i18n="locations.l3_name">Fuego Real - Restaurante Buffet</span>
-                            </h4>
-                            <p style="color: var(--text-dark); font-size: 0.95rem; margin-bottom: 0;"
-                                data-i18n="locations.l3_desc">Complementa tu buffet con nuestros helados artesanales en Fuego Real.</p>
-                        </div>
-                    </div>
-                    <!-- Location 4 -->
-                    <div
-                        style="background: var(--cream); border-radius: 24px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.03); display: flex; flex-direction: column;">
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8017.425705838287!2d-89.57773297501085!3d20.99346639775598!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f56715f9b9151b3%3A0xc52979547887c24e!2sLa%20Casita%20Mariskera!5e1!3m2!1ses-419!2smx!4v1775669488822!5m2!1ses-419!2smx"
-                            width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        <div style="padding: 25px; flex: 1;">
-                            <h4
-                                style="margin: 0 0 10px; color: var(--logo-brown); display: flex; align-items: center; gap: 8px;">
-                                <span style="font-size: 1.2rem;">📍</span> <span data-i18n="locations.l4_name">La Casita Mariskera</span>
-                            </h4>
-                            <p style="color: var(--text-dark); font-size: 0.95rem; margin-bottom: 0;"
-                                data-i18n="locations.l4_desc">El postre ideal después de tus mariscos en La Casita Mariskera.</p>
-                        </div>
-                    </div>
-                    <!-- Location 5 -->
-                    <div
-                        style="background: var(--cream); border-radius: 24px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.03); display: flex; flex-direction: column;">
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3364.3430076152863!2d-89.67396495541546!3d21.282546600000018!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f55dd2d6b1cb1f7%3A0x1b41a691ceca9ae4!2sYum%20Ixpu!5e1!3m2!1ses-419!2smx!4v1775669817007!5m2!1ses-419!2smx"
-                            width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        <div style="padding: 25px; flex: 1;">
-                            <h4
-                                style="margin: 0 0 10px; color: var(--logo-brown); display: flex; align-items: center; gap: 8px;">
-                                <span style="font-size: 1.2rem;">📍</span> <span data-i18n="locations.l5_name">Yum Ixpu</span>
-                            </h4>
-                            <p style="color: var(--text-dark); font-size: 0.95rem; margin-bottom: 0;"
-                                data-i18n="locations.l5_desc">Descubre el sabor natural de nuestros helados en Yum Ixpu.</p>
-                        </div>
-                    </div>
-                    <!-- Location 6 -->
-                    <div
-                        style="background: var(--cream); border-radius: 24px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.03); display: flex; flex-direction: column;">
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3725.2642598380674!2d-89.62024180000001!3d20.982054699999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f56715b746ab287%3A0x6b1db97ed128caff!2sM%C3%A9rida%2C%20Yuc.!5e0!3m2!1ses!2smx!4v1712586705607!5m2!1ses!2smx"
-                            width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        <div style="padding: 25px; flex: 1;">
-                            <h4
-                                style="margin: 0 0 10px; color: var(--logo-brown); display: flex; align-items: center; gap: 8px;">
-                                <span style="font-size: 1.2rem;">📍</span> <span data-i18n="locations.l6_name">Sucursal
-                                    6 (Ejemplo)</span>
-                            </h4>
-                            <p style="color: var(--text-dark); font-size: 0.95rem; margin-bottom: 0;"
-                                data-i18n="locations.l6_desc">Añade aquí tu sexta dirección directamente en el
-                                index.html.</p>
+
+                    <!-- Zone Card: Progreso -->
+                    <div class="zone-card reveal-up" style="--delay: 0.1s;">
+                        <div class="zone-card-bg" style="background-image: url('assets/Ubicaciones/progreso.jpg');"></div>
+                        <div class="zone-card-overlay"></div>
+                        <div class="zone-card-content">
+                            <span class="zone-tag">Costa</span>
+                            <h3 data-i18n="locations.zone_progreso">Progreso</h3>
+                            <p data-i18n="locations.zone_progreso_desc">Disfruta de nuestros helados frente al mar.</p>
+                            <button class="open-zone-btn" data-zone="progreso">
+                                <span data-i18n="locations.view_locations">Ver ubicaciones</span>
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
+
         </section>
     </div> <!-- Close scroll-transition -->
 
@@ -663,6 +592,20 @@
     <script src="js/footer.js"></script>
     <script src="js/i18n.js"></script>
     <script src="js/main.js"></script>
+    <!-- Locations Modal -->
+    <div id="zone-modal" class="modal-overlay">
+        <div class="modal-content zone-modal-content">
+            <span class="modal-close zone-modal-close">&times;</span>
+            <div class="modal-header-premium">
+                <h2 id="zone-modal-title" class="script-font">Ubicaciones</h2>
+                <div class="gold-line"></div>
+            </div>
+            <div id="zone-locations-container" class="zone-locations-grid">
+                <!-- Locations injected by JS -->
+            </div>
+        </div>
+    </div>
+
 </body>
 
 </html>

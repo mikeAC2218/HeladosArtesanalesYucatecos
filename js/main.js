@@ -159,20 +159,64 @@ document.addEventListener('DOMContentLoaded', () => {
     const emptyCartBtn = document.getElementById('empty-cart-btn');
     const cartWaBtn = document.getElementById('cart-whatsapp-btn');
     
-    // Add Click listener to WhatsApp button to empty cart when clicked
+    // Add Click listener to WhatsApp button to confirm and then empty cart
     if (cartWaBtn) {
-        cartWaBtn.addEventListener('click', () => {
+        cartWaBtn.addEventListener('click', (e) => {
             if (cart.length > 0) {
-                // Empty the cart after a small delay to let the WhatsApp redirect happen
-                setTimeout(() => {
+                e.preventDefault(); // Stop immediate redirect
+                
+                const title = window.siteTranslator ? window.siteTranslator.getValue('cart.confirm_order_title') : '¿Confirmar pedido?';
+                const msg = window.siteTranslator ? window.siteTranslator.getValue('cart.confirm_order_msg') : '¿Ya tienes listo tu pedido para enviarlo por WhatsApp?';
+                
+                showCustomConfirm(title, msg, (dialog) => {
+                    // 1. Open WhatsApp in new tab
+                    window.open(cartWaBtn.href, '_blank');
+
+                    // 2. Success feedback animation
+                    const dialogContent = dialog.querySelector('div');
+                    const successTitle = window.siteTranslator ? window.siteTranslator.getValue('cart.order_success_title') : '¡Pedido Enviado!';
+                    const successMsg = window.siteTranslator ? window.siteTranslator.getValue('cart.order_success_msg') : 'Tu pedido se ha procesado. Hemos limpiado tu carrito por ti.';
+                    
+                    dialogContent.innerHTML = `
+                        <div style="margin-bottom: 20px;">
+                            <img src="assets/logoHelados.png" style="height: 100px; object-fit: contain; animation: bounce 0.8s infinite alternate;">
+                        </div>
+                        <h3 style="margin: 0 0 10px; color: var(--logo-brown); font-size: 1.6rem; font-weight: 700;">${successTitle}</h3>
+                        <p style="color: var(--text-light); margin-bottom: 0; line-height: 1.5;">${successMsg}</p>
+                    `;
+                    
+                    // 3. Clear data
                     cart = [];
                     saveCart();
-                    updateCartUI();
-                    if (cartModal) {
-                        cartModal.classList.remove('active');
-                        document.body.classList.remove('modal-open');
+                    
+                    // Clear inputs
+                    if (nameInput) nameInput.value = '';
+                    if (addressInput) {
+                        addressInput.value = '';
+                        delete addressInput.dataset.mapsUrl;
                     }
-                }, 1500);
+                    if (referencesInput) referencesInput.value = '';
+                    
+                    // Clear map preview
+                    const previewContainer = document.getElementById('cart-map-preview');
+                    if (previewContainer) {
+                        previewContainer.style.display = 'none';
+                        previewContainer.innerHTML = '';
+                        previewMap = null;
+                        previewMarker = null;
+                    }
+
+                    updateCartUI();
+
+                    // 4. Close after delay
+                    setTimeout(() => {
+                        dialog.remove();
+                        if (cartModal) {
+                            cartModal.classList.remove('active');
+                            document.body.classList.remove('modal-open');
+                        }
+                    }, 2500);
+                }, 'assets/pineapple-icecream.png', 'background: #25D366; color: white;');
             }
         });
     }
@@ -258,12 +302,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Update WhatsApp Link for Entire Cart
                 const waNumber = "5219993960148";
-                let waMessage = encodeURIComponent("Hola! Me gustaría hacer un pedido:\n\n");
-                cart.forEach(item => {
-                    waMessage += encodeURIComponent(`- ${item.title} x ${item.quantity} ($${(item.price * item.quantity).toFixed(2)})\n`);
-                });
-                waMessage += encodeURIComponent(`\n*Total: $${total.toFixed(2)}*`);
-
                 const nameInput = document.getElementById('name-input');
                 const addressInput = document.getElementById('address-input');
                 const referencesInput = document.getElementById('references-input');
@@ -273,24 +311,29 @@ document.addEventListener('DOMContentLoaded', () => {
                 const addressValue = addressInput ? addressInput.value.trim() : "";
                 const refValue = referencesInput ? referencesInput.value.trim() : "";
 
-                if (nameValue !== "") {
-                    waMessage += encodeURIComponent(`\n\nNombre: ${nameValue}`);
-                }
+                let waMessage = encodeURIComponent(`Hola! Me gustaría hacer un pedido a nombre de: ${nameValue || "No especificado"}\n\n`);
+                waMessage += encodeURIComponent("con los siguientes productos:\n");
+                
+                cart.forEach(item => {
+                    waMessage += encodeURIComponent(`  • ${item.title} x ${item.quantity} ($${(item.price * item.quantity).toFixed(2)})\n`);
+                });
+                
+                waMessage += encodeURIComponent(`\ntotal: *$${total.toFixed(2)}*\n\n`);
 
                 if (addressValue !== "" || mapLink || refValue !== "") {
-                    const shippingMsg = 'Requiero envío para esta dirección:';
-                    waMessage += encodeURIComponent(`\n\n${shippingMsg}`);
+                    waMessage += encodeURIComponent("Y requiero envío para esta dirección:");
                     
                     if (addressValue !== "") {
-                        waMessage += encodeURIComponent(`\n${addressValue}`);
+                        waMessage += encodeURIComponent(`\n  • ${addressValue}`);
                     }
                     if (mapLink && mapLink !== addressValue) {
-                        waMessage += encodeURIComponent(`\n📍 Ubicación GPS: ${mapLink}`);
+                        waMessage += encodeURIComponent(`\n  • GPS: ${mapLink}`);
                     }
                     if (refValue !== "") {
-                        const refMsg = 'Referencias:';
-                        waMessage += encodeURIComponent(`\n${refMsg} ${refValue}`);
+                        waMessage += encodeURIComponent(`\n  • Referencias: ${refValue}`);
                     }
+                    
+                    waMessage += encodeURIComponent(`\n\n¿Cuál sería el costo de envío para esta ubicación?`);
                 }
                 
                 cartWaBtn.href = `https://wa.me/${waNumber}?text=${waMessage}`;
@@ -581,19 +624,19 @@ document.addEventListener('DOMContentLoaded', () => {
         );
     });
 
-    const showCustomConfirm = (title, msg, onConfirm) => {
+    const showCustomConfirm = (title, msg, onConfirm, icon = 'assets/sad_pineapple.png', confirmBtnStyle = 'background: #ff5252; color: white;') => {
         const dialog = document.createElement('div');
         dialog.style = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; z-index: 100000000; backdrop-filter: blur(5px); animation: fadeIn 0.3s;';
         dialog.innerHTML = `
             <div style="background: white; padding: 40px; border-radius: 24px; max-width: 400px; width: 90%; text-align: center; box-shadow: 0 20px 70px rgba(0,0,0,0.25);">
                 <div style="margin-bottom: 20px;">
-                    <img src="assets/sad_pineapple.png" style="height: 120px; object-fit: contain; animation: float 3s ease-in-out infinite;">
+                    <img src="${icon}" style="height: 120px; object-fit: contain; animation: float 3s ease-in-out infinite;">
                 </div>
                 <h3 style="margin: 0 0 10px; color: var(--logo-brown); font-size: 1.6rem; font-weight: 700;">${title}</h3>
                 <p style="color: var(--text-light); margin-bottom: 30px; line-height: 1.5;">${msg}</p>
                 <div style="display: flex; gap: 12px;">
                     <button id="cancel-confirm" style="flex: 1; padding: 12px; border-radius: 12px; border: 2px solid #eee; background: none; font-weight: 600; cursor: pointer;">${window.siteTranslator ? window.siteTranslator.getValue('common.cancel') : 'Cancelar'}</button>
-                    <button id="ok-confirm" style="flex: 1; padding: 12px; border-radius: 12px; border: none; background: #ff5252; color: white; font-weight: 700; cursor: pointer;">${window.siteTranslator ? window.siteTranslator.getValue('common.confirm') : 'Confirmar'}</button>
+                    <button id="ok-confirm" style="flex: 1; padding: 12px; border-radius: 12px; border: none; ${confirmBtnStyle} font-weight: 700; cursor: pointer;">${window.siteTranslator ? window.siteTranslator.getValue('common.confirm') : 'Confirmar'}</button>
                 </div>
             </div>
         `;
@@ -888,6 +931,79 @@ document.addEventListener('DOMContentLoaded', () => {
                 const text = `Hola, soy ${name} (${email}).\n\nMensaje:\n${message}`;
                 window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(text)}`, '_blank');
                 contactForm.reset();
+            }
+        });
+    }
+    
+    // === 7. Location Zones Logic ===
+    const zoneModal = document.getElementById('zone-modal');
+    const openZoneBtns = document.querySelectorAll('.open-zone-btn');
+    const zoneModalClose = document.querySelector('.zone-modal-close');
+    const zoneModalTitle = document.getElementById('zone-modal-title');
+    const zoneLocationsContainer = document.getElementById('zone-locations-container');
+
+    const locationsData = {
+        merida: [
+            { nameKey: 'locations.l1_name', descKey: 'locations.l1_desc', map: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3370.1873290728013!2d-89.57604542528566!3d21.0255534878898!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f567169c903a37%3A0x3b4164eab4b6a8b7!2sCarnitas%20-%20Oasis%20Mexicano!5e1!3m2!1ses-419!2smx!4v1775669073886!5m2!1ses-419!2smx', link: 'https://www.google.com/maps/search/?api=1&query=Carnitas+-+Oasis+Mexicano' },
+            { nameKey: 'locations.l2_name', descKey: 'locations.l2_desc', map: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3369.8229778401064!2d-89.62622382528524!3d21.041662687336373!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f567681bcf3df63%3A0x3667b0273fc2d732!2sEL%20CORRAL%20DEL%20CARNERO!5e1!3m2!1ses-419!2smx!4v1775669308703!5m2!1ses-419!2smx', link: 'https://www.google.com/maps/search/?api=1&query=EL+CORRAL+DEL+CARNERO+Merida' },
+            { nameKey: 'locations.l3_name', descKey: 'locations.l3_desc', map: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3370.4444639874705!2d-89.61113142528599!3d21.014177588280337!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f56776afaf05c1b%3A0x123c8066639fc4f3!2sFuego%20Real%20-%20Restaurante%20Buffet!5e1!3m2!1ses-419!2smx!4v1775669430399!5m2!1ses-419!2smx', link: 'https://www.google.com/maps/search/?api=1&query=Fuego+Real+-+Restaurante+Buffet+Merida' },
+            { nameKey: 'locations.l4_name', descKey: 'locations.l4_desc', map: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8017.425705838287!2d-89.57773297501085!3d20.99346639775598!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f56715f9b9151b3%3A0xc52979547887c24e!2sLa%20Casita%20Mariskera!5e1!3m2!1ses-419!2smx!4v1775669488822!5m2!1ses-419!2smx', link: 'https://www.google.com/maps/search/?api=1&query=La+Casita+Mariskera+Merida' }
+        ],
+        progreso: [
+            { nameKey: 'locations.l5_name', descKey: 'locations.l5_desc', map: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3364.3430076152863!2d-89.67396495541546!3d21.282546600000018!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f55dd2d6b1cb1f7%3A0x1b41a691ceca9ae4!2sYum%20Ixpu!5e1!3m2!1ses-419!2smx!4v1775669817007!5m2!1ses-419!2smx', link: 'https://www.google.com/maps/search/?api=1&query=Yum+Ixpu+Progreso' }
+        ]
+    };
+
+    if (openZoneBtns.length > 0 && zoneModal) {
+        openZoneBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const zone = btn.getAttribute('data-zone');
+                const locations = locationsData[zone] || [];
+                
+                // Set Title
+                const zoneLabelKey = `locations.zone_${zone}`;
+                zoneModalTitle.textContent = window.siteTranslator ? window.siteTranslator.getValue(zoneLabelKey) : (zone.charAt(0).toUpperCase() + zone.slice(1));
+                zoneModalTitle.setAttribute('data-i18n', zoneLabelKey);
+
+                // Populate Locations
+                zoneLocationsContainer.innerHTML = '';
+                locations.forEach(loc => {
+                    const name = window.siteTranslator ? window.siteTranslator.getValue(loc.nameKey) : loc.nameKey;
+                    const desc = window.siteTranslator ? window.siteTranslator.getValue(loc.descKey) : loc.descKey;
+                    const openMaps = window.siteTranslator ? window.siteTranslator.getValue('locations.open_maps') : 'Abrir en Maps';
+
+                    const locHtml = `
+                        <div class="location-item-premium">
+                            <div class="map-wrapper">
+                                <iframe src="${loc.map}" width="100%" height="220" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                            </div>
+                            <div class="location-info-premium">
+                                <h4 data-i18n="${loc.nameKey}" style="display: block !important; visibility: visible !important;">${name}</h4>
+                                <p data-i18n="${loc.descKey}" style="display: block !important; visibility: visible !important;">${desc}</p>
+                            </div>
+                        </div>
+                    `;
+                    zoneLocationsContainer.insertAdjacentHTML('beforeend', locHtml);
+                });
+
+                if (window.siteTranslator) {
+                    window.siteTranslator.translatePage();
+                }
+
+                zoneModal.classList.add('active');
+                document.body.classList.add('modal-open');
+            });
+        });
+
+        zoneModalClose.addEventListener('click', () => {
+            zoneModal.classList.remove('active');
+            document.body.classList.remove('modal-open');
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === zoneModal) {
+                zoneModal.classList.remove('active');
+                document.body.classList.remove('modal-open');
             }
         });
     }
