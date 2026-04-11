@@ -158,6 +158,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const cartTotalPrice = document.getElementById('cart-total-price');
     const emptyCartBtn = document.getElementById('empty-cart-btn');
     const cartWaBtn = document.getElementById('cart-whatsapp-btn');
+    const nameInput = document.getElementById('name-input');
+    const addressInput = document.getElementById('address-input');
+    const referencesInput = document.getElementById('references-input');
     
     // Add Click listener to WhatsApp button to confirm and then empty cart
     if (cartWaBtn) {
@@ -182,40 +185,47 @@ document.addEventListener('DOMContentLoaded', () => {
                             <img src="assets/logoHelados.png" style="height: 100px; object-fit: contain; animation: bounce 0.8s infinite alternate;">
                         </div>
                         <h3 style="margin: 0 0 10px; color: var(--logo-brown); font-size: 1.6rem; font-weight: 700;">${successTitle}</h3>
-                        <p style="color: var(--text-light); margin-bottom: 0; line-height: 1.5;">${successMsg}</p>
+                        <p style="color: var(--text-light); margin-bottom: 25px; line-height: 1.5;">${successMsg}</p>
+                        <button id="close-success-dialog" style="padding: 10px 24px; border-radius: 12px; border: none; background: var(--logo-brown); color: white; font-weight: 700; cursor: pointer; transition: all 0.3s ease;">${window.siteTranslator ? window.siteTranslator.getValue('common.confirm') : 'OK'}</button>
                     `;
-                    
-                    // 3. Clear data
-                    cart = [];
-                    saveCart();
-                    
-                    // Clear inputs
-                    if (nameInput) nameInput.value = '';
-                    if (addressInput) {
-                        addressInput.value = '';
-                        delete addressInput.dataset.mapsUrl;
-                    }
-                    if (referencesInput) referencesInput.value = '';
-                    
-                    // Clear map preview
-                    const previewContainer = document.getElementById('cart-map-preview');
-                    if (previewContainer) {
-                        previewContainer.style.display = 'none';
-                        previewContainer.innerHTML = '';
-                        previewMap = null;
-                        previewMarker = null;
-                    }
 
-                    updateCartUI();
+                    // Add manual close listener
+                    const closeBtn = document.getElementById('close-success-dialog');
+                    const finishOrder = () => {
+                        // 3. Clear data
+                        cart = [];
+                        saveCart();
+                        
+                        // Clear inputs
+                        if (nameInput) nameInput.value = '';
+                        if (addressInput) {
+                            addressInput.value = '';
+                            delete addressInput.dataset.mapsUrl;
+                        }
+                        if (referencesInput) referencesInput.value = '';
+                        
+                        // Clear map preview
+                        const previewContainer = document.getElementById('cart-map-preview');
+                        if (previewContainer) {
+                            previewContainer.style.display = 'none';
+                            previewContainer.innerHTML = '';
+                            previewMap = null;
+                            previewMarker = null;
+                        }
 
-                    // 4. Close after delay
-                    setTimeout(() => {
+                        updateCartUI();
+
                         dialog.remove();
                         if (cartModal) {
                             cartModal.classList.remove('active');
                             document.body.classList.remove('modal-open');
                         }
-                    }, 2500);
+                    };
+                    
+                    if (closeBtn) closeBtn.onclick = finishOrder;
+                    
+                    // 4. Manual close only (removed automatic timeout as requested)
+                    // No setTimeout(finishOrder, ...) to let user click OK
                 }, 'assets/pineapple-icecream.png', 'background: #25D366; color: white;');
             }
         });
@@ -302,10 +312,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Update WhatsApp Link for Entire Cart
                 const waNumber = "5219993960148";
-                const nameInput = document.getElementById('name-input');
-                const addressInput = document.getElementById('address-input');
-                const referencesInput = document.getElementById('references-input');
-
+                total = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+                
                 const nameValue = nameInput ? nameInput.value.trim() : "";
                 const mapLink = addressInput ? addressInput.dataset.mapsUrl : "";
                 const addressValue = addressInput ? addressInput.value.trim() : "";
