@@ -368,6 +368,7 @@ footer {
     .modal-content {
         width: 98% !important;
         border-radius: 15px;
+        max-height: 92dvh; /* dvh compensa barra del navegador en Safari/iOS */
     }
     .cart-modal-body {
         padding: 15px !important;
@@ -511,8 +512,7 @@ body.modal-open { overflow: hidden; }
     flex-wrap: wrap; 
     width: 100%; 
     border: none; 
-    max-height: 85vh;
-    overflow-y: auto;
+    /* Scroll is handled by modal-content only — no double-scroll */
 }
 
 /* Cart Modal Specifics */
