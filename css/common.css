@@ -992,3 +992,77 @@ body.modal-open { overflow: hidden; }
         height: 200px !important;
     }
 }
+
+/* =====================================================
+   CART FORM VALIDATION STYLES
+   ===================================================== */
+
+@keyframes fieldShake {
+    0%, 100% { transform: translateX(0); }
+    15%       { transform: translateX(-7px); }
+    35%       { transform: translateX(7px); }
+    55%       { transform: translateX(-4px); }
+    75%       { transform: translateX(4px); }
+}
+
+/* Invalid input / textarea */
+.field-invalid {
+    border-color: #e53935 !important;
+    box-shadow: 0 0 0 3px rgba(229, 57, 53, 0.15) !important;
+    animation: fieldShake 0.45s ease-in-out;
+}
+
+/* Inline error message below a field */
+.field-error-msg {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #e53935;
+    font-size: 0.78rem;
+    font-weight: 600;
+    margin-top: 5px;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.field-error-msg::before {
+    content: "⚠";
+    font-size: 0.85rem;
+}
+
+/* Location buttons highlighted when missing */
+.location-btn-invalid {
+    border: 2px solid #e53935 !important;
+    animation: fieldShake 0.45s ease-in-out;
+}
+
+/* Required field label asterisk */
+.required-label::after {
+    content: " *";
+    color: #e53935;
+    font-weight: 700;
+}
+
+/* Summary banner inside cart */
+.cart-validation-banner {
+    background: #fff5f5;
+    border: 1px solid #ffcdd2;
+    border-left: 3px solid #e53935;
+    border-radius: 10px;
+    padding: 11px 14px;
+    margin-bottom: 14px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #c62828;
+    animation: fadeIn 0.3s ease-out;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1.5;
+}
+
+.cart-validation-banner::before {
+    content: "⚠️";
+    flex-shrink: 0;
+    font-size: 1rem;
+    margin-top: 1px;
+}

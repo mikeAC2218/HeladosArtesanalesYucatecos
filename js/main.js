@@ -162,11 +162,107 @@ document.addEventListener('DOMContentLoaded', () => {
     const addressInput = document.getElementById('address-input');
     const referencesInput = document.getElementById('references-input');
     
+    const validateCartForm = () => {
+        const nameVal = nameInput ? nameInput.value.trim() : "";
+        const locationPicked = addressInput && addressInput.dataset.mapsUrl;
+        let isValid = true;
+        
+        // Use siteTranslator if available
+        const t = (key, fallback) => window.siteTranslator ? window.siteTranslator.getValue(key) || fallback : fallback;
+
+        // Clean up previous states
+        if (nameInput) {
+            nameInput.classList.remove('field-invalid');
+            const oldMsg = nameInput.parentNode.querySelector('.field-error-msg');
+            if (oldMsg) oldMsg.remove();
+        }
+        document.querySelectorAll('.btn-location').forEach(btn => btn.classList.remove('location-btn-invalid'));
+        const locContainer = document.querySelector('.address-container');
+        if (locContainer) {
+            const oldLocMsg = locContainer.querySelector('.field-error-msg');
+            if (oldLocMsg) oldLocMsg.remove();
+        }
+        const oldBanner = document.getElementById('cart-validation-errors');
+        if (oldBanner) oldBanner.remove();
+
+        if (nameVal === "") {
+            isValid = false;
+            if (nameInput) {
+                nameInput.classList.add('field-invalid');
+                const errorMsg = document.createElement('div');
+                errorMsg.className = 'field-error-msg';
+                errorMsg.innerHTML = `<span data-i18n="cart.validation_name">${t('cart.validation_name', 'El nombre es obligatorio.')}</span>`;
+                nameInput.parentNode.appendChild(errorMsg);
+            }
+        }
+
+        if (!locationPicked) {
+            isValid = false;
+            const locBtns = document.querySelector('.location-buttons');
+            document.querySelectorAll('.btn-location').forEach(btn => btn.classList.add('location-btn-invalid'));
+            if (locBtns) {
+                const errorMsg = document.createElement('div');
+                errorMsg.className = 'field-error-msg';
+                errorMsg.style.marginBottom = "10px";
+                errorMsg.innerHTML = `<span data-i18n="cart.validation_location">${t('cart.validation_location', 'Debes confirmar tu ubicación usando GPS o el mapa.')}</span>`;
+                locBtns.after(errorMsg);
+            }
+        }
+
+        if (!isValid) {
+            const bannerMsg = t('cart.validation_banner', 'Para continuar, por favor completa los campos requeridos:');
+            // Show as a global modal alert with only OK button
+            showCustomAlert(
+                t('common.attention', 'Atención'), 
+                bannerMsg,
+                null,
+                'assets/sad_pineapple.png'
+            );
+            
+            // Still highlight fields so user knows what to fix
+            const firstInvalid = document.querySelector('.field-invalid, .location-btn-invalid');
+            if (firstInvalid) {
+                // Wait a bit for the alert to be seen before scrolling
+                setTimeout(() => {
+                    firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 100);
+            }
+        }
+
+        return isValid;
+    };
+
+    const showCustomAlert = (title, msg, onOk = null, icon = 'assets/sad_pineapple.png') => {
+        const dialog = document.createElement('div');
+        dialog.style = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; z-index: 100000005; backdrop-filter: blur(5px); animation: fadeIn 0.3s;';
+        const okText = window.siteTranslator ? window.siteTranslator.getValue('common.ok') || 'OK' : 'OK';
+        dialog.innerHTML = `
+            <div style="background: white; padding: 40px; border-radius: 24px; max-width: 400px; width: 90%; text-align: center; box-shadow: 0 20px 70px rgba(0,0,0,0.25);">
+                <div style="margin-bottom: 20px;">
+                    <img src="${icon}" style="height: 110px; object-fit: contain; animation: float 3s ease-in-out infinite;">
+                </div>
+                <h3 style="margin: 0 0 10px; color: var(--logo-brown); font-size: 1.6rem; font-weight: 700;">${title}</h3>
+                <p style="color: var(--text-light); margin-bottom: 30px; line-height: 1.6;">${msg}</p>
+                <button id="alert-ok-generic" style="width: 100%; padding: 12px; border-radius: 12px; border: none; background: var(--logo-orange); color: white; font-weight: 700; cursor: pointer; font-size: 1rem;">${okText}</button>
+            </div>
+        `;
+        document.body.appendChild(dialog);
+        document.getElementById('alert-ok-generic').onclick = () => {
+            dialog.remove();
+            if (onOk) onOk();
+        };
+    };
+    
     // Add Click listener to WhatsApp button to confirm and then empty cart
     if (cartWaBtn) {
         cartWaBtn.addEventListener('click', (e) => {
             if (cart.length > 0) {
                 e.preventDefault(); // Stop immediate redirect
+                
+                // VALIDATION: Name and Location are required
+                if (!validateCartForm()) {
+                    return; // Stop if invalid
+                }
                 
                 const title = window.siteTranslator ? window.siteTranslator.getValue('cart.confirm_order_title') : '¿Confirmar pedido?';
                 const msg = window.siteTranslator ? window.siteTranslator.getValue('cart.confirm_order_msg') : '¿Ya tienes listo tu pedido para enviarlo por WhatsApp?';
@@ -227,6 +323,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     // 4. Manual close only (removed automatic timeout as requested)
                     // No setTimeout(finishOrder, ...) to let user click OK
                 }, 'assets/pineapple-icecream.png', 'background: #25D366; color: white;');
+            } else {
+                // Cart is empty — show friendly alert
+                e.preventDefault();
+                showEmptyCartAlert();
             }
         });
     }
@@ -659,6 +759,56 @@ document.addEventListener('DOMContentLoaded', () => {
                 dialog.remove();
             }
         };
+    };
+
+    // Empty cart alert — shown when user tries to order with empty cart
+    const showEmptyCartAlert = () => {
+        const t = (key, fallback) => window.siteTranslator ? window.siteTranslator.getValue(key) || fallback : fallback;
+        const alertTitle   = t('cart.empty_alert_title', '¡Carrito vacío!');
+        const alertMsg     = t('cart.empty_alert_msg', 'No puedes realizar un pedido con el carrito vacío. Explora nuestros deliciosos productos y agrega tus favoritos.');
+        const btnOk        = t('common.ok', 'OK');
+        const btnProducts  = t('cart.empty_alert_go_products', 'Ver Productos');
+
+        const dialog = document.createElement('div');
+        dialog.style = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; z-index: 100000001; backdrop-filter: blur(5px); animation: fadeIn 0.3s;';
+        dialog.innerHTML = `
+            <div style="background: white; padding: 40px; border-radius: 24px; max-width: 400px; width: 90%; text-align: center; box-shadow: 0 20px 70px rgba(0,0,0,0.25);">
+                <div style="margin-bottom: 20px;">
+                    <img src="assets/sad_pineapple.png" style="height: 110px; object-fit: contain; animation: float 3s ease-in-out infinite;">
+                </div>
+                <h3 style="margin: 0 0 10px; color: var(--logo-brown); font-size: 1.6rem; font-weight: 700;">${alertTitle}</h3>
+                <p style="color: var(--text-light); margin-bottom: 30px; line-height: 1.6;">${alertMsg}</p>
+                <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;">
+                    <button id="empty-alert-ok" style="flex: 1; min-width: 100px; padding: 12px 18px; border-radius: 12px; border: 2px solid #ddd; background: none; color: var(--text-dark); font-weight: 600; cursor: pointer; font-family: inherit; transition: all 0.2s ease;">${btnOk}</button>
+                    <button id="empty-alert-products" style="flex: 2; min-width: 140px; padding: 12px 18px; border-radius: 12px; border: none; background: var(--logo-orange); color: white; font-weight: 700; cursor: pointer; font-family: inherit; transition: all 0.2s ease;">${btnProducts}</button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(dialog);
+
+        const dismiss = () => dialog.remove();
+
+        document.getElementById('empty-alert-ok').onclick = dismiss;
+
+        document.getElementById('empty-alert-products').onclick = () => {
+            dismiss();
+            // Close cart modal too
+            if (cartModal) {
+                cartModal.classList.remove('active');
+                document.body.classList.remove('modal-open');
+            }
+            // Navigate to productos.html if not already there, otherwise scroll to top of products
+            if (!window.location.pathname.includes('productos')) {
+                window.location.href = 'productos.html';
+            } else {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        };
+
+        // Hover effect on OK button via JS (no CSS class needed)
+        const okBtn = document.getElementById('empty-alert-ok');
+        okBtn.addEventListener('mouseenter', () => { okBtn.style.background = '#f5f5f5'; });
+        okBtn.addEventListener('mouseleave', () => { okBtn.style.background = 'none'; });
     };
 
     // Product Modal Logic
