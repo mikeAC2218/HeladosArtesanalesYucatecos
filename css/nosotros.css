@@ -1,6 +1,8 @@
 @import url('common.css');
 
-.history-card { padding: 80px 0; }
+.history-card {
+    padding: 80px 0;
+}
 
 .history-grid {
     display: grid;
@@ -50,18 +52,193 @@
     margin: 15px 0;
 }
 
+
+
+/* Proceso / Valores Artesanal */
+.proceso-section {
+    position: relative;
+    padding: 100px 0;
+    color: var(--white);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.proceso-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(92, 48, 28, 0.85);
+    /* logo-brown with opacity */
+    z-index: 1;
+}
+
+.proceso-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.proceso-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.mobile-inline-img {
+    display: none; /* Hidden on desktop */
+}
+
+.proceso-images {
+    position: relative;
+    height: 100%;
+    min-height: 550px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.proc-img {
+    position: absolute;
+    border-radius: 20px;
+    border: 5px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.proc-img:hover {
+    transform: scale(1.08);
+    z-index: 10;
+}
+
+.proc-img-1 {
+    width: 60%;
+    aspect-ratio: 4/3;
+    top: 0%;
+    left: 0%;
+    z-index: 2;
+}
+
+.proc-img-2 {
+    width: 60%;
+    aspect-ratio: 4/3;
+    top: 35%;
+    right: 0%;
+    z-index: 3;
+}
+
+.proc-img-3 {
+    width: 60%;
+    aspect-ratio: 4/3;
+    bottom: 0%;
+    left: 0;
+    z-index: 4;
+}
+.proceso-step {
+    display: flex;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 30px;
+    transition: var(--transition);
+    align-items: center;
+    gap: 25px;
+}
+
+.proceso-step:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.02);
+}
+
+.step-number {
+    font-family: 'Playball', cursive;
+    font-size: 4rem;
+    color: var(--logo-orange);
+    line-height: 1;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    min-width: 60px;
+}
+
+.step-content {
+    text-align: left;
+}
+
+.step-content h3 {
+    font-size: 1.4rem;
+    color: var(--white);
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.step-content p {
+    font-size: 1rem;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
 /* Responsive Nosotros */
-@media (max-width: 1024px) {
-    .history-grid { grid-template-columns: 1fr; gap: 40px; }
+@media (max-width: 768px) {
+    .history-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
     .images-column {
         flex-direction: row;
         justify-content: center;
         flex-wrap: wrap;
     }
+
+    .proceso-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .proceso-images { display: none !important; }
+
+    .mobile-inline-img {
+        display: block !important;
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+        border-radius: 12px;
+        aspect-ratio: 4/3;
+        object-fit: cover;
+        box-shadow: var(--shadow-sm);
+        border: 4px solid rgba(255, 255, 255, 0.2);
+        transition: transform 0.4s ease;
+    }
+    
+    .mobile-inline-img:hover {
+        transform: scale(1.02);
+    }
+
+    .proceso-step {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+        padding: 20px;
+    }
+
+    .step-content {
+        text-align: center;
+    }
 }
 
 @media (max-width: 600px) {
-    .frame-box.custom-img-background { padding: 40px 20px; border-width: 6px; width: 90%; }
-    .content-frame .title { font-size: 1.5rem; }
-    .rotating-img { width: 140px; height: 200px; }
+    .frame-box.custom-img-background {
+        padding: 40px 20px;
+        border-width: 6px;
+        width: 90%;
+    }
+
+    .content-frame .title {
+        font-size: 1.5rem;
+    }
+
+    .rotating-img {
+        width: 140px;
+        height: 200px;
+    }
 }
