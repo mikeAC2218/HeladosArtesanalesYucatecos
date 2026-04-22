@@ -82,69 +82,35 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // === 3. Carousel Center Mode Logic ===
-    const track = document.querySelector('.carousel-track');
-    if (track) {
-        const slides = Array.from(document.querySelectorAll('.carousel-slide'));
-        const nextBtn = document.querySelector('.next-btn');
-        const prevBtn = document.querySelector('.prev-btn');
-        const dotsContainer = document.querySelector('.carousel-dots');
-        const seasonalSubtitle = document.getElementById('seasonal-subtitle');
+    // === 3. Season Tabs Logic (replaces old carousel) ===
+    const seasonTabs = document.querySelectorAll('.season-tab');
+    if (seasonTabs.length > 0) {
+        const seasonPanels = document.querySelectorAll('.season-panel');
 
-        let currentIndex = 0;
+        function activateTab(tabEl) {
+            const target = tabEl.getAttribute('data-tab');
 
-        slides.forEach((_, i) => {
-            const dot = document.createElement('div');
-            dot.classList.add('dot');
-            if (i === 0) dot.classList.add('active');
-            dot.addEventListener('click', () => goToSlide(i));
-            dotsContainer.appendChild(dot);
-        });
+            // Update tab active states
+            seasonTabs.forEach(t => {
+                t.classList.remove('active');
+                t.setAttribute('aria-selected', 'false');
+            });
+            tabEl.classList.add('active');
+            tabEl.setAttribute('aria-selected', 'true');
 
-        const dots = Array.from(document.querySelectorAll('.dot'));
-
-        function updateCarousel() {
-            track.style.transform = `translateX(-${currentIndex * 100}%)`;
-            slides.forEach((slide, i) => slide.classList.toggle('active', i === currentIndex));
-            dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
-
-            const activeSlide = slides[currentIndex];
-            const season = activeSlide.getAttribute('data-season');
-            if (seasonalSubtitle) {
-                const translationKey = `seasonal.${season.toLowerCase()}`;
-                const translatedSeason = (window.siteTranslator && window.siteTranslator.getValue) 
-                    ? window.siteTranslator.getValue(translationKey) 
-                    : season;
-                
-                seasonalSubtitle.innerText = translatedSeason;
-                seasonalSubtitle.style.animation = 'none';
-                seasonalSubtitle.offsetHeight; 
-                seasonalSubtitle.style.animation = 'fadeIn 0.5s ease-out';
-            }
+            // Show matching panel
+            seasonPanels.forEach(panel => {
+                if (panel.getAttribute('data-season') === target) {
+                    panel.classList.add('active');
+                } else {
+                    panel.classList.remove('active');
+                }
+            });
         }
 
-        function goToSlide(index) {
-            currentIndex = index;
-            updateCarousel();
-        }
-
-        nextBtn.addEventListener('click', () => {
-            currentIndex = (currentIndex + 1) % slides.length;
-            updateCarousel();
+        seasonTabs.forEach(tab => {
+            tab.addEventListener('click', () => activateTab(tab));
         });
-
-        prevBtn.addEventListener('click', () => {
-            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-            updateCarousel();
-        });
-
-        setInterval(() => {
-            currentIndex = (currentIndex + 1) % slides.length;
-            updateCarousel();
-        }, 4000);
-
-        window.addEventListener('resize', updateCarousel);
-        updateCarousel();
     }
 
     // === 4. Product Modal & Cart Logic ===

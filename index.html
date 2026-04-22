@@ -107,128 +107,211 @@
             </div>
         </section>
 
-        <!-- Recommendation Section -->
-        <section id="recomendacion" class="seasonal-section container">
-            <div class="section-header">
-                <h3 class="script-font gold-text" data-i18n="seasonal.recommendation">Recomendación</h3>
-                <h2 id="seasonal-subtitle" data-i18n="seasonal.spring">PRIMAVERA</h2>
-            </div>
-            <div class="carousel-container seasonal-carousel">
-                <div class="carousel-track">
-                    <!-- Slide Primavera -->
-                    <div class="carousel-slide active" data-season="spring">
-                        <div class="seasonal-grid">
-                            <div class="grid-left">
-                                <div class="image-box"><img src="assets/spring.png" alt="Primavera 1"></div>
-                                <div class="image-box"><img src="assets/strawberry-milkshake.png" alt="Primavera 2">
-                                </div>
-                                <div class="image-box"><img src="assets/slide01-08.png" alt="Primavera 3"></div>
-                                <div class="image-box"><img
-                                        src="assets/Galeria/sesionFotos/WhatsApp%20Image%202026-03-11%20at%205.48.26%20PM.jpeg"
-                                        alt="Primavera 4"></div>
-                            </div>
-                            <div class="grid-right">
-                                <div class="seasonal-info">
-                                    <p class="info-text" data-i18n="seasonal.spring_desc">Explosión de frescura con
-                                        nuestras frutas de estación. Sabores
-                                        vibrantes que despiertan tus sentidos con la selección más dulce de Casfrela.
-                                    </p>
-                                    <ul class="seasonal-list">
-                                        <li data-i18n="seasonal.spring_list1">Paletas de Fresa natural</li>
-                                        <li data-i18n="seasonal.spring_list2">Sorbete de Piña fresca</li>
-                                        <li data-i18n="seasonal.spring_list3">Helado de Frutos Rojos</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Slide Verano -->
-                    <div class="carousel-slide" data-season="summer">
-                        <div class="seasonal-grid">
-                            <div class="grid-left">
-                                <div class="image-box"><img src="assets/summer.png" alt="Verano 1"></div>
-                                <div class="image-box"><img src="assets/pineapple-icecream.png" alt="Verano 2"></div>
-                                <div class="image-box"><img
-                                        src="assets/Galeria/sesionFotos/WhatsApp%20Image%202026-03-11%20at%205.48.27%20PM%20(1).jpeg"
-                                        alt="Verano 3"></div>
-                                <div class="image-box"><img src="assets/slide01-06.png" alt="Verano 4"></div>
-                            </div>
-                            <div class="grid-right">
-                                <div class="seasonal-info">
-                                    <p class="info-text" data-i18n="seasonal.summer_desc">El antídoto perfecto para el
-                                        calor Yucateco. Refrescancia pura
-                                        en cada bocado, ideal para disfrutar bajo el sol del Mayab.</p>
-                                    <ul class="seasonal-list">
-                                        <li data-i18n="seasonal.summer_list1">Helado de Coconut &amp; Lime</li>
-                                        <li data-i18n="seasonal.summer_list2">Malteadas de Vainilla helada</li>
-                                        <li data-i18n="seasonal.summer_list3">Yogurt helado de Mango</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Slide Otoño -->
-                    <div class="carousel-slide" data-season="autumn">
-                        <div class="seasonal-grid">
-                            <div class="grid-left">
-                                <div class="image-box"><img src="assets/autumn.png" alt="Otoño 1"></div>
-                                <div class="image-box"><img
-                                        src="assets/Galeria/sesionFotos/WhatsApp%20Image%202026-03-11%20at%205.48.27%20PM.jpeg"
-                                        alt="Otoño 2"></div>
-                                <div class="image-box"><img
-                                        src="assets/Galeria/sesionFotos/WhatsApp%20Image%202026-03-11%20at%205.48.28%20PM.jpeg"
-                                        alt="Otoño 3"></div>
-                                <div class="image-box"><img
-                                        src="assets/Galeria/sesionFotos/WhatsApp%20Image%202026-03-23%20at%201.18.11%20PM%20(1).jpeg"
-                                        alt="Otoño 4"></div>
-                            </div>
-                            <div class="grid-right">
-                                <div class="seasonal-info">
-                                    <p class="info-text" data-i18n="seasonal.autumn_desc">Texturas cremosas y sabores
-                                        tradicionales que reconfortan el
-                                        alma. La herencia de Yucatán en nuestros postres lácteos.</p>
-                                    <ul class="seasonal-list">
-                                        <li data-i18n="seasonal.autumn_list1">Helado de Queso de Bola</li>
-                                        <li data-i18n="seasonal.autumn_list2">Cremita Casera Yucateca</li>
-                                        <li data-i18n="seasonal.autumn_list3">Quesos artesanales curados</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <!-- Recommendation Section — Magazine Redesign -->
+        <section id="recomendacion" class="seasonal-section">
+            <div class="container">
+                <div class="seasonal-header">
+                    <span class="seasonal-label" data-i18n="seasonal.recommendation">Recomendación</span>
+                    <h2 class="seasonal-main-title">Sabores de <span class="script-font gold-text">Temporada</span></h2>
                 </div>
 
-                <div class="carousel-nav">
-                    <button class="prev-btn">←</button>
-                    <div class="carousel-dots"></div>
-                    <button class="next-btn">→</button>
+                <!-- Season Tab Pills -->
+                <div class="season-tabs" role="tablist">
+                    <button class="season-tab active" data-tab="spring" role="tab" aria-selected="true" id="tab-spring">
+                        <span class="tab-icon">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V2M12 2C12 2 7 7 7 12s5 5 5 5 5 0 5-5-5-10-5-10z"/><path d="M12 12c0 0-4-3-4-6s4-4 4-4"/></svg>
+                        </span>
+                        <span data-i18n="seasonal.spring">PRIMAVERA</span>
+                    </button>
+                    <button class="season-tab" data-tab="summer" role="tab" id="tab-summer">
+                        <span class="tab-icon">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                        </span>
+                        <span data-i18n="seasonal.summer">VERANO</span>
+                    </button>
+                    <button class="season-tab" data-tab="autumn" role="tab" id="tab-autumn">
+                        <span class="tab-icon">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+                        </span>
+                        <span data-i18n="seasonal.autumn">OTOÑO</span>
+                    </button>
+                </div>
+
+                <!-- Season Panels -->
+                <div class="season-panels">
+
+                    <!-- Panel Primavera -->
+                    <div class="season-panel active" id="panel-spring" data-season="spring">
+                        <div class="season-magazine">
+                            <div class="magazine-images">
+                                <div class="mag-img-main">
+                                    <img src="assets/spring.png" alt="Primavera - Helados de temporada">
+                                    <div class="mag-img-badge spring-badge">Primavera</div>
+                                </div>
+                                <div class="mag-img-grid">
+                                    <div class="mag-img-small"><img src="assets/strawberry-milkshake.png" alt="Malteada de fresa"></div>
+                                    <div class="mag-img-small"><img src="assets/Galeria/sesionFotos/WhatsApp%20Image%202026-03-11%20at%205.48.26%20PM.jpeg" alt="Helado de temporada"></div>
+                                    <div class="mag-img-small wide"><img src="assets/slide01-08.png" alt="Paleta de frutos rojos"></div>
+                                </div>
+                            </div>
+                            <div class="magazine-content spring-theme">
+                                <div class="season-accent-bar spring-bar"></div>
+                                <h3 class="season-content-title" data-i18n="seasonal.spring">PRIMAVERA</h3>
+                                <p class="season-content-desc" data-i18n="seasonal.spring_desc">Explosión de frescura con nuestras frutas de estación. Sabores vibrantes que despiertan tus sentidos con la selección más dulce de Casfrela.</p>
+                                <ul class="season-product-list">
+                                    <li>
+                                        <span class="spli-dot spring-dot"></span>
+                                        <span data-i18n="seasonal.spring_list1">Paletas de Fresa natural</span>
+                                    </li>
+                                    <li>
+                                        <span class="spli-dot spring-dot"></span>
+                                        <span data-i18n="seasonal.spring_list2">Sorbete de Piña fresca</span>
+                                    </li>
+                                    <li>
+                                        <span class="spli-dot spring-dot"></span>
+                                        <span data-i18n="seasonal.spring_list3">Helado de Frutos Rojos</span>
+                                    </li>
+                                </ul>
+                                <a href="productos.html" class="season-cta-btn spring-cta">
+                                    <span>Ver Productos</span>
+                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Panel Verano -->
+                    <div class="season-panel" id="panel-summer" data-season="summer">
+                        <div class="season-magazine">
+                            <div class="magazine-images">
+                                <div class="mag-img-main">
+                                    <img src="assets/summer.png" alt="Verano - Helados refrescantes">
+                                    <div class="mag-img-badge summer-badge">Verano</div>
+                                </div>
+                                <div class="mag-img-grid">
+                                    <div class="mag-img-small"><img src="assets/pineapple-icecream.png" alt="Helado de piña"></div>
+                                    <div class="mag-img-small"><img src="assets/Galeria/sesionFotos/WhatsApp%20Image%202026-03-11%20at%205.48.27%20PM%20(1).jpeg" alt="Helado de coco"></div>
+                                    <div class="mag-img-small wide"><img src="assets/slide01-06.png" alt="Helado de mango"></div>
+                                </div>
+                            </div>
+                            <div class="magazine-content summer-theme">
+                                <div class="season-accent-bar summer-bar"></div>
+                                <h3 class="season-content-title" data-i18n="seasonal.summer">VERANO</h3>
+                                <p class="season-content-desc" data-i18n="seasonal.summer_desc">El antídoto perfecto para el calor Yucateco. Refrescancia pura en cada bocado, ideal para disfrutar bajo el sol del Mayab.</p>
+                                <ul class="season-product-list">
+                                    <li>
+                                        <span class="spli-dot summer-dot"></span>
+                                        <span data-i18n="seasonal.summer_list1">Helado de Coco y Limón</span>
+                                    </li>
+                                    <li>
+                                        <span class="spli-dot summer-dot"></span>
+                                        <span data-i18n="seasonal.summer_list2">Malteadas de Vainilla helada</span>
+                                    </li>
+                                    <li>
+                                        <span class="spli-dot summer-dot"></span>
+                                        <span data-i18n="seasonal.summer_list3">Yogurt helado de Mango</span>
+                                    </li>
+                                </ul>
+                                <a href="productos.html" class="season-cta-btn summer-cta">
+                                    <span>Ver Productos</span>
+                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Panel Otoño -->
+                    <div class="season-panel" id="panel-autumn" data-season="autumn">
+                        <div class="season-magazine">
+                            <div class="magazine-images">
+                                <div class="mag-img-main">
+                                    <img src="assets/autumn.png" alt="Otoño - Sabores tradicionales">
+                                    <div class="mag-img-badge autumn-badge">Otoño</div>
+                                </div>
+                                <div class="mag-img-grid">
+                                    <div class="mag-img-small"><img src="assets/Galeria/sesionFotos/WhatsApp%20Image%202026-03-11%20at%205.48.27%20PM.jpeg" alt="Queso de bola"></div>
+                                    <div class="mag-img-small"><img src="assets/Galeria/sesionFotos/WhatsApp%20Image%202026-03-11%20at%205.48.28%20PM.jpeg" alt="Cremita yucateca"></div>
+                                    <div class="mag-img-small wide"><img src="assets/Galeria/sesionFotos/WhatsApp%20Image%202026-03-23%20at%201.18.11%20PM%20(1).jpeg" alt="Helado artesanal"></div>
+                                </div>
+                            </div>
+                            <div class="magazine-content autumn-theme">
+                                <div class="season-accent-bar autumn-bar"></div>
+                                <h3 class="season-content-title" data-i18n="seasonal.autumn">OTOÑO</h3>
+                                <p class="season-content-desc" data-i18n="seasonal.autumn_desc">Texturas cremosas y sabores tradicionales que reconfortan el alma. La herencia de Yucatán en nuestros postres lácteos.</p>
+                                <ul class="season-product-list">
+                                    <li>
+                                        <span class="spli-dot autumn-dot"></span>
+                                        <span data-i18n="seasonal.autumn_list1">Helado de Queso de Bola</span>
+                                    </li>
+                                    <li>
+                                        <span class="spli-dot autumn-dot"></span>
+                                        <span data-i18n="seasonal.autumn_list2">Cremita Casera Yucateca</span>
+                                    </li>
+                                    <li>
+                                        <span class="spli-dot autumn-dot"></span>
+                                        <span data-i18n="seasonal.autumn_list3">Quesos artesanales curados</span>
+                                    </li>
+                                </ul>
+                                <a href="productos.html" class="season-cta-btn autumn-cta">
+                                    <span>Ver Productos</span>
+                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
 
-        <!-- Why Choose Us -->
+        <!-- Why Choose Us — Glassmorphism Redesign -->
         <section class="why-us">
             <div class="container">
+                <div class="why-header">
+                    <span class="why-label">Por qué elegirnos</span>
+                    <h2 class="why-title">El sabor que <span class="script-font gold-text">nos distingue</span></h2>
+                </div>
                 <div class="why-grid">
-                    <div class="why-item reveal-up">
-                        <div class="icon">🌿</div>
-                        <h5 data-i18n="why.natural_title">Ingredientes Naturales</h5>
-                        <p data-i18n="why.natural_desc">Solo frutas reales y lácteos seleccionados directamente de
-                            origen.</p>
+                    <div class="why-card reveal-up">
+                        <div class="why-card-icon natural-icon">
+                            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22V2M12 2C12 2 7 7 7 12s5 5 5 5 5 0 5-5-5-10-5-10z"/>
+                                <path d="M12 12c0 0-4-3-4-6s4-4 4-4"/>
+                            </svg>
+                        </div>
+                        <div class="why-card-body">
+                            <h5 data-i18n="why.natural_title">Ingredientes Naturales</h5>
+                            <p data-i18n="why.natural_desc">Solo frutas reales y lácteos seleccionados directamente de origen.</p>
+                        </div>
+                        <div class="why-card-shine"></div>
                     </div>
-                    <div class="why-item reveal-up">
-                        <div class="icon">📜</div>
-                        <h5 data-i18n="why.traditional_title">Recetas Tradicionales</h5>
-                        <p data-i18n="why.traditional_desc">Mantenemos el sabor que ha pasado de generación en
-                            generación.</p>
+                    <div class="why-card reveal-up" style="--delay: 0.12s">
+                        <div class="why-card-icon traditional-icon">
+                            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                                <line x1="9" y1="7" x2="15" y2="7"/>
+                                <line x1="9" y1="11" x2="12" y2="11"/>
+                            </svg>
+                        </div>
+                        <div class="why-card-body">
+                            <h5 data-i18n="why.traditional_title">Recetas Tradicionales</h5>
+                            <p data-i18n="why.traditional_desc">Mantenemos el sabor que ha pasado de generación en generación.</p>
+                        </div>
+                        <div class="why-card-shine"></div>
                     </div>
-                    <div class="why-item reveal-up">
-                        <div class="icon">🥛</div>
-                        <h5 data-i18n="why.daily_title">Producción Diaria</h5>
-                        <p data-i18n="why.daily_desc">Garantizamos la frescura máxima en cada uno de nuestros productos.
-                        </p>
+                    <div class="why-card reveal-up" style="--delay: 0.24s">
+                        <div class="why-card-icon daily-icon">
+                            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+                                <path d="M12 6v6l4 2"/>
+                            </svg>
+                        </div>
+                        <div class="why-card-body">
+                            <h5 data-i18n="why.daily_title">Producción Diaria</h5>
+                            <p data-i18n="why.daily_desc">Garantizamos la frescura máxima en cada uno de nuestros productos.</p>
+                        </div>
+                        <div class="why-card-shine"></div>
                     </div>
                 </div>
             </div>
@@ -336,42 +419,57 @@
             </div>
         </section>
 
-        <!-- Events Participation Section -->
-        <section id="eventos-inicio" class="events-preview-section">
+        <!-- Events Participation Section — Bento Redesign -->
+        <section id="eventos-inicio" class="events-bento-section">
             <div class="container">
-                <div class="section-header-premium">
-                    <h2 class="script-font" data-i18n="events.title_inicio">Nuestra participación en eventos</h2>
-                    <p data-i18n="events.desc_inicio">Hemos llevado la frescura de Yucatán a diversos rincones. Descubre
-                        nuestra historia en cada evento.</p>
+                <div class="events-bento-header">
+                    <span class="events-bento-label" data-i18n="events.badge">Nuestra Participación</span>
+                    <h2 class="events-bento-title script-font" data-i18n="events.title_inicio">Nuestra participación en eventos</h2>
+                    <p class="events-bento-desc" data-i18n="events.desc_inicio">Hemos llevado la frescura de Yucatán a diversos rincones. Descubre nuestra historia en cada evento.</p>
                 </div>
-                <div class="events-preview-grid">
-                    <div class="event-preview-card">
-                        <div class="epc-img" style="background-image: url('assets/Galeria/Eventos/heladizaFB.png');">
-                        </div>
-                        <div class="epc-content">
-                            <h4 data-i18n="events.e1_name">Heladiza Fest Vol. 4</h4>
-                            <p data-i18n="events.e1_desc">Festival de Heladería y Postres. ¡Te esperamos 4 y 5 de abril
-                                en el Parque de la Paz!</p>
-                        </div>
-                    </div>
-                    <div class="event-preview-card">
-                        <div class="epc-img" style="background-image: url('assets/Galeria/sesionFotos/2.jpeg');"></div>
-                        <div class="epc-content">
-                            <h4 data-i18n="events.e2_name">Bazares Locales</h4>
-                            <p data-i18n="events.e2_desc">Presentes en los mejores espacios de emprendimiento.</p>
+
+                <div class="events-bento-grid">
+
+                    <!-- Card Featured: Heladiza Fest (ocupa 2 cols) -->
+                    <div class="ebento-card ebento-featured">
+                        <div class="ebento-img" style="background-image: url('assets/Galeria/Eventos/heladizaFB.png');"></div>
+                        <div class="ebento-overlay">
+                            <span class="ebento-badge festival-badge">Festival</span>
+                            <div class="ebento-info">
+                                <h3 data-i18n="events.e1_name">Heladiza Fest Vol. 4</h3>
+                                <p data-i18n="events.e1_desc">Festival de Heladería y Postres. ¡Te esperamos 4 y 5 de abril en el Parque de la Paz!</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="event-preview-card">
-                        <div class="epc-img" style="background-image: url('assets/Galeria/sesionFotos/3.jpeg');"></div>
-                        <div class="epc-content">
-                            <h4 data-i18n="events.e3_name">Eventos Privados</h4>
-                            <p data-i18n="events.e3_desc">Haciendo de cada celebración algo inolvidable.</p>
+
+                    <!-- Card 2: Bazares Locales -->
+                    <div class="ebento-card">
+                        <div class="ebento-img" style="background-image: url('assets/Galeria/sesionFotos/WhatsApp%20Image%202026-03-31%20at%2011.02.43%20PM%20(1).jpeg');"></div>
+                        <div class="ebento-overlay">
+                            <span class="ebento-badge bazar-badge">Bazares</span>
+                            <div class="ebento-info">
+                                <h3 data-i18n="events.e2_name">Bazares Locales</h3>
+                                <p data-i18n="events.e2_desc">Presentes en los mejores espacios de emprendimiento.</p>
+                            </div>
                         </div>
                     </div>
+
+                    <!-- Card 3: Eventos Privados -->
+                    <div class="ebento-card">
+                        <div class="ebento-img" style="background-image: url('assets/Galeria/sesionFotos/WhatsApp%20Image%202026-03-23%20at%201.18.12%20PM%20(2).jpeg');"></div>
+                        <div class="ebento-overlay">
+                            <span class="ebento-badge privado-badge">Privados</span>
+                            <div class="ebento-info">
+                                <h3 data-i18n="events.e3_name">Eventos Privados</h3>
+                                <p data-i18n="events.e3_desc">Haciendo de cada celebración algo inolvidable.</p>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
+
                 <div class="events-cta-container">
-                    <a href="eventos.html" class="btn-more-events" data-i18n="events.view_more">Ver todos los
-                        eventos</a>
+                    <a href="eventos.html" class="btn-more-events" data-i18n="events.view_more">Ver todos los eventos</a>
                 </div>
             </div>
         </section>
