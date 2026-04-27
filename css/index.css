@@ -1,4 +1,5 @@
 @import url('common.css');
+@import url('horarios.css');
 
 /* Index Specific - Override body padding for Hero transparency */
 body {
@@ -1988,3 +1989,4 @@ section {
         font-size: 0.8rem;
     }
 }
+
